@@ -122,7 +122,9 @@ h1,h2,h3,h4{
   content:"";position:absolute;inset:0;z-index:1;
   background:linear-gradient(178deg,rgba(7,12,20,.82) 0%,rgba(7,12,20,.18) 34%,rgba(7,12,20,.72) 74%,rgba(7,12,20,.97) 100%);
 }
-.hero-in{position:relative;z-index:2;width:100%;padding-bottom:clamp(56px,9vw,120px)}
+.hero-in{position:relative;z-index:2;width:100%;
+  padding-top:calc(76px + clamp(18px,4vh,52px));   /* the nav is fixed: never let a tall headline slide under it */
+  padding-bottom:clamp(56px,9vw,120px)}
 .hero h1{font-size:clamp(52px,10.6vw,152px);font-weight:900;letter-spacing:.002em;line-height:.84;max-width:21ch}
 .hero h1 em{font-style:normal;color:var(--blue-2);display:block}
 .hero .lede{margin-top:26px}
@@ -429,25 +431,35 @@ body{
 
 /* ---------- the glass site card, floated over the hero photograph ---------- */
 .hcard{
-  position:absolute;right:var(--pad);bottom:clamp(56px,9vw,120px);z-index:3;
-  width:min(340px,32vw);padding:20px 22px 18px;cursor:grab;touch-action:none;
+  position:relative;z-index:3;width:100%;
+  padding:16px 20px 14px;cursor:grab;touch-action:none;
 }
-@media (min-width:1041px){
-  /* keep the headline out from under the card */
-  .hero h1{max-width:min(21ch,60vw)}
-  .hero .lede,.hero-act{max-width:min(54ch,58vw)}
+@media (min-width:1280px) and (min-height:840px){
+  /* the card gets its own grid row above the copy, so the browser measures the
+     lane rather than trusting a pixel figure that only held at one window size */
+  .hero-in{
+    display:grid;
+    grid-template-columns:minmax(0,1fr) min(320px,25vw);
+    column-gap:clamp(24px,3vw,52px);
+  }
+  .hero-in>.hcard{grid-column:2;grid-row:1;justify-self:end;margin-bottom:clamp(22px,3.5vh,48px)}
+  /* the copy spans both columns: it is the row below the card, not beside it,
+     so the headline keeps its full measure and still cannot reach the card */
+  .hero-in>h1{grid-column:1/-1;grid-row:2}
+  .hero-in>.lede{grid-column:1/-1;grid-row:3}
+  .hero-in>.hero-act{grid-column:1/-1;grid-row:4}
 }
 .hcard:active{cursor:grabbing}
 .hcard .k{font-family:'Big Shoulders Display',sans-serif;font-size:15px;font-weight:700;
   letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.6)}
-.hcard .big{font-family:'Big Shoulders Display',sans-serif;font-size:clamp(38px,4.6vw,58px);
-  font-weight:900;line-height:.9;margin-top:8px;text-transform:uppercase}
-.hcard .big em{font-style:normal;color:var(--blue-2);display:block}
-.hcard ul{list-style:none;margin:16px 0 0;padding:0;position:relative;z-index:2}
-.hcard li{display:flex;justify-content:space-between;gap:14px;padding:9px 0;
-  border-top:1px solid rgba(255,255,255,.12);font-size:14px;color:var(--fg-2);font-weight:400}
+.hcard .big{font-family:'Big Shoulders Display',sans-serif;font-size:clamp(30px,3.2vw,42px);
+  font-weight:900;line-height:.92;margin-top:5px;text-transform:uppercase}
+.hcard .big em{font-style:normal;color:var(--blue-2)}
+.hcard ul{list-style:none;margin:12px 0 0;padding:0;position:relative;z-index:2}
+.hcard li{display:flex;justify-content:space-between;gap:14px;padding:7px 0;
+  border-top:1px solid rgba(255,255,255,.12);font-size:13.5px;color:var(--fg-2);font-weight:400}
 .hcard li b{color:#fff;font-weight:600}
-@media (max-width:1040px){.hcard{display:none}}
+@media (max-width:1279px),(max-height:839px){.hcard{display:none}}
 
 /* ---------- the floating glass call pill ---------- */
 .pill{
@@ -543,6 +555,18 @@ body{
   <img src="../assets/excavator-storm.jpg" width="2000" height="1443"
        alt="An excavator with its bucket down on a working site under a heavy sky" fetchpriority="high">
   <div class="wrap hero-in">
+    <!-- smoked glass card, draggable, sitting over the photograph -->
+    <aside class="hcard smoke" id="hcard">
+      <div class="k">This week on site</div>
+      <div class="big">Pads <em>&amp; sets</em></div>
+      <ul>
+        <!-- SWAP: real figures -->
+        <li><span>Pads graded</span><b>4</b></li>
+        <li><span>Homes set</span><b>3</b></li>
+        <li><span>Trenches signed off</span><b>6</b></li>
+        <li><span>Counties working</span><b>5</b></li>
+      </ul>
+    </aside>
     <h1>We move the dirt<em>and set the home.</em></h1>
     <p class="lede">Site prep, utility connections and manufactured home setting across Arizona. One crew from a raw lot to the day you get keys.</p>
     <div class="hero-act">
@@ -552,18 +576,6 @@ body{
     </div>
   </div>
 
-  <!-- smoked glass card, draggable, floated over the photograph -->
-  <aside class="hcard smoke" id="hcard">
-    <div class="k">This week on site</div>
-    <div class="big">Pads<em>&amp; sets</em></div>
-    <ul>
-      <!-- SWAP: real figures -->
-      <li><span>Pads graded</span><b>4</b></li>
-      <li><span>Homes set</span><b>3</b></li>
-      <li><span>Trenches signed off</span><b>6</b></li>
-      <li><span>Counties working</span><b>5</b></li>
-    </ul>
-  </aside>
 </section>
 
 <!-- ============ THE WHITE CARD, HUNG ACROSS THE BOUNDARY ============ -->
