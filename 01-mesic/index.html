@@ -371,6 +371,200 @@ h1,h2,h3,h4{margin:0;font-weight:800;line-height:1.15;letter-spacing:-.028em}
 .rv{opacity:0;transform:translateY(20px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
 .rv.on{opacity:1;transform:none}
 
+
+/* ============================================================
+   MATERIAL PASS  /  "BLUEPRINT LINEN"
+   The reference page is flat cream. Flat colour is what made the
+   first attempt read as a template, so every ground here carries a
+   real material instead:
+     - one continuous drafting grid under the whole document
+       (painted on <body>, so the rules line up across section seams)
+     - ice washes laid over that grid, translucent so it shows through
+     - navy panels get a raked hatch, an aggregate speckle and a
+       corner light, so they read as a surface, not a swatch
+     - a fixed film grain veil over everything
+   The grain sits on a FIXED, pointer-events:none layer so it never
+   repaints while the page scrolls.
+   ============================================================ */
+:root{
+  --grain:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)'/%3E%3C/svg%3E");
+  --hatch:repeating-linear-gradient(58deg,rgba(255,255,255,.035) 0 1px,transparent 1px 10px);
+}
+.grain{
+  position:fixed;inset:0;z-index:70;pointer-events:none;
+  opacity:.085;mix-blend-mode:multiply;
+  background-image:var(--grain);background-size:180px 180px;
+}
+/* the drafting sheet: 24px minor rule, 144px major rule, continuous */
+body{
+  background-color:var(--white);
+  background-image:
+    linear-gradient(rgba(21,64,128,.075) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(21,64,128,.075) 1px,transparent 1px),
+    linear-gradient(rgba(21,64,128,.16) 1.3px,transparent 1.3px),
+    linear-gradient(90deg,rgba(21,64,128,.16) 1.3px,transparent 1.3px);
+  background-size:24px 24px,24px 24px,144px 144px,144px 144px;
+}
+/* ice is now a translucent wash, so the grid under it stays continuous */
+/* ice carries survey contours: concentric rings like a grading plan,
+   over a wash thin enough that the drafting rules still read through */
+.ice{
+  background-color:rgba(207,226,247,.70);
+  background-image:
+    repeating-radial-gradient(ellipse 820px 460px at 90% 4%,
+      transparent 0 32px,rgba(15,46,95,.075) 32px 33.6px),
+    repeating-radial-gradient(ellipse 640px 380px at 2% 96%,
+      transparent 0 27px,rgba(15,46,95,.06) 27px 28.4px),
+    radial-gradient(ellipse 1100px 540px at 84% -10%,rgba(255,255,255,.7),transparent 66%),
+    radial-gradient(ellipse 780px 460px at 0% 108%,rgba(29,111,224,.12),transparent 72%);
+}
+/* navy: raked hatch + aggregate + two lights */
+.navypanel,.cta{
+  background-color:var(--navy);
+  background-image:
+    radial-gradient(circle at 88% -18%,rgba(90,166,245,.40),transparent 55%),
+    radial-gradient(circle at 4% 116%,rgba(29,111,224,.30),transparent 58%),
+    var(--hatch),
+    var(--grain);
+  background-size:auto,auto,auto,180px 180px;
+  background-blend-mode:normal,normal,normal,soft-light;
+}
+.foot{
+  background-color:var(--navy-3);
+  background-image:
+    radial-gradient(ellipse 1000px 340px at 16% -40%,rgba(29,111,224,.24),transparent 66%),
+    var(--hatch),var(--grain);
+  background-size:auto,auto,180px 180px;
+  background-blend-mode:normal,normal,soft-light;
+}
+.util{background-color:var(--navy-3);background-image:var(--hatch)}
+.ticker{
+  background-color:var(--navy);
+  background-image:
+    radial-gradient(ellipse 700px 120px at 50% 50%,rgba(90,166,245,.22),transparent 70%),
+    var(--hatch);
+}
+.strip3{
+  background-color:var(--blue);
+  background-image:
+    radial-gradient(circle at 92% -30%,rgba(255,255,255,.34),transparent 56%),
+    repeating-linear-gradient(58deg,rgba(255,255,255,.075) 0 1px,transparent 1px 9px),
+    var(--grain);
+  background-size:auto,auto,180px 180px;
+  background-blend-mode:normal,normal,soft-light;
+}
+/* the hero scrim picks up the same rake so the photo sits on the material */
+.hero::after{
+  background-image:
+    linear-gradient(96deg,rgba(10,25,52,.9) 4%,rgba(10,25,52,.62) 42%,rgba(10,25,52,.24) 72%,rgba(10,25,52,.42)),
+    repeating-linear-gradient(58deg,rgba(255,255,255,.028) 0 1px,transparent 1px 11px);
+}
+
+/* ============================================================
+   LIQUID GLASS, EXTENDED ACROSS THE PAGE
+   The same material as the nav and the floating menu, in two more
+   tints: LIGHT glass for the drafting grounds, DARK glass inside the
+   navy. Each keeps the four things that make glass read as glass:
+   a blur, a saturation lift, a lit top edge, and a hairline set 1px
+   inside the border so the edge has thickness.
+   Blur radii stay modest on content cards and are dropped entirely
+   on small screens, where a dozen blurred layers costs real frames.
+   ============================================================ */
+.panel,.formcard,.pcard,.rev,.q,.mapcard,.thumbs figure,.trio div,.towns span,.hint,
+.sec>.wrap>.rows>.row{
+  position:relative;isolation:isolate;
+  border:1px solid rgba(255,255,255,.9);
+  background:linear-gradient(150deg,rgba(255,255,255,.88),rgba(255,255,255,.52) 46%,rgba(228,239,253,.66));
+  backdrop-filter:blur(13px) saturate(168%);
+  -webkit-backdrop-filter:blur(13px) saturate(168%);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.96),
+    inset 0 -1px 0 rgba(255,255,255,.5),
+    0 1px 0 rgba(21,64,128,.07),
+    0 20px 44px -30px rgba(10,31,66,.46);
+}
+.panel::before,.formcard::before,.pcard::before,.rev::before,.q::before,.mapcard::before,
+.thumbs figure::before,.trio div::before,.towns span::before,.hint::before,
+.sec>.wrap>.rows>.row::before{
+  content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;border-radius:inherit;
+  background:
+    radial-gradient(circle at 14% -6%,rgba(255,255,255,.85),transparent 42%),
+    linear-gradient(100deg,rgba(255,255,255,.3),transparent 38%);
+}
+.panel::after,.formcard::after,.pcard::after,.q::after,.mapcard::after,
+.thumbs figure::after,.trio div::after{
+  content:"";position:absolute;inset:1px;border-radius:inherit;pointer-events:none;
+  border:1px solid rgba(255,255,255,.55);
+}
+.hint{color:var(--navy)}
+.trio div{background:linear-gradient(150deg,rgba(255,255,255,.72),rgba(219,233,251,.62))}
+.towns span{background:linear-gradient(150deg,rgba(255,255,255,.82),rgba(226,238,253,.6))}
+.towns span:hover{border-color:rgba(29,111,224,.55);background:linear-gradient(150deg,#fff,rgba(214,231,252,.86))}
+.pcard:hover,.rev:hover,.thumbs figure:hover{
+  border-color:#fff;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,1),
+    inset 0 -1px 0 rgba(255,255,255,.55),
+    0 30px 60px -30px rgba(10,31,66,.5);
+}
+.q[data-open="1"]{border-color:rgba(29,111,224,.55)}
+/* inputs become recessed glass rather than filled boxes */
+.f input,.f select,.f textarea{
+  background:rgba(255,255,255,.55);border-color:rgba(21,64,128,.16);
+  box-shadow:inset 0 1px 3px rgba(21,64,128,.09);
+}
+.f input:focus,.f select:focus,.f textarea:focus{background:rgba(255,255,255,.94)}
+
+/* dark glass, inside the navy panels and the contact band */
+.navypanel .row,.nlist div,.cinfo a,.cinfo div{
+  border:1px solid rgba(255,255,255,.24);
+  background:linear-gradient(150deg,rgba(255,255,255,.18),rgba(255,255,255,.05));
+  backdrop-filter:blur(11px) saturate(150%);
+  -webkit-backdrop-filter:blur(11px) saturate(150%);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.30),inset 0 -1px 0 rgba(255,255,255,.07);
+}
+.navypanel .row:hover{border-color:rgba(90,166,245,.75);background:linear-gradient(150deg,rgba(255,255,255,.28),rgba(255,255,255,.1))}
+.cinfo a:hover{background:linear-gradient(150deg,rgba(255,255,255,.3),rgba(255,255,255,.12))}
+
+/* ---------- the glass stat bar hung across the hero seam ---------- */
+.gbar-hold{position:relative;z-index:5;margin-top:calc(-1 * clamp(38px,5vw,64px))}
+.nav:not(.stuck) .glass{
+  background:
+    linear-gradient(135deg,rgba(255,255,255,.16),rgba(255,255,255,.04)),
+    linear-gradient(180deg,rgba(9,24,50,.5),rgba(9,24,50,.3));
+}
+.gbar{
+  border-radius:var(--r);padding:6px;
+  display:grid;grid-template-columns:repeat(4,1fr);
+  border:1px solid rgba(255,255,255,.4);
+  background:
+    linear-gradient(140deg,rgba(255,255,255,.22),rgba(255,255,255,.06)),
+    linear-gradient(180deg,rgba(9,24,50,.46),rgba(9,24,50,.6));
+  backdrop-filter:blur(24px) saturate(180%);
+  -webkit-backdrop-filter:blur(24px) saturate(180%);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.6),
+    inset 0 -1px 0 rgba(255,255,255,.14),
+    0 26px 60px -28px rgba(8,20,50,.55);
+}
+.gbar>div{
+  position:relative;padding:16px 20px;border-radius:calc(var(--r) - 6px);
+  border:1px solid rgba(255,255,255,.14);
+}
+.gbar>div+div::before{content:"";position:absolute;left:-3px;top:18%;bottom:18%;width:1px;background:rgba(255,255,255,.24)}
+.gbar b{display:block;color:#fff;font-size:clamp(22px,2.6vw,30px);font-weight:800;letter-spacing:-.035em;line-height:1}
+.gbar span{display:block;margin-top:5px;color:rgba(255,255,255,.84);font-size:12.5px;font-weight:700;letter-spacing:.03em}
+
+/* ---------- fallbacks ---------- */
+@media (prefers-reduced-transparency: reduce){
+  .panel,.formcard,.pcard,.rev,.q,.mapcard,.thumbs figure,.trio div,.towns span,.hint,
+  .sec>.wrap>.rows>.row{
+    background:var(--white);backdrop-filter:none;-webkit-backdrop-filter:none}
+  .navypanel .row,.nlist div,.cinfo a,.cinfo div{
+    background:rgba(255,255,255,.1);backdrop-filter:none;-webkit-backdrop-filter:none}
+  .gbar{background:var(--navy);backdrop-filter:none;-webkit-backdrop-filter:none}
+}
+
 /* ---------- responsive ---------- */
 @media (max-width:1040px){
   .hero-in,.intro,.split,.navypanel,.area,.cta{grid-template-columns:1fr}
@@ -400,9 +594,28 @@ h1,h2,h3,h4{margin:0;font-weight:800;line-height:1.15;letter-spacing:-.028em}
   *{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
   .rv{opacity:1;transform:none}
 }
+
+@media (max-width:1040px){
+  .gbar{grid-template-columns:1fr 1fr}
+  .gbar>div:nth-child(3)::before{display:none}
+}
+@media (max-width:560px){
+  .gbar{grid-template-columns:1fr}
+  .gbar>div+div::before{left:14px;right:14px;top:-3px;bottom:auto;width:auto;height:1px}
+}
+@media (max-width:760px){
+  /* stacked blurs are the single most expensive thing on a phone */
+  .panel,.formcard,.pcard,.rev,.q,.mapcard,.thumbs figure,.trio div,.towns span,.hint,
+  .sec>.wrap>.rows>.row{
+    backdrop-filter:none;-webkit-backdrop-filter:none;background:rgba(255,255,255,.94)}
+  .navypanel .row,.nlist div,.cinfo a,.cinfo div{backdrop-filter:none;-webkit-backdrop-filter:none}
+}
 </style>
 </head>
 <body>
+
+<!-- fixed film grain over the whole page -->
+<div class="grain" aria-hidden="true"></div>
 
 <!-- ============ UTILITY BAR ============ -->
 <div class="util">
@@ -484,6 +697,20 @@ h1,h2,h3,h4{margin:0;font-weight:800;line-height:1.15;letter-spacing:-.028em}
     </div>
   </div>
 </section>
+
+
+<!-- ============ GLASS STAT BAR (hung across the hero seam) ============ -->
+<div class="gbar-hold">
+  <div class="wrap">
+    <div class="gbar rv">
+      <!-- SWAP: real figures -->
+      <div><b>600+</b><span>Homes set in Arizona</span></div>
+      <div><b>17 yrs</b><span>Doing this one thing</span></div>
+      <div><b>8</b><span>Counties covered</span></div>
+      <div><b>5 days</b><span>Typical pad to set</span></div>
+    </div>
+  </div>
+</div>
 
 <!-- ============ REVIEW TICKER ============ -->
 <div class="ticker" aria-hidden="true">
@@ -605,7 +832,7 @@ h1,h2,h3,h4{margin:0;font-weight:800;line-height:1.15;letter-spacing:-.028em}
 </section>
 
 <!-- ============ NAVY PANEL ============ -->
-<section class="sec" style="padding-top:0;background:var(--ice)">
+<section class="sec ice" style="padding-top:0">
   <div class="wrap">
     <div class="navypanel rv">
       <div>

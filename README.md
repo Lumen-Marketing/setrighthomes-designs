@@ -9,12 +9,12 @@ dirt work / site prep, utility connections, and setting manufactured homes.
 
 ## The four directions
 
-| # | Name | From | Depth device | Type |
-|---|------|------|--------------|------|
-| 01 | **Mesic** | A direct copy of mesiccontracting.com's layout, recoloured to bluish white | Liquid glass over photography | Plus Jakarta Sans |
-| 02 | **Site** | Black + red agency flyer, accent to electric blue | Three planes: photo, scrim, plate hung across the boundary | Big Shoulders Display |
-| 03 | **Plate** | Red diagonal flyer, field to royal blue | Machined steel: bevelled edges, bolts, recessed panels | Saira Condensed |
-| 04 | **Burst** | Orange sunburst posters, recoloured blue | A ray field that laps over the content, hard printed offsets | Archivo Black |
+| # | Name | From | Material | Glass | Type |
+|---|------|------|----------|-------|------|
+| 01 | **Mesic** | A direct copy of mesiccontracting.com's layout, recoloured to bluish white | Drafting linen: one continuous grid under the whole page, survey contours, film grain | Frosted, over the drafting ground | Plus Jakarta Sans |
+| 02 | **Site** | Black + red agency flyer, accent to electric blue | Film stock: grain on a shuffling gate, scanline, vignette, raked light shafts | Smoked, over photographs | Big Shoulders Display |
+| 03 | **Plate** | Red diagonal flyer, field to royal blue | Brushed steel with a specular sweep, knurled blue field, tread plate on the seams | Machine guard glazing, bolted at four corners | Saira Condensed |
+| 04 | **Burst** | Orange sunburst posters, recoloured blue | Screen print: 45 degree halftone with a misregistered second pull, paper grain | Frosted acetate, ink keyline and hard offset kept | Archivo Black |
 
 **01 Mesic copies the reference site section for section**: navy utility bar, hero photo with a
 left gradient and an eyebrow line, blue review ticker, heading plus checklist beside a form
@@ -24,12 +24,56 @@ up strip, star reviews with quote marks, town chips beside a map, FAQ, contact, 
 Section headings carry the same short accent underline. Cream became bluish white and the
 amber CTA became blue.
 
-**Liquid glass** is used on 01's sticky nav and its floating jump menu, matching the
-LiquidGlassCard component supplied. It is a web approximation of that material: layered
-translucency, a 1px inner border, a specular highlight and an inner shadow for edge
-refraction. There is no official Apple liquid glass for the web. A solid fallback is
-provided under `prefers-reduced-transparency`, and the nav turns solid white once you
-scroll past the hero so the links stay readable.
+---
+
+## Material
+
+None of the four uses a flat colour field any more. Each one owns a single material and
+carries it everywhere, so the directions stay distinct from each other:
+
+- **01 Mesic** is a drafting sheet. The 24px minor rule and 144px major rule are painted on
+  `<body>`, so the grid runs continuously across every section seam instead of restarting
+  at each one. Ice sections are translucent washes over that grid carrying concentric
+  survey contours, like the rings on a grading plan. Navy panels get a raked hatch and an
+  aggregate speckle.
+- **02 Site** is film. Real grain shuffles on a four step gate the way a film gate does, a
+  scanline sits at the threshold of visibility, a vignette pulls the eye back to centre,
+  and raked light shafts cross the flat bands.
+- **03 Plate** is milled metal. Horizontal linisher marks with a specular sweep across the
+  width on every steel face; the blue field is knurled instead, a fine diagonal crosshatch
+  like the grip on a hand tool, so the two alloys read differently. Tread plate on the
+  sheared seams.
+- **04 Burst** is printed. Halftone dot screens at 45 degrees with a second screen pulled
+  two pixels off register, because a hand pulled print never lines up, and paper grain
+  multiplied over the lot.
+
+Every grain veil is a **fixed, `pointer-events: none`** layer, so it never repaints while
+the page scrolls.
+
+---
+
+## Liquid glass
+
+It runs through all four now, not just 01's nav. It is the same physical recipe every
+time, retinted for the page it sits on: a blur, a saturation lift, a lit top edge, and a
+hairline set 1px inside the border so the edge has thickness.
+
+- **01** frosted glass on the nav, the draggable jump menu, a stat bar hung across the hero
+  seam so the photograph refracts through it, the form card, every panel, card, review,
+  FAQ row, process row, town chip and the map. Dark glass inside the navy panels.
+- **02** smoked glass: a draggable card floated over the hero photograph, the job lists
+  inside each full bleed chapter, the figures rail, the contact details, the sticky nav,
+  and a floating call pill that appears once the hero is behind you.
+- **03** machine guard glazing: square cut, tinted toward the field blue, **bolted at four
+  corners**. A draggable spec panel over the hero, the who-we-are list set into the blue
+  field, the review cores inside their bolted steel frames, the contact details, the nav.
+- **04** frosted acetate, a printed transparency pinned over the poster. It keeps this
+  direction's two rules, the 2px ink keyline and the hard offset in the accent colour, so
+  it reads as a sheet pinned to the print rather than a card floating over it.
+
+There is **no official Apple liquid glass for the web**; these are approximations, and the
+files say so. A solid fallback is provided under `prefers-reduced-transparency`, and
+`backdrop-filter` is dropped below 760px, where a dozen stacked blurs costs real frames.
 
 Ground and Poster were removed at your request.
 
@@ -84,7 +128,9 @@ anywhere. Point them at an inbox, Formspree, Netlify Forms or a Supabase functio
   only animate when they scroll into view, so a JS or observer failure shows a real number
   rather than a zero.
 - **Motion honours `prefers-reduced-motion`** everywhere. Every reveal, counter and hover
-  collapses to static.
+  collapses to static, including 02's animated film grain.
+- **Blur is kept off scrolling containers.** It sits on fixed and sticky chrome and on
+  discrete cards, never on large scrolling areas, and is switched off entirely on phones.
 
 ## Files
 

@@ -114,6 +114,99 @@ footer{border-top:1px solid var(--steel-800);padding-block:30px;display:flex;fle
   align-items:center;justify-content:space-between}
 .fl{display:flex;gap:20px;flex-wrap:wrap}
 
+
+/* ============================================================
+   MATERIAL PASS  /  the chooser becomes a glass console
+   The ground was flat near black with one faint grid. It now has
+   depth: two blue lights sunk into the ground, a plotted grid with
+   ticks, and a grain veil over the lot. Every panel is liquid glass.
+   Blur is kept off the big preview stages, which scroll, and put on
+   the chrome around them, which does not.
+   ============================================================ */
+:root{
+  --grain:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+.grain{position:fixed;inset:0;z-index:1;pointer-events:none;
+  opacity:.12;background-image:var(--grain);background-size:200px 200px}
+body{
+  background-color:var(--ink);
+  background-image:
+    radial-gradient(ellipse 1100px 720px at 78% -6%,rgba(76,134,255,.20),transparent 62%),
+    radial-gradient(ellipse 900px 620px at 4% 88%,rgba(76,134,255,.11),transparent 66%);
+  background-attachment:fixed;
+}
+/* the plotted grid: 16px ticks under an 80px lattice */
+.grid-bg{
+  background-image:
+    linear-gradient(rgba(76,134,255,.075) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(76,134,255,.075) 1px,transparent 1px),
+    linear-gradient(rgba(255,255,255,.022) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.022) 1px,transparent 1px);
+  background-size:80px 80px,80px 80px,16px 16px,16px 16px;
+  -webkit-mask-image:radial-gradient(150% 96% at 50% 0%,#000 12%,transparent 82%);
+  mask-image:radial-gradient(150% 96% at 50% 0%,#000 12%,transparent 82%);
+}
+
+/* ---------- liquid glass, dark tint ---------- */
+.card{
+  border:1px solid rgba(255,255,255,.10);
+  background:linear-gradient(158deg,rgba(255,255,255,.055),rgba(255,255,255,.012) 54%,rgba(76,134,255,.045));
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.14),
+    inset 0 -1px 0 rgba(255,255,255,.035),
+    0 40px 90px -50px #000;
+}
+.card:hover{border-color:rgba(255,255,255,.2)}
+.card-hd,.card-bd,.note,.seg,.veil span,.card-hd .open,.chip{
+  backdrop-filter:blur(16px) saturate(160%);
+  -webkit-backdrop-filter:blur(16px) saturate(160%);
+}
+.card-hd{
+  border-bottom:1px solid rgba(255,255,255,.09);
+  background:linear-gradient(180deg,rgba(255,255,255,.075),rgba(255,255,255,.018));
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.16);
+}
+.card-bd{background:linear-gradient(180deg,rgba(255,255,255,.012),rgba(255,255,255,.045))}
+.note{
+  border:1px solid rgba(255,255,255,.11);
+  background:linear-gradient(158deg,rgba(255,255,255,.07),rgba(255,255,255,.016) 56%,rgba(76,134,255,.05));
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.17),0 34px 78px -50px #000;
+}
+.seg{
+  border:1px solid rgba(255,255,255,.14);
+  background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.02));
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.2)}
+.seg button+button{border-left-color:rgba(255,255,255,.14)}
+.seg button.on{box-shadow:inset 0 1px 0 rgba(255,255,255,.5)}
+.chip,.card-hd .open{
+  border-color:rgba(255,255,255,.14);
+  background:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.018));
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.16)}
+.veil{background:rgba(5,7,11,.24);backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px)}
+.veil span{
+  border-color:rgba(255,255,255,.2);
+  background:linear-gradient(180deg,rgba(255,255,255,.14),rgba(255,255,255,.05));
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.3),0 14px 30px -18px #000}
+.hbar .mk{
+  border-color:rgba(255,255,255,.14);
+  background:linear-gradient(158deg,rgba(255,255,255,.09),rgba(255,255,255,.02));
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.2)}
+.tbl th{background:rgba(255,255,255,.045)}
+.tbl th,.tbl td{border-color:rgba(255,255,255,.08)}
+.tbl tbody tr:hover td{background:rgba(255,255,255,.035)}
+header{border-bottom-color:rgba(255,255,255,.09)}
+.matrix,footer{border-top-color:rgba(255,255,255,.09)}
+
+@media (prefers-reduced-transparency: reduce){
+  .card,.card-hd,.card-bd,.note,.seg,.chip,.card-hd .open,.veil span{
+    background:var(--steel-950);backdrop-filter:none;-webkit-backdrop-filter:none}
+}
+@media(max-width:900px){
+  /* stacked blurs are the single most expensive thing on a phone */
+  .card-hd,.card-bd,.note,.seg,.chip,.card-hd .open,.veil,.veil span{
+    backdrop-filter:none;-webkit-backdrop-filter:none}
+}
+
 @media(max-width:900px){
   .cards{grid-template-columns:1fr}
   .toolbar{margin-left:0;width:100%}
@@ -123,6 +216,7 @@ footer{border-top:1px solid var(--steel-800);padding-block:30px;display:flex;fle
 </head>
 <body>
 <div class="grid-bg"></div>
+<div class="grain" aria-hidden="true"></div>
 
 <div class="wrap">
 <header>
@@ -132,7 +226,7 @@ footer{border-top:1px solid var(--steel-800);padding-block:30px;display:flex;fle
   </div>
   <h1>Four homepages, four <em>looks.</em></h1>
   <div class="lead">
-    <p>Every one uses the <b>same content and the same photographs</b>, so what you are comparing is design and nothing else. Each card below is a live, scrollable copy of that homepage. Click one to scroll it in place, or open it full screen. <b>Direction 01 is a direct copy of the Mesic Contracting layout you sent</b>, recoloured to bluish white, with liquid glass on the nav and the floating menu.</p>
+    <p>Every one uses the <b>same content and the same photographs</b>, so what you are comparing is design and nothing else. Each card below is a live, scrollable copy of that homepage. Click one to scroll it in place, or open it full screen. <b>Direction 01 is a direct copy of the Mesic Contracting layout you sent</b>, recoloured to bluish white. Every direction now carries a real material rather than a flat fill, and liquid glass runs through all four: drafting linen and frosted glass on 01, film grain and smoked glass on 02, brushed steel and bolted guard glazing on 03, halftone print and acetate on 04.</p>
     <div class="toolbar">
       <div class="seg" id="seg">
         <button class="on" data-mode="desktop">Desktop</button>
@@ -156,8 +250,8 @@ footer{border-top:1px solid var(--steel-800);padding-block:30px;display:flex;fle
       <div class="veil"><span>Click to interact</span></div>
     </div>
     <div class="card-bd">
-      <p><b>A direct copy of the site you sent.</b> Same layout and same components as mesiccontracting.com, section for section: utility bar, hero photo with a left gradient, blue review ticker, checklist beside a form card, before and after proof, the navy panel, photo card grids, star reviews, town chips beside a map. Cream swapped for bluish white, amber swapped for blue. The nav and the floating jump menu are liquid glass.</p>
-      <div class="chips"><span class="chip on">Copies Mesic</span><span class="chip">Liquid glass nav</span><span class="chip">Plus Jakarta Sans</span><span class="chip">Drag the glass menu</span><span class="chip">Bluish white</span></div>
+      <p><b>A direct copy of the site you sent.</b> Same layout and same components as mesiccontracting.com, section for section: utility bar, hero photo with a left gradient, blue review ticker, checklist beside a form card, before and after proof, the navy panel, photo card grids, star reviews, town chips beside a map. Cream swapped for bluish white, amber swapped for blue. The ground is a continuous drafting sheet with survey contours washed over it, and liquid glass runs the whole page: the nav, the draggable jump menu, the stat bar hung across the hero, the form, every card and every panel.</p>
+      <div class="chips"><span class="chip on">Copies Mesic</span><span class="chip">Drafting linen</span><span class="chip">Glass everywhere</span><span class="chip">Plus Jakarta Sans</span><span class="chip">Drag the glass menu</span><span class="chip">Survey contours</span></div>
     </div>
   </article>
 
@@ -173,8 +267,8 @@ footer{border-top:1px solid var(--steel-800);padding-block:30px;display:flex;fle
       <div class="veil"><span>Click to interact</span></div>
     </div>
     <div class="card-bd">
-      <p><b>Dark and cinematic.</b> Full screen photographs with nothing boxed on top of them, and one white card that lifts off the black and hangs across the section edge. Very few elements, very large pictures, a long quiet scroll. From the black and red flyer, with the red swapped for electric blue.</p>
-      <div class="chips"><span class="chip on">Near black</span><span class="chip">Big Shoulders Display</span><span class="chip">Three depth planes</span><span class="chip">Full bleed chapters</span><span class="chip">Sparsest</span></div>
+      <p><b>Dark and cinematic.</b> Full screen photographs with nothing boxed on top of them, and one white card that lifts off the black and hangs across the section edge. Very few elements, very large pictures, a long quiet scroll. From the black and red flyer, with the red swapped for electric blue. The ground is film: real grain on a shuffling gate, a scanline, a vignette and raked light shafts. Smoked glass plates sit on the photographs.</p>
+      <div class="chips"><span class="chip on">Near black</span><span class="chip">Film grain</span><span class="chip">Smoked glass</span><span class="chip">Big Shoulders Display</span><span class="chip">Full bleed chapters</span><span class="chip">Sparsest</span></div>
     </div>
   </article>
 
@@ -190,8 +284,8 @@ footer{border-top:1px solid var(--steel-800);padding-block:30px;display:flex;fle
       <div class="veil"><span>Click to interact</span></div>
     </div>
     <div class="card-bd">
-      <p><b>Machined.</b> Steel plates with a lit top edge and a dark bottom edge so everything reads as bevelled, bolt heads in the corners, and recessed panels that rise when you point at them. A hard diagonal cuts between the dark band and the blue field. Densest of the four and the one that reads as a working trade.</p>
-      <div class="chips"><span class="chip on">Steel and royal blue</span><span class="chip">Saira Condensed</span><span class="chip">Bevel and bolts</span><span class="chip">Diagonal shear</span><span class="chip">Densest</span></div>
+      <p><b>Machined.</b> Steel plates with a lit top edge and a dark bottom edge so everything reads as bevelled, bolt heads in the corners, and recessed panels that rise when you point at them. A hard diagonal cuts between the dark band and the blue field. Densest of the four and the one that reads as a working trade. Every face is brushed steel with a specular sweep, the blue field is knurled, and the glass here is machine guard glazing, bolted at four corners.</p>
+      <div class="chips"><span class="chip on">Steel and royal blue</span><span class="chip">Brushed and knurled</span><span class="chip">Bolted guard glazing</span><span class="chip">Saira Condensed</span><span class="chip">Diagonal shear</span><span class="chip">Densest</span></div>
     </div>
   </article>
 
@@ -207,8 +301,8 @@ footer{border-top:1px solid var(--steel-800);padding-block:30px;display:flex;fle
       <div class="veil"><span>Click to interact</span></div>
     </div>
     <div class="card-bd">
-      <p><b>The loud one.</b> A ray burst sits behind the headline and laps up over the bottom edge of the picture, so the pattern is a real layer rather than wallpaper. Every plate carries a hard printed offset, mirrored left and right about the centre. Friendliest of the four and the one to pick if this will run as an ad landing page.</p>
-      <div class="chips"><span class="chip on">Blue on ice white</span><span class="chip">Archivo Black</span><span class="chip">Ray field laps content</span><span class="chip">Hard printed offsets</span><span class="chip">Loudest</span></div>
+      <p><b>The loud one.</b> A ray burst sits behind the headline and laps up over the bottom edge of the picture, so the pattern is a real layer rather than wallpaper. Every plate carries a hard printed offset, mirrored left and right about the centre. It is printed all the way down: halftone dot screens at 45 degrees with a misregistered second pull, paper grain over the lot, and frosted acetate sheets pinned over the print. Friendliest of the four and the one to pick if this will run as an ad landing page.</p>
+      <div class="chips"><span class="chip on">Blue on ice white</span><span class="chip">Halftone screens</span><span class="chip">Frosted acetate</span><span class="chip">Archivo Black</span><span class="chip">Ray field laps content</span><span class="chip">Loudest</span></div>
     </div>
   </article>
 
@@ -227,6 +321,8 @@ footer{border-top:1px solid var(--steel-800);padding-block:30px;display:flex;fle
         <tr><td>Ground</td><td>Bluish white and navy</td><td>Near black</td><td>Steel, dark</td><td>Ice white</td></tr>
         <tr><td>Display face</td><td>Plus Jakarta Sans</td><td>Big Shoulders Display</td><td>Saira Condensed</td><td>Archivo Black</td></tr>
         <tr><td>Depth device</td><td>Liquid glass over photography</td><td>Three planes, plate hung across the seam</td><td>Machined bevel, bolts, recess</td><td>Ray field lapping over content</td></tr>
+        <tr><td>Material</td><td>Drafting linen: continuous grid, survey contours, film grain</td><td>Film stock: shuffling grain, scanline, vignette, light shafts</td><td>Brushed steel with a specular sweep, knurled blue field, tread seams</td><td>Screen print: 45 degree halftone, misregistered second pull, paper grain</td></tr>
+        <tr><td>Glass</td><td>Frosted, over the drafting ground</td><td>Smoked, over photographs</td><td>Machine guard glazing, bolted at four corners</td><td>Frosted acetate, ink keyline and hard offset kept</td></tr>
         <tr><td>Corners</td><td>Soft, 14 and 10</td><td>Square</td><td>Square</td><td>Square, pill buttons</td></tr>
         <tr><td>Hero</td><td>Photo, left gradient, glass menu</td><td>Full viewport photograph</td><td>Dark band cut by a diagonal</td><td>Ray burst behind the type</td></tr>
         <tr><td>Services shown as</td><td>Photo card grids</td><td>Full bleed chapters</td><td>Recessed photo panels</td><td>Three offset plates</td></tr>

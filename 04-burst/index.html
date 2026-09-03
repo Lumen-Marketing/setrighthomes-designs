@@ -269,6 +269,192 @@ h1,h2,h3,h4{margin:0;font-family:'Archivo Black','Archivo',sans-serif;font-weigh
 .rv{opacity:0;transform:translateY(24px);filter:blur(6px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1),filter .8s cubic-bezier(.16,1,.3,1)}
 .rv.on{opacity:1;transform:none;filter:none}
 
+
+/* ============================================================
+   MATERIAL PASS  /  "SCREEN PRINT"
+   The posters this came from are printed objects, so the page now
+   behaves like one:
+     - paper stock, a fibrous grain multiplied over everything
+     - HALFTONE dot screens at a 45 degree angle, the way a two colour
+       poster is actually separated, fading where the ink runs out
+     - a misregistered second screen offset by a couple of pixels,
+       because a hand pulled print never lines up perfectly
+   The grain is on a FIXED, pointer-events:none layer so it never
+   repaints while the page scrolls.
+   ============================================================ */
+:root{
+  --grain:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='190' height='190'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.78' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='190' height='190' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+.grain{
+  position:fixed;inset:0;z-index:70;pointer-events:none;
+  opacity:.085;mix-blend-mode:multiply;
+  background-image:var(--grain);background-size:190px 190px;
+}
+/* paper stock: a halftone screen laid on the ground, plus its
+   misregistered second pull two pixels off */
+body{
+  background-color:var(--paper);
+  background-image:
+    radial-gradient(circle,rgba(27,63,224,.15) 0 1.5px,transparent 1.9px),
+    radial-gradient(circle,rgba(8,14,51,.075) 0 1.3px,transparent 1.7px);
+  background-size:9px 9px,9px 9px;
+  background-position:0 0,4.5px 4.5px;
+}
+/* the white plates are a lighter pull of the same screen */
+.white{
+  background-color:var(--white);
+  background-image:
+    radial-gradient(circle,rgba(27,63,224,.10) 0 1.4px,transparent 1.8px),
+    radial-gradient(circle,rgba(8,14,51,.05) 0 1.2px,transparent 1.6px);
+  background-size:10px 10px,10px 10px;
+  background-position:0 0,5px 5px;
+}
+/* the blue plane: white ink screened over the rays, heavy at the top
+   and running out toward the bottom, the way a gradient screen prints */
+.blue{
+  background-color:var(--blue);
+  background-image:
+    radial-gradient(circle,rgba(255,255,255,.20) 0 1.7px,transparent 2.1px),
+    radial-gradient(circle,rgba(255,255,255,.11) 0 1.4px,transparent 1.8px);
+  background-size:10px 10px,10px 10px;
+  background-position:0 0,5px 5px;
+}
+.cta{
+  background-color:var(--ink);
+  background-image:
+    radial-gradient(circle,rgba(121,168,255,.20) 0 1.6px,transparent 2px),
+    radial-gradient(circle,rgba(255,255,255,.07) 0 1.3px,transparent 1.7px);
+  background-size:10px 10px,10px 10px;
+  background-position:0 0,5px 5px;
+}
+.foot{
+  background-color:var(--ice);
+  background-image:
+    radial-gradient(circle,rgba(27,63,224,.14) 0 1.5px,transparent 1.9px),
+    radial-gradient(circle,rgba(8,14,51,.06) 0 1.2px,transparent 1.6px);
+  background-size:9px 9px,9px 9px;
+  background-position:0 0,4.5px 4.5px;
+}
+/* a solid ink block laid over the screen, so the dots stop at its edge */
+.plate{background-color:var(--white);background-image:none}
+
+/* ============================================================
+   ACETATE
+   The glass on this page is a printed transparency: a frosted
+   acetate sheet laid over the poster. It keeps this direction's
+   two rules, the 2px ink keyline and the hard offset in the accent
+   colour, so it reads as a sheet pinned over the print rather than
+   a card floating above it. Same physical recipe as the other
+   directions: blur, saturation lift, lit top edge, inner hairline.
+   ============================================================ */
+.nbox,.rev,.fbox{
+  background-color:transparent;
+  background-image:
+    linear-gradient(152deg,rgba(255,255,255,.82),rgba(255,255,255,.5) 50%,rgba(219,231,255,.64));
+  backdrop-filter:blur(14px) saturate(170%);
+  -webkit-backdrop-filter:blur(14px) saturate(170%);
+  box-shadow:
+    inset 0 1.5px 0 rgba(255,255,255,.95),
+    inset 0 -1px 0 rgba(255,255,255,.5),
+    var(--off) var(--off) 0 var(--blue);
+  transition:box-shadow .32s cubic-bezier(.16,1,.3,1);
+}
+/* the offset moves to an outer shadow, which is clipped to outside the box,
+   so it no longer shows through the sheet */
+.nbox::after,.rev::after,.fbox::after{display:none}
+.nbox:nth-child(even),.rev:nth-child(2){
+  box-shadow:
+    inset 0 1.5px 0 rgba(255,255,255,.95),
+    inset 0 -1px 0 rgba(255,255,255,.5),
+    var(--off) var(--off) 0 var(--ink);
+}
+.nbox:hover{
+  box-shadow:
+    inset 0 1.5px 0 rgba(255,255,255,.95),
+    inset 0 -1px 0 rgba(255,255,255,.5),
+    calc(var(--off) * 1.5) calc(var(--off) * 1.5) 0 var(--blue);
+}
+.nbox:nth-child(even):hover,.rev:nth-child(2):hover{
+  box-shadow:
+    inset 0 1.5px 0 rgba(255,255,255,.95),
+    inset 0 -1px 0 rgba(255,255,255,.5),
+    calc(var(--off) * 1.5) calc(var(--off) * 1.5) 0 var(--ink);
+}
+.rev:hover{
+  box-shadow:
+    inset 0 1.5px 0 rgba(255,255,255,.95),
+    inset 0 -1px 0 rgba(255,255,255,.5),
+    calc(var(--off) * 1.5) calc(var(--off) * 1.5) 0 var(--blue);
+}
+.nbox::before,.rev::before,.fbox::before{
+  content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:
+    radial-gradient(circle at 12% -8%,rgba(255,255,255,.9),transparent 44%),
+    linear-gradient(100deg,rgba(255,255,255,.34),transparent 36%);
+}
+/* the acetate sheet over the hero print */
+.acard{
+  position:absolute;left:clamp(-6px,-1vw,0px);bottom:clamp(-18px,-2vw,-10px);z-index:4;
+  width:min(300px,74%);padding:20px 22px 18px;
+  border:2px solid var(--ink);cursor:grab;touch-action:none;
+  background-image:linear-gradient(152deg,rgba(255,255,255,.82),rgba(255,255,255,.44) 52%,rgba(214,228,255,.62));
+  backdrop-filter:blur(16px) saturate(175%);
+  -webkit-backdrop-filter:blur(16px) saturate(175%);
+  box-shadow:
+    inset 0 1.5px 0 rgba(255,255,255,.95),
+    inset 0 -1px 0 rgba(255,255,255,.5),
+    var(--off) var(--off) 0 var(--ink);
+}
+.acard:active{cursor:grabbing}
+.acard .k{font-family:'Archivo Black',sans-serif;font-size:11px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--blue)}
+.acard .r{display:flex;justify-content:space-between;gap:12px;padding:9px 0;
+  border-bottom:1px solid var(--rule);font-size:14px;color:var(--ink-2);font-weight:600}
+.acard .r:first-of-type{margin-top:12px;border-top:2px solid var(--ink)}
+.acard .r:last-of-type{border-bottom:0}
+.acard .r b{font-family:'Archivo Black',sans-serif;font-size:15px;color:var(--ink);letter-spacing:-.03em}
+@media (max-width:1040px){.acard{position:static;width:auto;margin-top:26px}}
+
+/* contact details become smoked acetate over the ray field */
+.cinfo{
+  margin-top:32px;border-top:0;padding:2px 20px 4px;
+  position:relative;isolation:isolate;
+  border:2px solid rgba(255,255,255,.4);
+  background-image:linear-gradient(152deg,rgba(255,255,255,.16),rgba(255,255,255,.05));
+  backdrop-filter:blur(16px) saturate(150%) brightness(.94);
+  -webkit-backdrop-filter:blur(16px) saturate(150%) brightness(.94);
+  box-shadow:inset 0 1.5px 0 rgba(255,255,255,.32);
+}
+.cinfo a:last-of-type,.cinfo div:last-of-type{border-bottom:0}
+/* on the dark contact plane the sheet has to stay light enough for ink
+   coloured labels to hold their contrast */
+.cta .fbox{
+  background-image:linear-gradient(152deg,rgba(255,255,255,.93),rgba(255,255,255,.86) 50%,rgba(226,235,255,.9));
+}
+
+/* the sticky nav is acetate too */
+.nav{
+  background:linear-gradient(180deg,rgba(244,247,253,.72),rgba(244,247,253,.56));
+  backdrop-filter:blur(20px) saturate(175%);
+  -webkit-backdrop-filter:blur(20px) saturate(175%);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.9);
+}
+.nav.stuck{background:linear-gradient(180deg,rgba(244,247,253,.94),rgba(244,247,253,.86))}
+
+@media (prefers-reduced-transparency: reduce){
+  .nbox,.rev,.fbox,.acard{background-image:none;background-color:var(--white);
+    backdrop-filter:none;-webkit-backdrop-filter:none}
+  .cinfo{background-image:none;background-color:rgba(255,255,255,.12);
+    backdrop-filter:none;-webkit-backdrop-filter:none}
+  .nav,.nav.stuck{background:var(--paper);backdrop-filter:none;-webkit-backdrop-filter:none}
+}
+@media (max-width:760px){
+  /* stacked blurs are the single most expensive thing on a phone */
+  .nbox,.rev,.fbox,.acard{backdrop-filter:none;-webkit-backdrop-filter:none;
+    background-image:linear-gradient(152deg,rgba(255,255,255,.97),rgba(240,245,255,.97))}
+  .cinfo{backdrop-filter:none;-webkit-backdrop-filter:none}
+}
+
 /* ---------- responsive ---------- */
 @media (max-width:1040px){
   .hero-in,.cta-in{grid-template-columns:1fr}
@@ -303,6 +489,9 @@ h1,h2,h3,h4{margin:0;font-family:'Archivo Black','Archivo',sans-serif;font-weigh
 </style>
 </head>
 <body>
+
+<!-- fixed paper grain over the whole page -->
+<div class="grain" aria-hidden="true"></div>
 
 <header class="nav" id="nav">
   <div class="wrap nav-in">
@@ -347,6 +536,15 @@ h1,h2,h3,h4{margin:0;font-family:'Archivo Black','Archivo',sans-serif;font-weigh
         <img src="../assets/home-on-pad.jpg" width="2000" height="1348"
              alt="A new manufactured home sitting level on a finished pad, with graded dirt around it" fetchpriority="high">
         <div class="lap" aria-hidden="true"></div>
+      </div>
+
+      <!-- acetate sheet pinned over the print, draggable -->
+      <div class="acard" id="acard">
+        <div class="k">On the truck this week</div>
+        <!-- SWAP: real figures -->
+        <div class="r"><span>Pads graded</span><b>4</b></div>
+        <div class="r"><span>Homes set</span><b>3</b></div>
+        <div class="r"><span>Counties working</span><b>5</b></div>
       </div>
     </div>
   </div>
@@ -423,7 +621,7 @@ h1,h2,h3,h4{margin:0;font-family:'Archivo Black','Archivo',sans-serif;font-weigh
 </section>
 
 <!-- ============ PROJECTS ============ -->
-<section class="sec" id="work" style="background:var(--white)">
+<section class="sec white" id="work">
   <div class="wrap">
     <div class="rv"><h2 style="font-size:clamp(30px,4.4vw,56px);max-width:13ch">Lots we cleared this season.</h2></div>
     <div class="proj">
@@ -456,7 +654,7 @@ h1,h2,h3,h4{margin:0;font-family:'Archivo Black','Archivo',sans-serif;font-weigh
 </section>
 
 <!-- ============ AREA ============ -->
-<section class="sec" id="area" style="background:var(--white)">
+<section class="sec white" id="area">
   <div class="wrap">
     <div class="rv">
       <h2 style="font-size:clamp(28px,3.8vw,48px);max-width:14ch">Where we take the equipment.</h2>
@@ -601,6 +799,25 @@ h1,h2,h3,h4{margin:0;font-family:'Archivo Black','Archivo',sans-serif;font-weigh
     f.querySelector('button[type=submit] span').textContent='Sent';
   });
   f.querySelectorAll('input').forEach(function(i){ i.addEventListener('input',function(){ i.closest('.f').classList.remove('bad'); }); });
+  /* the acetate sheet can be picked up and moved */
+  (function(){
+    var el=document.getElementById('acard'); if(!el) return;
+    var dragging=false,sx=0,sy=0,ox=0,oy=0;
+    el.addEventListener('pointerdown',function(ev){
+      if(ev.target.closest('a')) return;
+      dragging=true; sx=ev.clientX; sy=ev.clientY;
+      el.setPointerCapture(ev.pointerId); el.style.transition='none';
+    });
+    el.addEventListener('pointermove',function(ev){
+      if(!dragging) return;
+      el.style.transform='translate('+(ox+ev.clientX-sx)+'px,'+(oy+ev.clientY-sy)+'px)';
+    });
+    function end(ev){ if(!dragging) return; dragging=false;
+      ox+=ev.clientX-sx; oy+=ev.clientY-sy;
+      el.style.transition='transform .5s cubic-bezier(.16,1,.3,1)'; }
+    el.addEventListener('pointerup',end); el.addEventListener('pointercancel',end);
+  })();
+
   document.querySelectorAll('a[href^="#"]').forEach(function(a){
     a.addEventListener('click',function(ev){
       var t=document.querySelector(a.getAttribute('href')); if(!t) return;
