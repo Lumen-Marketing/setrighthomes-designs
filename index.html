@@ -5,100 +5,72 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Set Right Homes | Five Homepage Directions</title>
 <meta name="description" content="Five homepage design directions for Set Right Homes. Preview each one live, on desktop or phone.">
-<meta name="theme-color" content="#0F2E7A">
+<meta name="theme-color" content="#0A1728">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/bold/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 :root{
   color-scheme:light;
-  --paper:#EDF3FC;--card:#fff;--ink:#08182F;--muted:#55688A;
-  --line:#D5E1F3;--blue:#1750CF;--blue-deep:#0C2A6B;--sky:#86ADF2;
-  --r:14px;
+  --paper:#EDF2F9;--white:#fff;--ink:#0A1728;--muted:#5A6B84;
+  --rule:#C9D6E8;--blue:#1B4FD8;
 }
 *{box-sizing:border-box}
-body{margin:0;background:var(--paper);color:var(--ink);font-family:'Manrope',system-ui,sans-serif;font-size:16px;line-height:1.6;font-weight:500}
-h1,h2,h3{margin:0;line-height:1.06;letter-spacing:-.03em;font-weight:800}
+body{margin:0;background:var(--paper);color:var(--ink);
+  font-family:'Schibsted Grotesk',system-ui,sans-serif;font-size:16px;line-height:1.58;font-weight:450}
+h1,h2,h3{margin:0;line-height:1.02;letter-spacing:-.038em;font-weight:800}
 p{margin:0}
 a{color:inherit}
-.wrap{max-width:1400px;margin-inline:auto;padding-inline:clamp(18px,4vw,36px)}
+.wrap{max-width:1420px;margin-inline:auto;padding-inline:clamp(18px,4vw,40px)}
 
-.top{background:var(--blue-deep);color:#fff;padding-block:clamp(30px,5vw,50px);position:relative;overflow:hidden}
-.top::after{
-  content:"";position:absolute;inset:0;opacity:.18;pointer-events:none;
-  background-image:linear-gradient(rgba(255,255,255,.5) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.5) 1px,transparent 1px);
-  background-size:44px 44px;
-  -webkit-mask-image:radial-gradient(70% 100% at 20% 50%,#000,transparent 78%);
-  mask-image:radial-gradient(70% 100% at 20% 50%,#000,transparent 78%);
-}
-.top .wrap{position:relative;z-index:1}
-.top h1{font-size:clamp(26px,4vw,42px);max-width:20ch}
-.top p{color:rgba(255,255,255,.72);margin-top:12px;max-width:64ch;font-size:15.5px}
-.kicker{font-size:11.5px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--sky);margin-bottom:12px}
+.top{background:var(--ink);color:#fff;padding-block:clamp(32px,5vw,54px)}
+.top h1{font-size:clamp(27px,4vw,44px);max-width:22ch}
+.top p{color:rgba(255,255,255,.68);margin-top:14px;max-width:70ch;font-size:15.5px}
 
-.bar{position:sticky;top:0;z-index:20;background:rgba(237,243,252,.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.bar{position:sticky;top:0;z-index:20;background:rgba(237,242,249,.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--rule)}
 .bar-in{display:flex;flex-wrap:wrap;gap:12px;align-items:center;padding-block:14px}
 .tabs{display:flex;flex-wrap:wrap;gap:6px}
-.tab{
-  border:1px solid var(--line);background:var(--card);color:var(--ink);font:inherit;font-weight:800;font-size:13.5px;
-  padding:9px 15px;border-radius:999px;cursor:pointer;white-space:nowrap;
-  transition:background .22s,color .22s,border-color .22s,transform .22s;
-}
-.tab:hover{border-color:var(--sky);transform:translateY(-1px)}
-.tab[aria-selected="true"]{background:var(--blue);border-color:var(--blue);color:#fff}
-.tab:focus-visible{outline:3px solid var(--sky);outline-offset:2px}
+.tab{border:1.5px solid var(--rule);background:var(--white);color:var(--ink);font:inherit;font-weight:700;font-size:13.5px;
+  padding:9px 15px;border-radius:0;cursor:pointer;white-space:nowrap;transition:background .22s,color .22s,border-color .22s,transform .22s}
+.tab:hover{border-color:var(--ink);transform:translateY(-1px)}
+.tab[aria-selected="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
+.tab:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
 .spacer{margin-left:auto}
-.seg{display:flex;border:1px solid var(--line);border-radius:999px;background:var(--card);overflow:hidden}
-.seg button{
-  border:0;background:none;font:inherit;font-weight:800;font-size:13px;padding:9px 15px;cursor:pointer;color:var(--muted);
-  display:flex;align-items:center;gap:7px;transition:background .2s,color .2s;
-}
-.seg button[aria-pressed="true"]{background:var(--blue);color:#fff}
-.open{
-  display:inline-flex;align-items:center;gap:8px;text-decoration:none;background:var(--ink);color:#fff;
-  font-weight:800;font-size:13.5px;padding:10px 17px;border-radius:999px;transition:transform .2s,background .2s;
-}
-.open:hover{transform:translateY(-2px);background:var(--blue)}
+.seg{display:flex;border:1.5px solid var(--rule);background:var(--white)}
+.seg button{border:0;background:none;font:inherit;font-weight:700;font-size:13px;padding:9px 15px;cursor:pointer;color:var(--muted);transition:background .2s,color .2s}
+.seg button[aria-pressed="true"]{background:var(--ink);color:#fff}
+.open{display:inline-flex;align-items:center;gap:8px;text-decoration:none;background:var(--blue);color:#fff;
+  font-weight:700;font-size:13.5px;padding:10px 18px;transition:transform .2s,background .2s}
+.open:hover{transform:translateY(-2px);background:var(--ink)}
 
-.stage{padding-block:clamp(20px,3vw,34px) clamp(40px,6vw,70px)}
-.meta{display:flex;flex-wrap:wrap;gap:10px 26px;align-items:baseline;margin-bottom:16px}
+.stage{padding-block:clamp(20px,3vw,32px) clamp(40px,6vw,66px)}
+.meta{display:flex;flex-wrap:wrap;gap:8px 26px;align-items:baseline;margin-bottom:14px}
 .meta h2{font-size:clamp(20px,2.4vw,27px)}
-.meta .note{color:var(--muted);font-size:14.5px;max-width:66ch}
-.pill{
-  display:inline-flex;align-items:center;gap:7px;background:var(--card);border:1px solid var(--line);
-  border-radius:999px;padding:6px 13px;font-size:12.5px;font-weight:800;color:var(--muted);
-}
-.pill i{color:var(--blue);font-size:14px}
+.meta .note{color:var(--muted);font-size:14.5px;max-width:70ch}
 .tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+.pill{background:var(--white);border:1px solid var(--rule);padding:6px 13px;font-size:12.5px;font-weight:700;color:var(--muted)}
 
-.viewport{
-  background:var(--card);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;
-  box-shadow:0 30px 60px -34px rgba(8,33,79,.5);transition:max-width .38s cubic-bezier(.16,1,.3,1);
-  max-width:100%;margin-inline:auto;
-}
-.viewport.phone{max-width:430px;border-radius:26px;padding:10px;background:#0C1A31;border-color:#0C1A31}
-.viewport.phone iframe{border-radius:18px}
-iframe{width:100%;height:min(78vh,860px);border:0;display:block;background:#fff}
-.viewport.phone iframe{height:min(78vh,820px)}
+.viewport{background:var(--white);border:1px solid var(--rule);overflow:hidden;
+  box-shadow:0 34px 70px -40px rgba(8,27,60,.5);transition:max-width .38s cubic-bezier(.16,1,.3,1);max-width:100%;margin-inline:auto}
+.viewport.phone{max-width:430px}
+iframe{width:100%;height:min(80vh,900px);border:0;display:block;background:#fff}
 
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin-top:clamp(30px,5vw,54px)}
-.mini{
-  background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:20px;cursor:pointer;text-align:left;
-  font:inherit;transition:transform .3s cubic-bezier(.16,1,.3,1),box-shadow .3s,border-color .3s;
-}
-.mini:hover{transform:translateY(-4px);box-shadow:0 22px 44px -28px rgba(8,33,79,.55);border-color:var(--sky)}
-.mini .sw{display:flex;gap:6px;margin-bottom:14px}
-.mini .sw span{width:26px;height:26px;border-radius:7px;border:1px solid rgba(8,24,47,.12)}
-.mini h3{font-size:17px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin-top:clamp(30px,5vw,50px)}
+.mini{background:var(--white);border:1px solid var(--rule);padding:0;cursor:pointer;text-align:left;font:inherit;
+  transition:transform .3s cubic-bezier(.16,1,.3,1),box-shadow .3s,border-color .3s;overflow:hidden}
+.mini:hover{transform:translateY(-4px);box-shadow:0 24px 46px -30px rgba(8,27,60,.55);border-color:var(--ink)}
+.mini .sw{display:flex;height:8px}
+.mini .sw span{flex:1}
+.mini .in{padding:18px 20px 20px}
+.mini h3{font-size:16.5px}
 .mini p{color:var(--muted);font-size:13.5px;margin-top:6px}
 
-.foot{border-top:1px solid var(--line);padding-block:26px;color:var(--muted);font-size:13.5px}
+.foot{border-top:1px solid var(--rule);padding-block:26px;color:var(--muted);font-size:13.5px}
 .foot b{color:var(--ink)}
+.foot a{color:var(--blue)}
 
-@media (max-width:700px){
+@media (max-width:760px){
   .spacer{margin-left:0;width:100%}
-  .bar-in{gap:10px}
   iframe{height:70vh}
 }
 @media (prefers-reduced-motion:reduce){*{transition-duration:.01ms!important}}
@@ -108,9 +80,8 @@ iframe{width:100%;height:min(78vh,860px);border:0;display:block;background:#fff}
 
 <header class="top">
   <div class="wrap">
-    <p class="kicker">Set Right Homes</p>
-    <h1>Five homepage directions. Same content, five different personalities.</h1>
-    <p>Every one is a complete working homepage: real copy, working FAQ, working form, mobile layout and animation. Pick the one that feels like your company and we build that out. Direction 01 follows the Mesic Contracting structure you sent.</p>
+    <h1>Five homepage directions for Set Right Homes.</h1>
+    <p>Same content and same real photography in all five, so you are comparing design and not copy. Every one is a working homepage: real pictures at full size, working FAQ, working form, mobile layout and motion. Direction 01 follows the Mesic Contracting section order you sent.</p>
   </div>
 </header>
 
@@ -119,120 +90,98 @@ iframe{width:100%;height:min(78vh,860px);border:0;display:block;background:#fff}
     <div class="tabs" role="tablist" aria-label="Design directions" id="tabs"></div>
     <div class="spacer"></div>
     <div class="seg" role="group" aria-label="Preview size">
-      <button type="button" data-size="desktop" aria-pressed="true"><i class="ph-bold ph-monitor"></i>Desktop</button>
-      <button type="button" data-size="phone" aria-pressed="false"><i class="ph-bold ph-device-mobile"></i>Phone</button>
+      <button type="button" data-size="desktop" aria-pressed="true">Desktop</button>
+      <button type="button" data-size="phone" aria-pressed="false">Phone</button>
     </div>
-    <a class="open" id="open" href="01-bluewhite/index.html" target="_blank" rel="noopener"><i class="ph-bold ph-arrow-square-out"></i>Open full page</a>
+    <a class="open" id="open" href="01-ground/index.html" target="_blank" rel="noopener">Open full page</a>
   </div>
 </div>
 
 <main class="stage">
   <div class="wrap">
     <div class="meta">
-      <h2 id="d-name">01. Blue White</h2>
+      <h2 id="d-name">01. Ground</h2>
       <p class="note" id="d-note"></p>
     </div>
     <div class="tags" id="d-tags"></div>
     <div class="viewport" id="viewport">
-      <iframe id="frame" src="01-bluewhite/index.html" title="Design preview" loading="lazy"></iframe>
+      <iframe id="frame" src="01-ground/index.html" title="Design preview" loading="lazy"></iframe>
     </div>
-
     <div class="grid" id="minis"></div>
   </div>
 </main>
 
 <footer class="foot">
   <div class="wrap">
-    <b>Heads up:</b> every phone number, address, licence number and statistic on these pages is a placeholder. Search any file for <b>SWAP:</b> to find them. Photo slots hold drawn technical views for now and take a real photo without touching the layout.
+    <b>Before this goes to the client:</b> every phone number, address, licence number and
+    statistic is a placeholder. Search any file for <b>SWAP:</b> to find them. The photographs
+    are real and licensed for commercial use, but they are stand ins for Set Right Homes' own
+    job photos. See <a href="PHOTO-CREDITS.md">PHOTO-CREDITS.md</a>.
   </div>
 </footer>
 
 <script>
 var DESIGNS = [
-  {
-    id:'01-bluewhite', label:'01. Blue White', name:'01. Blue White',
-    note:'The Mesic Contracting structure, rebuilt in ice blue and white. Section order, service grids, before and after proof, area map and FAQ all follow the site you sent.',
-    tags:['Follows Mesic layout','Softest and safest','Layered sheet depth','Manrope'],
-    swatches:['#EEF4FD','#1750CF','#08214F','#86ADF2']
-  },
-  {
-    id:'02-midnight', label:'02. Midnight', name:'02. Midnight',
-    note:'From the black and red agency flyer. Near black ground, one electric blue accent, oversized stacked headline, and a single white card carrying the service list.',
-    tags:['Boldest type','Dark page','White card lifts off','Archivo'],
-    swatches:['#060E1F','#2F6BFF','#FFFFFF','#5B8CFF']
-  },
-  {
-    id:'03-cobalt', label:'03. Cobalt', name:'03. Cobalt',
-    note:'From the blue and orange construction kit. Saturated cobalt field with arcs sweeping between sections and media cropped into domes. Orange swapped for white and sky blue.',
-    tags:['Most colour','Arc crops','One marquee','Figtree'],
-    swatches:['#1733E0','#FFFFFF','#79CDFF','#0A1B8E']
-  },
-  {
-    id:'04-blade', label:'04. Blade', name:'04. Blade',
-    note:'From the red diagonal flyer. Hard angled cuts between a dark top band and a royal blue field, a diamond node process chain, and a checklist column. Every corner is square.',
-    tags:['Most industrial','Diagonal shear','All sharp corners','Barlow Condensed'],
-    swatches:['#0F1622','#103A9E','#F1F5FB','#59A8FF']
-  },
-  {
-    id:'05-sunburst', label:'05. Sunburst', name:'05. Sunburst',
-    note:'From the orange sunburst posters. Radiating rays, thick outlined sticker headline, tilted taped photo cards and hard offset shadows. The friendliest and loudest of the five.',
-    tags:['Friendliest','Sticker shadows','Taped photo frames','Baloo 2'],
-    swatches:['#2563EB','#F6FAFF','#0E2352','#7CC4FF']
-  }
+  { id:'01-ground', label:'01. Ground', name:'01. Ground',
+    note:'The Mesic Contracting section order, rebuilt as a light editorial page where the photography does the work. Ice blue and white.',
+    tags:['Follows Mesic order','Crossing planes','Photos bleed off the edge','Schibsted Grotesk'],
+    sw:['#EDF2F9','#1B4FD8','#0A1728','#C9D6E8'] },
+  { id:'02-site', label:'02. Site', name:'02. Site',
+    note:'From the black and red agency flyer. Near black, one electric blue accent, full bleed photograph chapters, and the single white card the flyer is built around.',
+    tags:['Darkest and most cinematic','Three depth planes','Lowest density','Big Shoulders Display'],
+    sw:['#070C14','#2E6BFF','#FFFFFF','#0C1421'] },
+  { id:'03-poster', label:'03. Poster', name:'03. Poster',
+    note:'From the blue and orange construction kit, recoloured to cobalt on ice. Every picture is a core inside a tray, offset so a band of colour shows like a misregistered print.',
+    tags:['Most colour','Nested trays','Concentric radii','Bricolage Grotesque'],
+    sw:['#F2F5FC','#1B3FE0','#080F3A','#DCE5FB'] },
+  { id:'04-plate', label:'04. Plate', name:'04. Plate',
+    note:'From the red diagonal flyer, field recoloured to royal blue. Steel plates with lit top edges, bolt heads, recessed panels, and the hard angled cut between sections.',
+    tags:['Most industrial','Machined bevel and bolts','All square corners','Saira Condensed'],
+    sw:['#131A24','#0D2E8C','#5B9BFF','#E9EEF7'] },
+  { id:'05-burst', label:'05. Burst', name:'05. Burst',
+    note:'From the orange sunburst posters, recoloured to blue. The ray field is a real layer that sits behind the headline and laps up over the picture, with hard printed offsets.',
+    tags:['Loudest','Ray field laps the content','Hard offset plates','Archivo Black'],
+    sw:['#F4F7FD','#1B3FE0','#080E33','#79A8FF'] }
 ];
 
-var frame = document.getElementById('frame');
-var viewport = document.getElementById('viewport');
-var openLink = document.getElementById('open');
-var tabs = document.getElementById('tabs');
-var minis = document.getElementById('minis');
-var active = 0;
+var frame=document.getElementById('frame'), viewport=document.getElementById('viewport'),
+    openLink=document.getElementById('open'), tabs=document.getElementById('tabs'), minis=document.getElementById('minis');
 
-DESIGNS.forEach(function(d, i){
-  var b = document.createElement('button');
-  b.className = 'tab';
-  b.type = 'button';
-  b.role = 'tab';
-  b.textContent = d.label;
-  b.setAttribute('aria-selected', i === 0 ? 'true' : 'false');
-  b.addEventListener('click', function(){ select(i); });
+DESIGNS.forEach(function(d,i){
+  var b=document.createElement('button');
+  b.className='tab'; b.type='button'; b.setAttribute('role','tab');
+  b.textContent=d.label; b.setAttribute('aria-selected', i===0?'true':'false');
+  b.addEventListener('click',function(){ select(i); });
   tabs.appendChild(b);
 
-  var m = document.createElement('button');
-  m.className = 'mini';
-  m.type = 'button';
-  var sw = d.swatches.map(function(c){ return '<span style="background:' + c + '"></span>'; }).join('');
-  m.innerHTML = '<div class="sw">' + sw + '</div><h3>' + d.name + '</h3><p>' + d.tags.slice(0,2).join('. ') + '.</p>';
-  m.addEventListener('click', function(){
+  var m=document.createElement('button');
+  m.className='mini'; m.type='button';
+  m.innerHTML='<div class="sw">'+d.sw.map(function(c){return '<span style="background:'+c+'"></span>';}).join('')+
+    '</div><div class="in"><h3>'+d.name+'</h3><p>'+d.tags.slice(0,2).join('. ')+'.</p></div>';
+  m.addEventListener('click',function(){
     select(i);
-    document.querySelector('.stage').scrollIntoView({behavior:'smooth', block:'start'});
+    document.querySelector('.stage').scrollIntoView({behavior:'smooth',block:'start'});
   });
   minis.appendChild(m);
 });
 
 function select(i){
-  active = i;
-  var d = DESIGNS[i];
-  frame.src = d.id + '/index.html';
-  openLink.href = d.id + '/index.html';
-  document.getElementById('d-name').textContent = d.name;
-  document.getElementById('d-note').textContent = d.note;
-  document.getElementById('d-tags').innerHTML = d.tags.map(function(t){
-    return '<span class="pill"><i class="ph-bold ph-check"></i>' + t + '</span>';
-  }).join('');
-  Array.prototype.forEach.call(tabs.children, function(b, n){
-    b.setAttribute('aria-selected', n === i ? 'true' : 'false');
-  });
+  var d=DESIGNS[i];
+  frame.src=d.id+'/index.html';
+  openLink.href=d.id+'/index.html';
+  document.getElementById('d-name').textContent=d.name;
+  document.getElementById('d-note').textContent=d.note;
+  document.getElementById('d-tags').innerHTML=d.tags.map(function(t){return '<span class="pill">'+t+'</span>';}).join('');
+  Array.prototype.forEach.call(tabs.children,function(b,n){ b.setAttribute('aria-selected', n===i?'true':'false'); });
 }
 
 document.querySelectorAll('.seg button').forEach(function(b){
-  b.addEventListener('click', function(){
+  b.addEventListener('click',function(){
     document.querySelectorAll('.seg button').forEach(function(o){ o.setAttribute('aria-pressed','false'); });
     b.setAttribute('aria-pressed','true');
-    viewport.classList.toggle('phone', b.dataset.size === 'phone');
+    viewport.classList.toggle('phone', b.dataset.size==='phone');
   });
 });
-
 select(0);
 </script>
 </body>

@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Set Right Homes | Arizona Site Work</title>
+<meta name="description" content="Dirt work, utility connections and manufactured home setting across Arizona. Engineered pads, permits pulled, homes set level.">
+<meta name="theme-color" content="#070C14">
+
+<!--
+  SET RIGHT HOMES / 02 "SITE"
+  From the black and red agency flyer: near black ground, one hot accent
+  recoloured to electric blue, and the single floating white card that
+  carries the service list. Everything else is photography at full scale.
+
+  Depth device: THREE PLANES. A photograph behind, a graded scrim over it,
+  and a foreground plate lifted above both and hung across the section
+  boundary so it occludes two backgrounds at once.
+
+  Shape rule: every corner square, radius 0 throughout.
+  Density is deliberately low. Long scroll, few elements, big pictures.
+
+  Photos are real and commercially licensed. See PHOTO-CREDITS.md.
+  Contact details, licence number and figures are PLACEHOLDERS, marked SWAP:.
+-->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@500;700;800;900&family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  color-scheme: dark;
+  --bg:#070C14;
+  --bg-2:#0C1421;
+  --fg:#FFFFFF;
+  --fg-2:rgba(255,255,255,.62);
+  --fg-3:rgba(255,255,255,.38);
+  --line:rgba(255,255,255,.16);
+  --blue:#2E6BFF;
+  --blue-2:#7BA5FF;
+  --card:#FFFFFF;
+  --card-ink:#070C14;
+  --card-muted:#5C6B84;
+  --card-line:#E3E9F2;
+  --pad:clamp(20px,5vw,60px);
+  --maxw:1340px;
+  --sh:0 60px 110px -50px rgba(0,0,0,.95);
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--bg);color:var(--fg);
+  font-family:'Sora',system-ui,-apple-system,'Segoe UI',sans-serif;
+  font-size:17px;line-height:1.62;font-weight:400;overflow-x:hidden;
+}
+img{max-width:100%;display:block}
+a{color:inherit}
+p{margin:0}
+h1,h2,h3,h4{
+  margin:0;font-family:'Big Shoulders Display','Sora',sans-serif;
+  font-weight:800;line-height:.9;letter-spacing:.004em;text-transform:uppercase;
+}
+.wrap{width:100%;max-width:var(--maxw);margin-inline:auto;padding-inline:var(--pad)}
+.sec{padding-block:clamp(70px,10vw,150px)}
+.lede{color:var(--fg-2);max-width:54ch;font-weight:300;font-size:clamp(16px,1.4vw,18.5px)}
+
+/* ---------- buttons ---------- */
+.btn{
+  --b:var(--blue);--f:#fff;
+  display:inline-flex;align-items:center;gap:12px;white-space:nowrap;
+  padding:17px 30px;border:1.5px solid var(--b);border-radius:0;background:var(--b);color:var(--f);
+  font-family:'Big Shoulders Display',sans-serif;font-weight:800;font-size:20px;letter-spacing:.06em;text-transform:uppercase;
+  text-decoration:none;cursor:pointer;position:relative;overflow:hidden;
+  transition:transform .2s cubic-bezier(.16,1,.3,1),box-shadow .3s,color .3s;
+}
+.btn span,.btn svg{position:relative;z-index:1}
+.btn svg{width:16px;height:16px;transition:transform .34s cubic-bezier(.16,1,.3,1)}
+.btn::after{content:"";position:absolute;inset:0;background:#fff;transform:translateY(101%);transition:transform .42s cubic-bezier(.16,1,.3,1)}
+.btn:hover::after{transform:translateY(0)}
+.btn:hover{color:var(--card-ink);transform:translate(-2px,-2px);box-shadow:7px 7px 0 rgba(46,107,255,.4)}
+.btn:hover svg{transform:translateX(4px)}
+.btn:active{transform:none;box-shadow:none}
+.btn:focus-visible{outline:3px solid var(--blue-2);outline-offset:3px}
+.btn.wire{--b:rgba(255,255,255,.5);background:transparent;--f:#fff}
+.btn.wire::after{background:#fff}
+.btn.wire:hover{color:var(--card-ink)}
+.btn.ink{--b:var(--card-ink);background:var(--card-ink);--f:#fff}
+.btn.ink::after{background:var(--blue)}
+.btn.ink:hover{color:#fff}
+
+/* ---------- nav ---------- */
+.nav{position:fixed;top:0;left:0;right:0;z-index:60;transition:background .35s,border-color .35s;border-bottom:1px solid transparent}
+.nav.stuck{background:rgba(7,12,20,.94);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom-color:var(--line)}
+.nav-in{height:76px;display:flex;align-items:center;gap:28px}
+.brand{text-decoration:none;font-family:'Big Shoulders Display',sans-serif;font-weight:900;font-size:25px;letter-spacing:.05em;text-transform:uppercase;line-height:1}
+.brand em{font-style:normal;color:var(--blue)}
+.nav-links{display:flex;gap:28px;margin-left:auto}
+.nav-links a{
+  text-decoration:none;font-family:'Big Shoulders Display',sans-serif;font-size:19px;font-weight:700;
+  letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.74);position:relative;padding-block:5px;transition:color .25s;
+}
+.nav-links a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1.5px;background:var(--blue);transform:scaleX(0);transform-origin:right;transition:transform .32s cubic-bezier(.16,1,.3,1)}
+.nav-links a:hover{color:#fff}
+.nav-links a:hover::after{transform:scaleX(1);transform-origin:left}
+.nav-right{display:flex;align-items:center;gap:22px;margin-left:22px}
+.nav-tel{text-decoration:none;font-weight:600;font-size:15px;white-space:nowrap;font-variant-numeric:tabular-nums}
+.burger{display:none;width:44px;height:44px;border:1.5px solid rgba(255,255,255,.5);background:none;margin-left:auto;cursor:pointer;border-radius:0}
+.burger i{display:block;width:19px;height:1.6px;background:#fff;margin:0 auto;position:relative;transition:background .3s}
+.burger i::before,.burger i::after{content:"";position:absolute;left:0;width:19px;height:1.6px;background:#fff;transition:transform .3s}
+.burger i::before{top:-6px}.burger i::after{top:6px}
+.burger[aria-expanded="true"] i{background:transparent}
+.burger[aria-expanded="true"] i::before{transform:translateY(6px) rotate(45deg)}
+.burger[aria-expanded="true"] i::after{transform:translateY(-6px) rotate(-45deg)}
+.drawer{display:none}
+
+/* ---------- HERO: full bleed photograph, no container over it ---------- */
+.hero{position:relative;min-height:100dvh;display:flex;align-items:flex-end;overflow:hidden}
+.hero>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 46%;z-index:0}
+/* plane two: graded scrim, dark at the bottom where type sits */
+.hero::after{
+  content:"";position:absolute;inset:0;z-index:1;
+  background:linear-gradient(178deg,rgba(7,12,20,.82) 0%,rgba(7,12,20,.18) 34%,rgba(7,12,20,.72) 74%,rgba(7,12,20,.97) 100%);
+}
+.hero-in{position:relative;z-index:2;width:100%;padding-bottom:clamp(56px,9vw,120px)}
+.hero h1{font-size:clamp(52px,10.6vw,152px);font-weight:900;letter-spacing:.002em;line-height:.84;max-width:21ch}
+.hero h1 em{font-style:normal;color:var(--blue-2);display:block}
+.hero .lede{margin-top:26px}
+.hero-act{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px}
+
+/* ---------- plane three: a plate hung across the boundary ---------- */
+.hang{position:relative;z-index:5;margin-top:clamp(-110px,-9vw,-70px)}
+.wcard{
+  background:var(--card);color:var(--card-ink);box-shadow:var(--sh);
+  padding:clamp(30px,4vw,52px);max-width:640px;
+}
+.wcard h2{font-size:clamp(34px,4.4vw,54px);max-width:11ch}
+.wcard .sub{color:var(--card-muted);font-size:16px;margin-top:14px;font-weight:400}
+.wrow{
+  display:flex;align-items:baseline;gap:16px;padding:16px 0;border-bottom:1px solid var(--card-line);
+  font-weight:600;font-size:16.5px;position:relative;transition:padding-left .32s cubic-bezier(.16,1,.3,1),color .3s;
+}
+.wrow:first-of-type{border-top:1.5px solid var(--card-ink);margin-top:26px}
+.wrow em{font-style:normal;color:var(--card-muted);font-weight:400;font-size:13.5px;margin-left:auto;white-space:nowrap}
+.wrow:hover{padding-left:16px;color:var(--blue)}
+.wcard .btn{margin-top:30px;width:100%;justify-content:center}
+
+/* ---------- full bleed chapters ---------- */
+.chap{position:relative;min-height:clamp(560px,86vh,860px);display:flex;align-items:center;overflow:hidden}
+.chap>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+.chap::after{content:"";position:absolute;inset:0;z-index:1}
+.chap.l::after{background:linear-gradient(90deg,rgba(7,12,20,.94) 6%,rgba(7,12,20,.58) 46%,rgba(7,12,20,.2))}
+.chap.r::after{background:linear-gradient(270deg,rgba(7,12,20,.94) 6%,rgba(7,12,20,.58) 46%,rgba(7,12,20,.2))}
+.chap-in{position:relative;z-index:2;width:100%}
+.chap-txt{max-width:46ch}
+.chap.r .chap-txt{margin-left:auto;text-align:right}
+.chap h3{font-size:clamp(40px,6.4vw,88px);letter-spacing:.002em}
+.chap .lede{margin-top:18px}
+.chap.r .lede{margin-left:auto}
+.jobs{margin-top:28px;border-top:1px solid var(--line)}
+.jobs div{padding:12px 0;border-bottom:1px solid rgba(255,255,255,.1);font-size:15.5px;color:var(--fg-2);transition:color .3s,letter-spacing .3s}
+.jobs div:hover{color:#fff;letter-spacing:.012em}
+
+/* ---------- statement ---------- */
+.say{font-size:clamp(30px,5vw,74px);font-weight:800;line-height:.94;max-width:17ch;
+  font-family:'Big Shoulders Display',sans-serif;text-transform:uppercase;letter-spacing:.004em}
+.say b{color:var(--blue-2);font-weight:800}
+.notes{margin-top:44px;border-top:1px solid var(--line);max-width:76ch}
+.note{padding:24px 0;border-bottom:1px solid rgba(255,255,255,.1);display:grid;grid-template-columns:minmax(0,24ch) 1fr;gap:clamp(14px,3vw,44px);align-items:baseline}
+.note h4{font-size:23px}
+.note p{color:var(--fg-2);font-size:15.5px;font-weight:300}
+
+/* ---------- process: sparse ruled rail ---------- */
+.rail{margin-top:48px;border-top:1px solid var(--line)}
+.rstep{display:grid;grid-template-columns:minmax(0,5ch) minmax(0,24ch) 1fr;gap:clamp(14px,3vw,44px);
+  padding:26px 0;border-bottom:1px solid rgba(255,255,255,.1);align-items:baseline;transition:padding-left .34s cubic-bezier(.16,1,.3,1)}
+.rstep:hover{padding-left:14px}
+.rstep .n{font-family:'Big Shoulders Display',sans-serif;font-size:22px;font-weight:800;color:var(--blue)}
+.rstep h4{font-size:clamp(22px,2.6vw,30px)}
+.rstep p{color:var(--fg-2);font-size:15.5px;font-weight:300}
+
+/* ---------- figures ---------- */
+.ngrid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(18px,3vw,44px);border-top:1px solid var(--line);padding-top:34px;margin-top:clamp(40px,6vw,70px)}
+.ngrid .n{font-family:'Big Shoulders Display',sans-serif;font-size:clamp(46px,7vw,96px);font-weight:900;line-height:.86;font-variant-numeric:tabular-nums}
+.ngrid .t{margin-top:12px;font-size:14.5px;color:var(--fg-2);max-width:20ch;font-weight:300}
+
+/* ---------- gallery: two big pictures, captions inside ---------- */
+.gal{display:grid;grid-template-columns:1fr 1fr;gap:clamp(14px,2vw,24px);margin-top:48px}
+.shot{position:relative;overflow:hidden;background:#000}
+.shot img{width:100%;height:100%;object-fit:cover;transition:transform .9s cubic-bezier(.16,1,.3,1)}
+.shot:hover img{transform:scale(1.05)}
+.shot figcaption{position:absolute;left:0;right:0;bottom:0;padding:24px;background:linear-gradient(180deg,rgba(7,12,20,0),rgba(7,12,20,.92));font-size:14.5px;color:var(--fg-2)}
+.shot figcaption b{display:block;font-family:'Big Shoulders Display',sans-serif;font-size:26px;font-weight:800;text-transform:uppercase;color:#fff;letter-spacing:.03em;margin-bottom:4px}
+.gal .a{grid-column:1/2;height:clamp(320px,44vw,560px)}
+.gal .b{grid-column:2/3;height:clamp(320px,44vw,560px)}
+.gal .c{grid-column:1/3;height:clamp(300px,38vw,500px)}
+
+/* ---------- reviews: hairline entries, no boxes ---------- */
+.revs{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(20px,3vw,44px);margin-top:48px}
+.rev{border-top:1.5px solid var(--blue);padding-top:22px;transition:border-color .3s}
+.rev:hover{border-top-color:#fff}
+.rev p{font-size:18px;font-weight:400;line-height:1.45}
+.rev footer{margin-top:20px;font-size:14px;color:var(--fg-3)}
+.rev footer b{display:block;color:#fff;font-weight:600;font-size:15px}
+
+/* ---------- towns ---------- */
+.towns{margin-top:36px;display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:0 clamp(20px,3vw,44px);border-top:1px solid var(--line)}
+.towns span{padding:15px 0;border-bottom:1px solid rgba(255,255,255,.1);font-family:'Big Shoulders Display',sans-serif;
+  font-size:clamp(24px,2.6vw,30px);font-weight:700;text-transform:uppercase;letter-spacing:.03em;transition:color .25s,padding-left .3s}
+.towns span:hover{color:var(--blue-2);padding-left:10px}
+
+/* ---------- faq ---------- */
+.faq{margin-top:44px;border-top:1px solid var(--line)}
+.q{border-bottom:1px solid rgba(255,255,255,.1)}
+.q button{width:100%;background:none;border:0;text-align:left;cursor:pointer;position:relative;color:#fff;
+  font-family:'Big Shoulders Display',sans-serif;font-weight:700;font-size:clamp(24px,3vw,34px);text-transform:uppercase;letter-spacing:.02em;
+  padding:28px 62px 28px 0;transition:color .25s;line-height:1.05}
+.q button:hover{color:var(--blue-2)}
+.q button:focus-visible{outline:3px solid var(--blue-2);outline-offset:2px}
+.q-m{position:absolute;right:6px;top:50%;width:22px;height:22px;transform:translateY(-50%)}
+.q-m::before,.q-m::after{content:"";position:absolute;background:#fff;transition:transform .4s cubic-bezier(.16,1,.3,1),background .3s}
+.q-m::before{left:0;right:0;top:10px;height:1.8px}
+.q-m::after{top:0;bottom:0;left:10px;width:1.8px}
+.q[data-open="1"] .q-m::after{transform:rotate(90deg)}
+.q[data-open="1"] .q-m::before{background:var(--blue)}
+.q-body{display:grid;grid-template-rows:0fr;transition:grid-template-rows .46s cubic-bezier(.16,1,.3,1)}
+.q[data-open="1"] .q-body{grid-template-rows:1fr}
+.q-body>div{overflow:hidden}
+.q-body p{color:var(--fg-2);font-size:16.5px;font-weight:300;padding-bottom:30px;max-width:74ch}
+
+/* ---------- contact over a photograph ---------- */
+.cta{position:relative;overflow:hidden}
+.cta>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+.cta::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(7,12,20,.96) 30%,rgba(7,12,20,.6))}
+.cta-in{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,5vw,70px);align-items:start}
+.cta h2{font-size:clamp(36px,5.4vw,74px);max-width:13ch}
+.cinfo{margin-top:36px;border-top:1px solid var(--line)}
+.cinfo a,.cinfo div{display:flex;gap:20px;padding:15px 0;border-bottom:1px solid rgba(255,255,255,.1);
+  text-decoration:none;font-size:15.5px;font-weight:500;transition:padding-left .3s cubic-bezier(.16,1,.3,1),color .3s}
+.cinfo a:hover{padding-left:10px;color:var(--blue-2)}
+.cinfo em{font-style:normal;color:var(--fg-3);min-width:7ch;font-weight:300}
+.fbox{background:var(--card);color:var(--card-ink);padding:clamp(28px,3.6vw,46px);box-shadow:var(--sh)}
+.f{display:grid;gap:7px;margin-bottom:18px}
+.f label{font-size:13px;font-weight:600}
+.f input,.f select,.f textarea{font:inherit;font-size:16px;padding:13px 0;border:0;border-bottom:1.5px solid var(--card-line);
+  background:transparent;color:var(--card-ink);width:100%;border-radius:0;transition:border-color .25s}
+.f input::placeholder,.f textarea::placeholder{color:#93A0B5}
+.f input:focus,.f select:focus,.f textarea:focus{outline:0;border-bottom-color:var(--blue);border-bottom-width:2px}
+.f .help{font-size:12.5px;color:var(--card-muted)}
+.f .err{font-size:12.5px;color:#A81E12;font-weight:600;display:none}
+.f.bad input,.f.bad select{border-bottom-color:#A81E12}
+.f.bad .err{display:block}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.fnote{font-size:12.5px;color:var(--card-muted);margin-top:14px}
+.fok{display:none;margin-top:16px;padding:14px 16px;background:var(--card-ink);color:#fff;font-weight:500;font-size:14.5px}
+.fok.on{display:block}
+
+/* ---------- footer ---------- */
+.foot{border-top:1px solid var(--line);background:var(--bg-2)}
+.foot-in{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:36px;padding-block:clamp(44px,6vw,76px)}
+.foot h5{font-family:'Big Shoulders Display',sans-serif;font-size:17px;letter-spacing:.12em;text-transform:uppercase;color:var(--fg-3);margin-bottom:14px;font-weight:700}
+.foot a{display:block;text-decoration:none;color:var(--fg-2);font-size:15px;padding:5px 0;transition:color .2s,transform .2s}
+.foot a:hover{color:#fff;transform:translateX(3px)}
+.foot-bot{border-top:1px solid rgba(255,255,255,.1);padding-block:22px;display:flex;flex-wrap:wrap;gap:10px 30px;font-size:13px;color:var(--fg-3)}
+
+/* ---------- reveal ---------- */
+.rv{opacity:0;transform:translateY(26px);filter:blur(7px);transition:opacity .85s cubic-bezier(.16,1,.3,1),transform .85s cubic-bezier(.16,1,.3,1),filter .85s cubic-bezier(.16,1,.3,1)}
+.rv.on{opacity:1;transform:none;filter:none}
+
+/* ---------- responsive ---------- */
+@media (max-width:1040px){
+  .chap.r .chap-txt{margin-left:0;text-align:left}
+  .chap.r .lede{margin-left:0}
+  .chap.l::after,.chap.r::after{background:linear-gradient(180deg,rgba(7,12,20,.5),rgba(7,12,20,.94))}
+  .ngrid{grid-template-columns:1fr 1fr;gap:28px}
+  .gal{grid-template-columns:1fr}
+  .gal .a,.gal .b,.gal .c{grid-column:1/2;height:clamp(260px,54vw,380px)}
+  .revs{grid-template-columns:1fr}
+  .cta-in{grid-template-columns:1fr}
+  .foot-in{grid-template-columns:1fr 1fr}
+  .note{grid-template-columns:1fr;gap:6px}
+}
+@media (max-width:760px){
+  body{font-size:16px}
+  .nav{background:rgba(7,12,20,.9);backdrop-filter:blur(12px)}
+  .nav-links,.nav-right{display:none}
+  .burger{display:grid;place-items:center}
+  .drawer{display:block;position:fixed;inset:76px 0 auto 0;z-index:59;background:var(--bg-2);border-bottom:1px solid var(--line);padding:10px var(--pad) 26px;transform:translateY(-130%);transition:transform .44s cubic-bezier(.16,1,.3,1)}
+  .drawer.open{transform:translateY(0)}
+  .drawer a{display:block;padding:16px 0;border-bottom:1px solid var(--line);text-decoration:none;
+    font-family:'Big Shoulders Display',sans-serif;font-weight:700;font-size:26px;text-transform:uppercase;letter-spacing:.04em}
+  .drawer .btn{width:100%;justify-content:center;margin-top:20px}
+  .hang{margin-top:-40px}
+  .wcard{max-width:none}
+  .rstep{grid-template-columns:4ch 1fr;gap:16px}
+  .rstep p{grid-column:2/3}
+  .two{grid-template-columns:1fr}
+  .foot-in{grid-template-columns:1fr}
+  .hero{min-height:88dvh}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+  .rv{opacity:1;transform:none;filter:none}
+}
+</style>
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="#top">Set Right<em>.</em></a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="#services">Services</a><a href="#process">Process</a><a href="#work">Projects</a><a href="#area">Area</a><a href="#faq">FAQ</a>
+    </nav>
+    <div class="nav-right">
+      <!-- SWAP: real phone number -->
+      <a class="nav-tel" href="tel:+16235550142">(623) 555-0142</a>
+      <a class="btn" href="#estimate"><span>Get an estimate</span></a>
+    </div>
+    <button class="burger" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="drawer"><i></i></button>
+  </div>
+</header>
+<div class="drawer" id="drawer">
+  <a href="#services">Services</a><a href="#process">Process</a><a href="#work">Projects</a><a href="#area">Area</a><a href="#faq">FAQ</a>
+  <a class="btn" href="#estimate"><span>Get an estimate</span></a>
+</div>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="top">
+  <img src="../assets/excavator-storm.jpg" width="2000" height="1443"
+       alt="An excavator with its bucket down on a working site under a heavy sky" fetchpriority="high">
+  <div class="wrap hero-in">
+    <h1>We move the dirt<em>and set the home.</em></h1>
+    <p class="lede">Site prep, utility connections and manufactured home setting across Arizona. One crew from a raw lot to the day you get keys.</p>
+    <div class="hero-act">
+      <a class="btn" href="#estimate"><span>Get an estimate</span>
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
+      <a class="btn wire" href="tel:+16235550142"><span>(623) 555-0142</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ THE WHITE CARD, HUNG ACROSS THE BOUNDARY ============ -->
+<div class="hang">
+  <div class="wrap">
+    <div class="wcard rv">
+      <h2>What we handle</h2>
+      <p class="sub">Most lots need a grader, a plumber, an electrician and a set crew. Hiring them separately is where the schedule falls apart.</p>
+      <div class="wrow">Lot clearing and grading <em>Site prep</em></div>
+      <div class="wrow">Engineered pad and compaction <em>Site prep</em></div>
+      <div class="wrow">Water, sewer and septic <em>Utilities</em></div>
+      <div class="wrow">Electric service and pedestal <em>Utilities</em></div>
+      <div class="wrow">Placement, blocking and leveling <em>Setting</em></div>
+      <div class="wrow">Anchors, tie downs and skirting <em>Setting</em></div>
+      <a class="btn ink" href="#estimate"><span>Get an estimate</span>
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
+    </div>
+  </div>
+</div>
+
+<!-- ============ CHAPTERS ============ -->
+<section id="services">
+  <div class="chap l">
+    <img src="../assets/cleared-lot.jpg" width="2000" height="1333" loading="lazy"
+         alt="A lot cleared and turned over, ready for grading">
+    <div class="wrap chap-in">
+      <div class="chap-txt rv">
+        <h3>Dirt work<br>and site prep</h3>
+        <p class="lede">Clearing, cut and fill, then an engineered pad compacted and tested to the detail your county will actually sign off on.</p>
+        <div class="jobs">
+          <div>Lot clearing and grubbing</div>
+          <div>Rough grade, finish grade, compaction testing</div>
+          <div>Drainage, swales and pad protection</div>
+          <div>Driveway approach and culvert</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="chap r">
+    <img src="../assets/trench-utilities.jpg" width="1600" height="1067" loading="lazy"
+         alt="Machines working an open utility trench alongside a road">
+    <div class="wrap chap-in">
+      <div class="chap-txt rv">
+        <h3>Utility<br>connections</h3>
+        <p class="lede">Water, sewer or septic, power and gas. Trenched, laid, pressure tested and inspected before the home ever shows up.</p>
+        <div class="jobs">
+          <div>Water line and meter set</div>
+          <div>Sewer tie in or new septic</div>
+          <div>Electric service, pedestal and panel</div>
+          <div>Propane stub and final hookups</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="chap l">
+    <img src="../assets/home-on-transport.jpg" width="2000" height="1328" loading="lazy"
+         alt="A manufactured home section on a transport truck with a crew member alongside">
+    <div class="wrap chap-in">
+      <div class="chap-txt rv">
+        <h3>Setting<br>the home</h3>
+        <p class="lede">Placed, blocked, leveled, anchored and closed up. Singlewide, doublewide or triple, on piers or a permanent foundation.</p>
+        <div class="jobs">
+          <div>Toter or crane placement</div>
+          <div>Pier, footing and anchor layout</div>
+          <div>Marriage line close up and leveling</div>
+          <div>Skirting, steps and final grade</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STATEMENT ============ -->
+<section class="sec">
+  <div class="wrap">
+    <p class="say rv">A manufactured home rides on a steel frame, moves with the ground, and is inspected against <b>HUD rules, not framing rules.</b></p>
+    <div class="notes">
+      <div class="note rv"><h4>The pad comes first</h4><p>Soft fill under a pier shows up as a stuck door eighteen months later. Compaction gets tested, and the result goes in the file with the plan.</p></div>
+      <div class="note rv"><h4>Anchors are engineered</h4><p>Spacing comes off the manufacturer's setup manual and the wind zone for your county. An inspector will check both.</p></div>
+      <div class="note rv"><h4>Nothing gets buried early</h4><p>Trench open, pressure held, inspector on site. Covering a line before it is signed is the most expensive shortcut on the job.</p></div>
+    </div>
+    <div class="ngrid">
+      <!-- SWAP: all four figures are placeholders -->
+      <div class="rv"><div class="n" data-count="600" data-suffix="+">600+</div><div class="t">Homes set since we started</div></div>
+      <div class="rv"><div class="n" data-count="17" data-suffix=" yrs">17 yrs</div><div class="t">Working Arizona dirt</div></div>
+      <div class="rv"><div class="n" data-count="8" data-suffix="">8</div><div class="t">Counties we pull permits in</div></div>
+      <div class="rv"><div class="n" data-count="5" data-suffix=" days">5 days</div><div class="t">Typical set week, start to level</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROCESS ============ -->
+<section class="sec" id="process" style="background:var(--bg-2);border-block:1px solid var(--line)">
+  <div class="wrap">
+    <h2 class="rv" style="font-size:clamp(40px,6.4vw,92px);max-width:12ch">Raw lot to keys, in five moves</h2>
+    <div class="rail">
+      <div class="rstep rv"><span class="n">01</span><h4>Walk the lot</h4><p>Soil, slope, setbacks, and where the utilities actually stub out. Free, and usually about an hour.</p></div>
+      <div class="rstep rv"><span class="n">02</span><h4>Plans and permits</h4><p>Engineered pad detail drawn and stamped, county submittal filed, inspection dates on the calendar.</p></div>
+      <div class="rstep rv"><span class="n">03</span><h4>Dirt work</h4><p>Clear, cut, fill, compact, test. Driveway and drainage go in while the machines are already on site.</p></div>
+      <div class="rstep rv"><span class="n">04</span><h4>Utilities in the ground</h4><p>Trench, lay, pressure test, inspect, backfill. Nothing gets covered before it is signed off.</p></div>
+      <div class="rstep rv"><span class="n">05</span><h4>Set and tie down</h4><p>Home placed, blocked, leveled, anchored, marriage line closed, then skirting and final grade.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROJECTS ============ -->
+<section class="sec" id="work">
+  <div class="wrap">
+    <h2 class="rv" style="font-size:clamp(40px,6.4vw,92px);max-width:12ch">Lots we cleared this season</h2>
+    <div class="gal">
+      <figure class="shot a rv" style="margin:0">
+        <img src="../assets/home-marriage-line.jpg" width="2000" height="1208" loading="lazy"
+             alt="A doublewide part way through the set with the marriage line still open">
+        <figcaption><b>Doublewide, five acres</b>Wittmann. Pad, septic, power and set.</figcaption>
+      </figure>
+      <figure class="shot b rv" style="margin:0">
+        <img src="../assets/compaction-roller.jpg" width="1600" height="1067" loading="lazy"
+             alt="A roller compacting the base course on a prepared surface">
+        <figcaption><b>Compaction and test</b>Buckeye. Pad only, dealer set the home.</figcaption>
+      </figure>
+      <figure class="shot c rv" style="margin:0">
+        <img src="../assets/homes-staged.jpg" width="1600" height="1200" loading="lazy"
+             alt="A row of manufactured homes staged before delivery">
+        <figcaption><b>Four home community</b>Casa Grande. Pads, utilities and all four sets.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ REVIEWS ============ -->
+<section class="sec" style="background:var(--bg-2);border-block:1px solid var(--line)">
+  <div class="wrap">
+    <h2 class="rv" style="font-size:clamp(36px,5.4vw,74px);max-width:13ch">What owners tell us after</h2>
+    <div class="revs">
+      <figure class="rev rv" style="margin:0"><p>Pad was tested and passed the first time. Home landed on a Tuesday and we were level by Thursday.</p><footer><b>Dale Whitcomb</b>Wittmann, five acre lot</footer></figure>
+      <figure class="rev rv" style="margin:0"><p>We send them every buyer who needs site work. They call the inspector themselves, which saves my team the chasing.</p><footer><b>Renee Ocampo</b>Sales manager, Sunland Home Center</footer></figure>
+      <figure class="rev rv" style="margin:0"><p>Second home they have set for us. Same crew both times, same quote, no change orders halfway through.</p><footer><b>Marty Kessel</b>Casa Grande</footer></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ AREA ============ -->
+<section class="sec" id="area">
+  <div class="wrap">
+    <h2 class="rv" style="font-size:clamp(36px,5.4vw,74px);max-width:13ch">Where we take the equipment</h2>
+    <p class="lede rv" style="margin-top:18px">West Valley is home base. We run out to the rural lots most crews will not drive to, and the haul is priced up front.</p>
+    <div class="towns rv">
+      <span>Surprise</span><span>Wittmann</span><span>Buckeye</span><span>Tonopah</span>
+      <span>Wickenburg</span><span>Congress</span><span>Casa Grande</span><span>Maricopa</span>
+      <span>Coolidge</span><span>Aguila</span><span>Queen Creek</span><span>Apache Junction</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="sec" id="faq" style="background:var(--bg-2);border-block:1px solid var(--line)">
+  <div class="wrap">
+    <h2 class="rv" style="font-size:clamp(40px,6.4vw,92px);max-width:13ch">Questions we get on every walk</h2>
+    <div class="faq" id="faq-list">
+      <div class="q" data-open="0"><button type="button" aria-expanded="false">Do you handle the permits?<span class="q-m"></span></button><div class="q-body"><div><p>We do. Pad detail goes to the county with the application, we handle corrections, and we call in every inspection. You get the approved card at the end. If you would rather pull them yourself we will hand you the drawings.</p></div></div></div>
+      <div class="q" data-open="0"><button type="button" aria-expanded="false">How long before the home can be delivered?<span class="q-m"></span></button><div class="q-body"><div><p>On a clean lot with utilities at the road, plan on two to three weeks of field work. Permit review is the variable. Rural lots needing a well, septic and a long power run stretch that out, and we tell you which one is the long pole before you sign.</p></div></div></div>
+      <div class="q" data-open="0"><button type="button" aria-expanded="false">Can I hire you for just the dirt work?<span class="q-m"></span></button><div class="q-body"><div><p>Yes. Plenty of our jobs are pad only, with the dealer's crew doing the set. We coordinate dates so the pad is finished and tested before the transport shows up.</p></div></div></div>
+      <div class="q" data-open="0"><button type="button" aria-expanded="false">Septic or sewer, which does my lot need?<span class="q-m"></span></button><div class="q-body"><div><p>If a sewer main runs past your frontage you tie in, and that is almost always cheaper. Outside a district you are on septic, which means a percolation test and a county design first. We check both on the walk and price the one you actually need.</p></div></div></div>
+      <div class="q" data-open="0"><button type="button" aria-expanded="false">Pier set or permanent foundation?<span class="q-m"></span></button><div class="q-body"><div><p>A pier set rests on blocks and footings and is tied down with anchors. A permanent foundation is engineered, poured, and the home is fixed to it. FHA, VA and most conventional lenders want the permanent version. Tell us the loan type on day one, because it changes the pad.</p></div></div></div>
+      <div class="q" data-open="0"><button type="button" aria-expanded="false">Do you work outside the Phoenix metro?<span class="q-m"></span></button><div class="q-body"><div><p>Regularly. Wickenburg, Congress, Aguila, Tonopah and down to Casa Grande and Coolidge are normal weeks for us. Anything past that we quote with the haul included so there is no surprise line item.</p></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="cta sec" id="estimate">
+  <img src="../assets/earthworks-wide.jpg" width="2000" height="1360" loading="lazy"
+       alt="A wide earthworks site with machines working cut and fill">
+  <div class="wrap cta-in">
+    <div class="rv">
+      <h2>Send us the lot. We send back a number.</h2>
+      <p class="lede" style="margin-top:18px">Parcel number or a cross street is enough to start. We tell you what the site needs before we ever quote it.</p>
+      <div class="cinfo">
+        <!-- SWAP: real phone, email, address, hours, licence -->
+        <a href="tel:+16235550142"><em>Phone</em>(623) 555-0142</a>
+        <a href="mailto:office@setrighthomes.com"><em>Email</em>office@setrighthomes.com</a>
+        <div><em>Mail</em>PO Box 1188, Surprise, AZ 85374</div>
+        <div><em>Hours</em>Monday to Friday, 6:30am to 4pm</div>
+        <div><em>Licence</em>AZ ROC #123456</div>
+      </div>
+    </div>
+    <div class="fbox rv">
+      <form id="ef" novalidate>
+        <div class="two">
+          <div class="f"><label for="n">Name</label><input id="n" type="text" placeholder="Dale Whitcomb" required><span class="err">Please add your name.</span></div>
+          <div class="f"><label for="p">Phone</label><input id="p" type="tel" placeholder="(623) 555-0142" required><span class="err">Please add a number we can reach you on.</span></div>
+        </div>
+        <div class="f"><label for="l">Lot location</label><input id="l" type="text" placeholder="Parcel number, or nearest cross street" required><span class="help">A parcel number gets you the fastest answer.</span><span class="err">Please tell us where the lot is.</span></div>
+        <div class="f"><label for="s">What do you need</label>
+          <select id="s"><option>Full package, pad through set</option><option>Dirt work and site prep only</option><option>Utility connections only</option>
+          <option>Set an already delivered home</option><option>Releveling or repair</option><option>Not sure yet</option></select>
+        </div>
+        <div class="f"><label for="m">Anything we should know</label><textarea id="m" rows="2" placeholder="28 by 56 doublewide, power is at the road, no septic yet."></textarea></div>
+        <button class="btn ink" type="submit" style="width:100%;justify-content:center"><span>Send it over</span>
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 8h11M9 4l4 4-4 4"/></svg></button>
+        <p class="fnote">This demo form does not submit anywhere yet. Hook it to your inbox before launch.</p>
+        <div class="fok" id="fok">Got it. We will call you back the same day.</div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-in">
+      <div>
+        <a class="brand" href="#top">Set Right<em>.</em></a>
+        <p style="color:var(--fg-2);font-size:15px;max-width:32ch;margin-top:14px;font-weight:300">Dirt work, utility connections and manufactured home setting across Arizona.</p>
+        <p style="font-size:15px;margin-top:14px;font-weight:600">AZ ROC #123456</p>
+      </div>
+      <div><h5>Services</h5><a href="#services">Dirt work and site prep</a><a href="#services">Utility connections</a><a href="#services">Setting homes</a><a href="#services">Releveling</a></div>
+      <div><h5>Service area</h5><a href="#area">Surprise</a><a href="#area">Buckeye</a><a href="#area">Wittmann</a><a href="#area">Casa Grande</a></div>
+      <div><h5>Contact</h5><a href="tel:+16235550142">(623) 555-0142</a><a href="mailto:office@setrighthomes.com">office@setrighthomes.com</a><a href="#estimate">Get an estimate</a></div>
+    </div>
+    <div class="foot-bot">
+      <span>Copyright 2026 Set Right Homes LLC</span>
+      <span>Licensed, bonded and insured in Arizona</span>
+      <span>Photography: see PHOTO-CREDITS.md</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var rvs=document.querySelectorAll('.rv');
+  if(reduce || !('IntersectionObserver' in window)){ rvs.forEach(function(e){e.classList.add('on');}); }
+  else{
+    var g=new Map();
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if(!e.isIntersecting) return;
+        var p=e.target.parentElement,i=g.get(p)||0; g.set(p,i+1);
+        e.target.style.transitionDelay=Math.min(i*75,340)+'ms';
+        e.target.classList.add('on'); io.unobserve(e.target);
+      });
+    },{threshold:.14,rootMargin:'0px 0px -7% 0px'});
+    rvs.forEach(function(e){ io.observe(e); });
+  }
+  var nav=document.getElementById('nav'),s=document.createElement('div');
+  s.style.cssText='position:absolute;top:0;height:1px;width:1px';
+  document.body.prepend(s);
+  new IntersectionObserver(function(e){ nav.classList.toggle('stuck',!e[0].isIntersecting); },{threshold:0}).observe(s);
+  var b=document.getElementById('burger'),d=document.getElementById('drawer');
+  b.addEventListener('click',function(){ b.setAttribute('aria-expanded', d.classList.toggle('open')); });
+  d.querySelectorAll('a').forEach(function(a){ a.addEventListener('click',function(){ d.classList.remove('open'); b.setAttribute('aria-expanded','false'); }); });
+  var sio=new IntersectionObserver(function(es,o){
+    es.forEach(function(e){
+      if(!e.isIntersecting) return;
+      var el=e.target,t=parseInt(el.dataset.count,10),sf=el.dataset.suffix||''; o.unobserve(el);
+      if(reduce) return;            /* markup already holds the final value */
+      el.textContent='0'+sf;
+      var st=null;
+      function tick(ts){ if(!st)st=ts; var pr=Math.min((ts-st)/1200,1),e2=1-Math.pow(1-pr,3);
+        el.textContent=Math.round(t*e2)+sf; if(pr<1) requestAnimationFrame(tick); }
+      requestAnimationFrame(tick);
+    });
+  },{threshold:.5});
+  document.querySelectorAll('[data-count]').forEach(function(n){ sio.observe(n); });
+  document.querySelectorAll('#faq-list .q').forEach(function(q){
+    var btn=q.querySelector('button');
+    btn.addEventListener('click',function(){
+      var open=q.dataset.open==='1';
+      document.querySelectorAll('#faq-list .q').forEach(function(o){ o.dataset.open='0'; o.querySelector('button').setAttribute('aria-expanded','false'); });
+      if(!open){ q.dataset.open='1'; btn.setAttribute('aria-expanded','true'); }
+    });
+  });
+  var f=document.getElementById('ef');
+  f.addEventListener('submit',function(ev){
+    ev.preventDefault(); var ok=true;
+    ['n','p','l'].forEach(function(id){
+      var i=document.getElementById(id),fl=i.closest('.f');
+      if(!i.value.trim()){ fl.classList.add('bad'); ok=false; } else fl.classList.remove('bad');
+    });
+    if(!ok) return;
+    document.getElementById('fok').classList.add('on');
+    f.querySelector('button[type=submit] span').textContent='Sent';
+  });
+  f.querySelectorAll('input').forEach(function(i){ i.addEventListener('input',function(){ i.closest('.f').classList.remove('bad'); }); });
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener('click',function(ev){
+      var t=document.querySelector(a.getAttribute('href')); if(!t) return;
+      ev.preventDefault(); t.scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'});
+    });
+  });
+})();
+</script>
+</body>
+</html>

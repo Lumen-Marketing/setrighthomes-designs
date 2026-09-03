@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Set Right Homes | Site Prep, Utilities, Home Setting</title>
+<meta name="description" content="Arizona dirt work, utility connections and manufactured home setting. Engineered pads, permits pulled, homes set level.">
+<meta name="theme-color" content="#1B3FE0">
+
+<!--
+  SET RIGHT HOMES / 03 "POSTER"
+  From the blue and orange construction kit, recoloured to cobalt on ice.
+
+  Depth device: OFFSET PLANES AND NESTED TRAYS. Every picture is a core
+  sitting inside a coloured tray, and the tray is shifted behind it so a
+  band of colour shows on two sides, the way a misregistered print looks.
+  Inner radius is computed smaller than the outer so the curves stay
+  concentric. Depth comes from stacking, not from blur.
+
+  Shape rule: tray 26px, core 14px, buttons and chips pill. Nothing else.
+
+  Photos are real and commercially licensed. See PHOTO-CREDITS.md.
+  Contact details, licence number and figures are PLACEHOLDERS, marked SWAP:.
+-->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  color-scheme: light;
+  --paper:#F2F5FC;
+  --ice:#DCE5FB;
+  --white:#FFFFFF;
+  --cobalt:#1B3FE0;
+  --cobalt-d:#0E2496;
+  --ink:#080F3A;
+  --ink-2:#33427A;
+  --muted:#5A6795;
+  --rule:#CBD6F0;
+  --r-tray:26px;
+  --r-core:14px;
+  --off:16px;              /* how far the tray is offset behind the core */
+  --pad:clamp(20px,5vw,54px);
+  --maxw:1300px;
+  --sh:0 40px 80px -40px rgba(10,25,90,.45);
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--paper);color:var(--ink);
+  font-family:'Bricolage Grotesque',system-ui,-apple-system,'Segoe UI',sans-serif;
+  font-size:17.5px;line-height:1.6;font-weight:450;overflow-x:hidden;
+}
+img{max-width:100%;display:block}
+a{color:inherit}
+p{margin:0}
+h1,h2,h3,h4{margin:0;font-weight:800;line-height:1;letter-spacing:-.038em}
+.wrap{width:100%;max-width:var(--maxw);margin-inline:auto;padding-inline:var(--pad)}
+.sec{padding-block:clamp(62px,8.5vw,120px)}
+.lede{color:var(--muted);max-width:58ch;font-weight:450}
+
+/* ---------- the tray and core, this page's one structural idea ---------- */
+.tray{position:relative;border-radius:var(--r-tray);background:var(--cobalt);padding:var(--off)}
+.tray.ice{background:var(--ice)}
+.tray.ink{background:var(--ink)}
+.core{border-radius:var(--r-core);overflow:hidden;background:var(--white);position:relative}
+.core img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .9s cubic-bezier(.16,1,.3,1)}
+.tray:hover .core img{transform:scale(1.04)}
+/* the offset: core is nudged up and left so the tray shows bottom and right */
+.tray.shift .core{transform:translate(calc(var(--off) * -1), calc(var(--off) * -1));margin-bottom:calc(var(--off) * -1);margin-right:calc(var(--off) * -1)}
+
+/* ---------- buttons ---------- */
+.btn{
+  --b:var(--cobalt);--f:#fff;
+  display:inline-flex;align-items:center;gap:11px;white-space:nowrap;
+  padding:16px 28px;border-radius:999px;border:2px solid var(--b);background:var(--b);color:var(--f);
+  font:inherit;font-weight:700;font-size:16px;letter-spacing:-.015em;text-decoration:none;cursor:pointer;
+  position:relative;overflow:hidden;transition:transform .2s cubic-bezier(.16,1,.3,1),box-shadow .3s,color .3s;
+}
+.btn span,.btn svg{position:relative;z-index:1}
+.btn svg{width:16px;height:16px;transition:transform .34s cubic-bezier(.16,1,.3,1)}
+.btn::after{content:"";position:absolute;inset:0;background:var(--ink);transform:translateY(101%);transition:transform .42s cubic-bezier(.16,1,.3,1)}
+.btn:hover::after{transform:translateY(0)}
+.btn:hover{transform:translateY(-3px);box-shadow:0 18px 30px -16px rgba(10,25,90,.6)}
+.btn:hover svg{transform:translateX(4px)}
+.btn:active{transform:none;box-shadow:none}
+.btn:focus-visible{outline:3px solid var(--cobalt);outline-offset:4px}
+.btn.wire{--b:var(--ink);background:transparent;--f:var(--ink)}
+.btn.wire::after{background:var(--ink)}
+.btn.wire:hover{color:#fff}
+.btn.light{--b:#fff;background:#fff;--f:var(--cobalt)}
+.btn.light::after{background:var(--ink)}
+.btn.light:hover{color:#fff}
+
+/* ---------- nav ---------- */
+.nav{position:sticky;top:0;z-index:60;background:rgba(242,245,252,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:2px solid transparent;transition:border-color .3s}
+.nav.stuck{border-bottom-color:var(--ink)}
+.nav-in{height:76px;display:flex;align-items:center;gap:26px}
+.brand{text-decoration:none;font-weight:800;font-size:21px;letter-spacing:-.05em}
+.brand em{font-style:normal;color:var(--cobalt)}
+.nav-links{display:flex;gap:26px;margin-left:auto}
+.nav-links a{text-decoration:none;font-size:15px;font-weight:600;color:var(--ink-2);position:relative;padding-block:4px}
+.nav-links a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--cobalt);transform:scaleX(0);transform-origin:right;transition:transform .32s cubic-bezier(.16,1,.3,1)}
+.nav-links a:hover::after{transform:scaleX(1);transform-origin:left}
+.nav-right{display:flex;align-items:center;gap:20px;margin-left:22px}
+.nav-tel{text-decoration:none;font-weight:700;font-size:15px;white-space:nowrap;font-variant-numeric:tabular-nums}
+.burger{display:none;width:44px;height:44px;border:2px solid var(--ink);background:none;margin-left:auto;cursor:pointer;border-radius:999px}
+.burger i{display:block;width:18px;height:2px;background:var(--ink);margin:0 auto;position:relative;transition:background .3s}
+.burger i::before,.burger i::after{content:"";position:absolute;left:0;width:18px;height:2px;background:var(--ink);transition:transform .3s}
+.burger i::before{top:-6px}.burger i::after{top:6px}
+.burger[aria-expanded="true"] i{background:transparent}
+.burger[aria-expanded="true"] i::before{transform:translateY(6px) rotate(45deg)}
+.burger[aria-expanded="true"] i::after{transform:translateY(-6px) rotate(-45deg)}
+.drawer{display:none}
+
+/* ---------- HERO ---------- */
+.hero{padding-top:clamp(26px,4vw,50px);padding-bottom:clamp(50px,7vw,90px)}
+.hero-in{display:grid;grid-template-columns:minmax(0,1.02fr) minmax(0,.98fr);gap:clamp(26px,4vw,58px);align-items:center}
+.hero h1{font-size:clamp(46px,7vw,98px);letter-spacing:-.05em;line-height:.92}
+.hero h1 em{font-style:normal;color:var(--cobalt)}
+.hero .lede{margin-top:24px;font-size:clamp(16.5px,1.5vw,19px)}
+.hero-act{display:flex;flex-wrap:wrap;gap:13px;margin-top:32px}
+.hero-media .core{aspect-ratio:4/3.4}
+.hero-stat{
+  margin-top:26px;display:flex;gap:14px;align-items:stretch;
+}
+.hero-stat .tray{flex:1;padding:14px 18px;border-radius:18px}
+.hero-stat b{display:block;font-size:26px;font-weight:800;letter-spacing:-.045em;line-height:1;color:#fff;font-variant-numeric:tabular-nums}
+.hero-stat span{display:block;font-size:12.5px;color:rgba(255,255,255,.74);margin-top:5px;line-height:1.3}
+.hero-stat .tray.ice b{color:var(--ink)}
+.hero-stat .tray.ice span{color:var(--muted)}
+
+/* ---------- rule strip ---------- */
+.strip{background:var(--ink);color:#fff}
+.strip-in{display:flex;flex-wrap:wrap;gap:12px 44px;padding-block:20px;font-size:14.5px;font-weight:500;color:rgba(255,255,255,.76)}
+.strip-in b{color:#fff;font-weight:700}
+
+/* ---------- services: asymmetric module grid, each a tray ---------- */
+.mods{display:grid;grid-template-columns:repeat(12,1fr);gap:clamp(20px,3vw,34px);margin-top:46px}
+.mod{display:flex;flex-direction:column;gap:22px}
+.mod .core{aspect-ratio:16/10}
+.mod h3{font-size:clamp(24px,2.8vw,34px)}
+.mod p{color:var(--muted);font-size:16px;margin-top:10px}
+.mod ul{list-style:none;padding:0;margin:18px 0 0;border-top:1.5px solid var(--rule)}
+.mod ul li{padding:11px 0;border-bottom:1px solid var(--rule);font-size:15px;font-weight:600;color:var(--ink-2);transition:padding-left .3s cubic-bezier(.16,1,.3,1),color .3s}
+.mod ul li:hover{padding-left:12px;color:var(--cobalt)}
+.mod.big{grid-column:1/8}
+.mod.big .core{aspect-ratio:16/8.6}
+.mod.sm1{grid-column:8/13}
+.mod.sm2{grid-column:1/6}
+.mod.wide{grid-column:6/13}
+.mod.wide .core{aspect-ratio:16/7.6}
+
+/* ---------- statement ---------- */
+.say{font-size:clamp(28px,4.2vw,58px);font-weight:800;line-height:1.02;letter-spacing:-.042em;max-width:18ch}
+.say b{color:var(--cobalt)}
+.notes{margin-top:38px;border-top:2px solid var(--ink);max-width:80ch}
+.note{padding:22px 0;border-bottom:1px solid var(--rule);display:grid;grid-template-columns:minmax(0,25ch) 1fr;gap:clamp(12px,3vw,40px);align-items:baseline}
+.note h4{font-size:19px;letter-spacing:-.025em}
+.note p{color:var(--muted);font-size:15.5px}
+
+/* ---------- process on a cobalt plane ---------- */
+.plane{background:var(--cobalt);color:#fff;border-radius:var(--r-tray);padding:clamp(28px,4vw,60px);box-shadow:var(--sh)}
+.plane h2{color:#fff}
+.rail{margin-top:38px;border-top:1px solid rgba(255,255,255,.34)}
+.rstep{display:grid;grid-template-columns:minmax(0,4.5ch) minmax(0,23ch) 1fr;gap:clamp(12px,3vw,38px);
+  padding:22px 0;border-bottom:1px solid rgba(255,255,255,.2);align-items:baseline;transition:padding-left .34s cubic-bezier(.16,1,.3,1)}
+.rstep:hover{padding-left:12px}
+.rstep .n{font-size:15px;font-weight:800;color:rgba(255,255,255,.6);font-variant-numeric:tabular-nums}
+.rstep h4{font-size:clamp(19px,2.2vw,25px);color:#fff}
+.rstep p{color:rgba(255,255,255,.76);font-size:15.5px}
+
+/* ---------- figures ---------- */
+.ngrid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(16px,2.6vw,28px);margin-top:46px}
+.nbox{padding:26px;border-radius:var(--r-tray);background:var(--white);box-shadow:0 20px 44px -32px rgba(10,25,90,.5);transition:transform .4s cubic-bezier(.16,1,.3,1)}
+.nbox:hover{transform:translateY(-6px)}
+.nbox .n{font-size:clamp(34px,4.4vw,52px);font-weight:800;letter-spacing:-.05em;line-height:1;color:var(--cobalt);font-variant-numeric:tabular-nums}
+.nbox .t{margin-top:10px;font-size:14.5px;color:var(--muted);max-width:19ch}
+
+/* ---------- projects ---------- */
+.proj{display:grid;grid-template-columns:repeat(12,1fr);gap:clamp(20px,3vw,32px);margin-top:46px}
+.proj figure{margin:0}
+.proj .core{position:relative}
+.proj figcaption{padding:18px 20px 4px;font-size:14.5px;color:rgba(255,255,255,.78)}
+.proj figcaption b{display:block;font-size:19px;font-weight:800;color:#fff;letter-spacing:-.025em;margin-bottom:3px}
+.tray.ice figcaption{color:var(--muted)}
+.tray.ice figcaption b{color:var(--ink)}
+.proj .q1{grid-column:1/8}
+.proj .q1 .core{aspect-ratio:16/10}
+.proj .q2{grid-column:8/13}
+.proj .q2 .core{aspect-ratio:4/4.2}
+.proj .q3{grid-column:1/13}
+.proj .q3 .core{aspect-ratio:16/6}
+
+/* ---------- reviews: tray and core, matching the modules ---------- */
+.revs{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(18px,2.6vw,28px);margin-top:46px}
+.rev .core{padding:clamp(22px,2.6vw,30px);background:var(--white);border-radius:var(--r-core)}
+.rev p{font-size:17px;font-weight:600;letter-spacing:-.02em;line-height:1.45}
+.rev footer{margin-top:20px;padding-top:14px;border-top:1px solid var(--rule);font-size:14px;color:var(--muted)}
+.rev footer b{display:block;font-weight:800;color:var(--ink)}
+
+/* ---------- towns ---------- */
+.towns{margin-top:32px;display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:0 clamp(20px,3vw,40px);border-top:2px solid var(--ink)}
+.towns span{padding:14px 0;border-bottom:1px solid var(--rule);font-size:clamp(18px,2vw,23px);font-weight:700;letter-spacing:-.032em;transition:color .25s,padding-left .3s}
+.towns span:hover{color:var(--cobalt);padding-left:10px}
+
+/* ---------- faq ---------- */
+.faq{margin-top:40px;border-top:2px solid var(--ink)}
+.q{border-bottom:1px solid var(--rule)}
+.q button{width:100%;background:none;border:0;text-align:left;font:inherit;color:var(--ink);font-weight:800;
+  font-size:clamp(18px,2.2vw,24px);letter-spacing:-.032em;padding:26px 58px 26px 0;cursor:pointer;position:relative;transition:color .25s;line-height:1.18}
+.q button:hover{color:var(--cobalt)}
+.q button:focus-visible{outline:3px solid var(--cobalt);outline-offset:2px}
+.q-m{position:absolute;right:8px;top:50%;width:20px;height:20px;transform:translateY(-50%)}
+.q-m::before,.q-m::after{content:"";position:absolute;background:var(--ink);transition:transform .4s cubic-bezier(.16,1,.3,1),background .3s}
+.q-m::before{left:0;right:0;top:9px;height:2px}
+.q-m::after{top:0;bottom:0;left:9px;width:2px}
+.q[data-open="1"] .q-m::after{transform:rotate(90deg)}
+.q[data-open="1"] .q-m::before{background:var(--cobalt)}
+.q-body{display:grid;grid-template-rows:0fr;transition:grid-template-rows .44s cubic-bezier(.16,1,.3,1)}
+.q[data-open="1"] .q-body{grid-template-rows:1fr}
+.q-body>div{overflow:hidden}
+.q-body p{color:var(--muted);font-size:16.5px;padding-bottom:28px;max-width:74ch}
+
+/* ---------- contact ---------- */
+.cta-tray{border-radius:var(--r-tray);background:var(--cobalt);padding:var(--off);box-shadow:var(--sh)}
+.cta-core{border-radius:var(--r-core);background:var(--ink);color:#fff;display:grid;grid-template-columns:1.02fr .98fr;overflow:hidden}
+.cta-l{padding:clamp(28px,3.6vw,52px)}
+.cta-l h2{font-size:clamp(28px,3.4vw,44px);max-width:14ch;color:#fff}
+.cta-l p{color:rgba(255,255,255,.72);margin-top:16px;max-width:42ch}
+.cinfo{margin-top:32px;border-top:1px solid rgba(255,255,255,.24)}
+.cinfo a,.cinfo div{display:flex;gap:18px;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.14);text-decoration:none;font-size:15.5px;font-weight:600;transition:padding-left .3s cubic-bezier(.16,1,.3,1),color .3s}
+.cinfo a:hover{padding-left:10px;color:#9DB4FF}
+.cinfo em{font-style:normal;color:rgba(255,255,255,.5);min-width:7ch;font-weight:450}
+.cta-r{padding:clamp(28px,3.6vw,52px);background:var(--white);color:var(--ink)}
+.f{display:grid;gap:7px;margin-bottom:17px}
+.f label{font-size:13px;font-weight:700}
+.f input,.f select,.f textarea{font:inherit;font-size:16px;padding:13px 16px;border:1.5px solid var(--rule);border-radius:12px;background:var(--paper);color:var(--ink);width:100%;transition:border-color .25s,background .25s}
+.f input::placeholder,.f textarea::placeholder{color:#8E9BC4}
+.f input:focus,.f select:focus,.f textarea:focus{outline:0;border-color:var(--cobalt);background:#fff}
+.f .help{font-size:12.5px;color:var(--muted)}
+.f .err{font-size:12.5px;color:#A81E12;font-weight:700;display:none}
+.f.bad input,.f.bad select{border-color:#A81E12}
+.f.bad .err{display:block}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:17px}
+.fnote{font-size:12.5px;color:var(--muted);margin-top:14px}
+.fok{display:none;margin-top:15px;padding:14px 16px;border-radius:12px;background:var(--ink);color:#fff;font-weight:600;font-size:14.5px}
+.fok.on{display:block}
+
+/* ---------- footer ---------- */
+.foot{background:var(--ice);border-top:2px solid var(--ink);margin-top:clamp(60px,8vw,100px)}
+.foot-in{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:34px;padding-block:clamp(42px,6vw,72px)}
+.foot h5{font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:14px;font-weight:700}
+.foot a{display:block;text-decoration:none;color:var(--ink-2);font-size:15px;padding:5px 0;transition:color .2s,transform .2s}
+.foot a:hover{color:var(--cobalt);transform:translateX(3px)}
+.foot-bot{border-top:1px solid var(--rule);padding-block:22px;display:flex;flex-wrap:wrap;gap:10px 30px;font-size:13px;color:var(--muted)}
+
+/* ---------- reveal ---------- */
+.rv{opacity:0;transform:translateY(24px);filter:blur(6px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1),filter .8s cubic-bezier(.16,1,.3,1)}
+.rv.on{opacity:1;transform:none;filter:none}
+
+/* ---------- responsive ---------- */
+@media (max-width:1040px){
+  .hero-in{grid-template-columns:1fr}
+  .mods{grid-template-columns:1fr}
+  .mod.big,.mod.sm1,.mod.sm2,.mod.wide{grid-column:1/2}
+  .ngrid{grid-template-columns:1fr 1fr}
+  .proj .q1,.proj .q2,.proj .q3{grid-column:1/13}
+  .proj .q2 .core{aspect-ratio:16/10}
+  .proj .q3 .core{aspect-ratio:16/9}
+  .revs{grid-template-columns:1fr}
+  .cta-core{grid-template-columns:1fr}
+  .note{grid-template-columns:1fr;gap:6px}
+  .foot-in{grid-template-columns:1fr 1fr}
+}
+@media (max-width:760px){
+  body{font-size:16.5px}
+  :root{--off:12px}
+  .nav-links,.nav-right{display:none}
+  .burger{display:grid;place-items:center}
+  .drawer{display:block;position:fixed;inset:76px 0 auto 0;z-index:59;background:var(--white);border-bottom:2px solid var(--ink);padding:10px var(--pad) 26px;transform:translateY(-130%);transition:transform .44s cubic-bezier(.16,1,.3,1);box-shadow:var(--sh)}
+  .drawer.open{transform:translateY(0)}
+  .drawer a{display:block;padding:15px 0;border-bottom:1px solid var(--rule);text-decoration:none;font-weight:800;font-size:19px;letter-spacing:-.035em}
+  .drawer .btn{width:100%;justify-content:center;margin-top:18px}
+  .hero-stat{flex-direction:column}
+  .rstep{grid-template-columns:3.5ch 1fr;gap:14px}
+  .rstep p{grid-column:2/3}
+  .two{grid-template-columns:1fr}
+  .foot-in{grid-template-columns:1fr}
+  .ngrid{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+  .rv{opacity:1;transform:none;filter:none}
+}
+</style>
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="#top">Set Right<em>.</em></a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="#services">Services</a><a href="#process">Process</a><a href="#work">Projects</a><a href="#area">Service area</a><a href="#faq">FAQ</a>
+    </nav>
+    <div class="nav-right">
+      <!-- SWAP: real phone number -->
+      <a class="nav-tel" href="tel:+16235550142">(623) 555-0142</a>
+      <a class="btn" href="#estimate"><span>Get an estimate</span></a>
+    </div>
+    <button class="burger" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="drawer"><i></i></button>
+  </div>
+</header>
+<div class="drawer" id="drawer">
+  <a href="#services">Services</a><a href="#process">Process</a><a href="#work">Projects</a><a href="#area">Service area</a><a href="#faq">FAQ</a>
+  <a class="btn" href="#estimate"><span>Get an estimate</span></a>
+</div>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="top">
+  <div class="wrap hero-in">
+    <div>
+      <h1>We build the ground your home <em>lands on.</em></h1>
+      <p class="lede">Dirt work, utility connections and the set itself. One Arizona crew from a raw lot to a home sitting level.</p>
+      <div class="hero-act">
+        <a class="btn" href="#estimate"><span>Get an estimate</span>
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
+        <a class="btn wire" href="tel:+16235550142"><span>(623) 555-0142</span></a>
+      </div>
+      <div class="hero-stat">
+        <!-- SWAP: real figures -->
+        <div class="tray"><b class="n" data-count="600" data-suffix="+">600+</b><span>homes set</span></div>
+        <div class="tray"><b class="n" data-count="17" data-suffix=" yrs">17 yrs</b><span>on Arizona dirt</span></div>
+        <div class="tray ice"><b class="n" data-count="8" data-suffix="">8</b><span>counties</span></div>
+      </div>
+    </div>
+    <div class="hero-media">
+      <div class="tray shift">
+        <div class="core">
+          <img src="../assets/home-on-pad.jpg" width="2000" height="1348"
+               alt="A new manufactured home sitting level on a finished pad, with graded dirt around it" fetchpriority="high">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STRIP ============ -->
+<div class="strip">
+  <div class="wrap strip-in">
+    <span><b>Licensed, bonded and insured.</b></span>
+    <!-- SWAP: real licence number -->
+    <span>AZ ROC <b>#123456</b></span>
+    <span>We pull the permits and call the inspections.</span>
+    <span>West Valley and rural Arizona.</span>
+  </div>
+</div>
+
+<!-- ============ SERVICES ============ -->
+<section class="sec" id="services">
+  <div class="wrap">
+    <div class="rv">
+      <h2 style="font-size:clamp(30px,4.4vw,58px);max-width:15ch">Most lots need four contractors. We are one.</h2>
+      <p class="lede" style="margin-top:18px">Hiring a grader, a plumber, an electrician and a set crew separately is where schedules fall apart, and where nobody owns the gap between them.</p>
+    </div>
+    <div class="mods">
+      <article class="mod big rv">
+        <div class="tray shift">
+          <div class="core"><img src="../assets/cleared-lot.jpg" width="2000" height="1333" loading="lazy" alt="A lot cleared and turned over, ready for grading"></div>
+        </div>
+        <div>
+          <h3>Dirt work and site prep</h3>
+          <p>Clearing, cut and fill, then an engineered pad compacted and tested to the detail your county will actually sign off on.</p>
+          <ul>
+            <li>Lot clearing and grubbing</li><li>Rough grade, finish grade, compaction testing</li>
+            <li>Drainage, swales and pad protection</li><li>Driveway approach and culvert</li>
+          </ul>
+        </div>
+      </article>
+      <article class="mod sm1 rv">
+        <div class="tray ice shift">
+          <div class="core"><img src="../assets/trench-utilities.jpg" width="1600" height="1067" loading="lazy" alt="Machines working an open utility trench alongside a road"></div>
+        </div>
+        <div>
+          <h3>Utility connections</h3>
+          <p>Water, sewer or septic, power and gas. Trenched, laid, pressure tested and inspected before the home shows up.</p>
+          <ul>
+            <li>Water line and meter set</li><li>Sewer tie in or new septic</li>
+            <li>Electric service and pedestal</li><li>Propane stub and final hookups</li>
+          </ul>
+        </div>
+      </article>
+      <article class="mod sm2 rv">
+        <div>
+          <h3>Setting the home</h3>
+          <p>Placed, blocked, leveled, anchored and closed up. Singlewide, doublewide or triple, on piers or a permanent foundation.</p>
+          <ul>
+            <li>Toter or crane placement</li><li>Pier, footing and anchor layout</li>
+            <li>Marriage line close up and leveling</li><li>Skirting, steps and final grade</li>
+          </ul>
+        </div>
+      </article>
+      <article class="mod wide rv">
+        <div class="tray ink shift">
+          <div class="core"><img src="../assets/home-on-transport.jpg" width="2000" height="1328" loading="lazy" alt="A manufactured home section on a transport truck with a crew member alongside"></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STATEMENT ============ -->
+<section class="sec" style="background:var(--white)">
+  <div class="wrap">
+    <p class="say rv">A manufactured home arrives on a steel frame, moves with the ground, and is inspected against <b>HUD rules, not framing rules.</b></p>
+    <div class="notes">
+      <div class="note rv"><h4>The pad comes first</h4><p>Soft fill under a pier shows up as a stuck door eighteen months later. Compaction gets tested, and the result goes in the file with the plan.</p></div>
+      <div class="note rv"><h4>Anchors are engineered</h4><p>Spacing comes off the manufacturer's setup manual and the wind zone for your county. An inspector will check both.</p></div>
+      <div class="note rv"><h4>Nothing gets buried early</h4><p>Trench open, pressure held, inspector on site. Covering a line before it is signed is the most expensive shortcut on the job.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROCESS ============ -->
+<section class="sec" id="process">
+  <div class="wrap">
+    <div class="plane rv">
+      <h2 style="font-size:clamp(30px,4.2vw,54px);max-width:13ch">Raw lot to keys, in five moves.</h2>
+      <div class="rail">
+        <div class="rstep"><span class="n">01</span><h4>Walk the lot</h4><p>Soil, slope, setbacks, and where the utilities actually stub out. Free, and usually about an hour.</p></div>
+        <div class="rstep"><span class="n">02</span><h4>Plans and permits</h4><p>Engineered pad detail drawn and stamped, county submittal filed, inspection dates on the calendar.</p></div>
+        <div class="rstep"><span class="n">03</span><h4>Dirt work</h4><p>Clear, cut, fill, compact, test. Driveway and drainage go in while the machines are already on site.</p></div>
+        <div class="rstep"><span class="n">04</span><h4>Utilities in the ground</h4><p>Trench, lay, pressure test, inspect, backfill. Nothing gets covered before it is signed off.</p></div>
+        <div class="rstep"><span class="n">05</span><h4>Set and tie down</h4><p>Home placed, blocked, leveled, anchored, marriage line closed, then skirting and final grade.</p></div>
+      </div>
+    </div>
+    <div class="ngrid">
+      <!-- SWAP: all four figures are placeholders -->
+      <div class="nbox rv"><div class="n" data-count="600" data-suffix="+">600+</div><div class="t">Homes set since we started</div></div>
+      <div class="nbox rv"><div class="n" data-count="17" data-suffix=" yrs">17 yrs</div><div class="t">Working Arizona dirt</div></div>
+      <div class="nbox rv"><div class="n" data-count="8" data-suffix="">8</div><div class="t">Counties we pull permits in</div></div>
+      <div class="nbox rv"><div class="n" data-count="5" data-suffix=" days">5 days</div><div class="t">Typical set week, start to level</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROJECTS ============ -->
+<section class="sec" id="work" style="background:var(--white)">
+  <div class="wrap">
+    <div class="rv"><h2 style="font-size:clamp(30px,4.4vw,58px);max-width:13ch">Lots we cleared this season.</h2></div>
+    <div class="proj">
+      <figure class="q1 rv">
+        <div class="tray shift">
+          <div class="core"><img src="../assets/home-marriage-line.jpg" width="2000" height="1208" loading="lazy" alt="A doublewide part way through the set with the marriage line still open"></div>
+          <figcaption><b>Doublewide on five acres</b>Wittmann. Pad, septic, power and set.</figcaption>
+        </div>
+      </figure>
+      <figure class="q2 rv">
+        <div class="tray ice shift">
+          <div class="core"><img src="../assets/compaction-roller.jpg" width="1600" height="1067" loading="lazy" alt="A roller compacting the base course on a prepared surface"></div>
+          <figcaption><b>Compaction and test</b>Buckeye. Pad only, dealer set the home.</figcaption>
+        </div>
+      </figure>
+      <figure class="q3 rv">
+        <div class="tray ink shift">
+          <div class="core"><img src="../assets/homes-staged.jpg" width="1600" height="1200" loading="lazy" alt="A row of manufactured homes staged before delivery"></div>
+          <figcaption><b>Four home community</b>Casa Grande. Pads, utilities and all four sets.</figcaption>
+        </div>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ REVIEWS ============ -->
+<section class="sec">
+  <div class="wrap">
+    <div class="rv"><h2 style="font-size:clamp(28px,3.8vw,48px);max-width:14ch">What owners tell us after.</h2></div>
+    <div class="revs">
+      <figure class="rev tray ice rv" style="margin:0">
+        <div class="core"><p>Pad was tested and passed the first time. Home landed on a Tuesday and we were level by Thursday.</p>
+        <footer><b>Dale Whitcomb</b>Wittmann, five acre lot</footer></div>
+      </figure>
+      <figure class="rev tray rv" style="margin:0">
+        <div class="core"><p>We send them every buyer who needs site work. They call the inspector themselves, which saves my team the chasing.</p>
+        <footer><b>Renee Ocampo</b>Sales manager, Sunland Home Center</footer></div>
+      </figure>
+      <figure class="rev tray ice rv" style="margin:0">
+        <div class="core"><p>Second home they have set for us. Same crew both times, same quote, no change orders halfway through.</p>
+        <footer><b>Marty Kessel</b>Casa Grande</footer></div>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ AREA ============ -->
+<section class="sec" id="area" style="background:var(--white)">
+  <div class="wrap">
+    <div class="rv">
+      <h2 style="font-size:clamp(28px,3.8vw,48px);max-width:13ch">Where we take the equipment.</h2>
+      <p class="lede" style="margin-top:16px">West Valley is home base. We run out to the rural lots most crews will not drive to, and the haul is priced up front.</p>
+    </div>
+    <div class="towns rv">
+      <span>Surprise</span><span>Wittmann</span><span>Buckeye</span><span>Tonopah</span>
+      <span>Wickenburg</span><span>Congress</span><span>Casa Grande</span><span>Maricopa</span>
+      <span>Coolidge</span><span>Aguila</span><span>Queen Creek</span><span>Apache Junction</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="sec" id="faq">
+  <div class="wrap">
+    <div class="rv"><h2 style="font-size:clamp(30px,4.4vw,58px);max-width:14ch">Questions we get on every walk.</h2></div>
+    <div class="faq" id="faq-list">
+      <div class="q" data-open="0"><button type="button" aria-expanded="false">Do you handle the permits, or is that on me?<span class="q-m"></span></button><div class="q-body"><div><p>We do. Pad detail goes to the county with the application, we handle corrections, and we call in every inspection. You get the approved card at the end. If you would rather pull them yourself we will hand you the drawings.</p></div></div></div>
+      <div class="q" data-open="0"><button type="button" aria-expanded="false">How long does the site work take before delivery?<span class="q-m"></span></button><div class="q-body"><div><p>On a clean lot with utilities at the road, plan on two to three weeks of field work. Permit review is the variable. Rural lots needing a well, septic and a long power run stretch that out, and we tell you which one is the long pole before you sign.</p></div></div></div>
+      <div class="q" data-open="0"><button type="button" aria-expanded="false">Can I hire you for just the dirt work?<span class="q-m"></span></button><div class="q-body"><div><p>Yes. Plenty of our jobs are pad only, with the dealer's crew doing the set. We coordinate dates so the pad is finished and tested before the transport shows up.</p></div></div></div>
+      <div class="q" data-open="0"><button type="button" aria-expanded="false">Septic or sewer, how do I know which one my lot needs?<span class="q-m"></span></button><div class="q-body"><div><p>If a sewer main runs past your frontage you tie in, and that is almost always cheaper. Outside a district you are on septic, which means a percolation test and a county design first. We check both on the walk and price the one you actually need.</p></div></div></div>
+      <div class="q" data-open="0"><button type="button" aria-expanded="false">What is the difference between a pier set and a permanent foundation?<span class="q-m"></span></button><div class="q-body"><div><p>A pier set rests on blocks and footings and is tied down with anchors. A permanent foundation is engineered, poured, and the home is fixed to it. FHA, VA and most conventional lenders want the permanent version. Tell us the loan type on day one, because it changes the pad.</p></div></div></div>
+      <div class="q" data-open="0"><button type="button" aria-expanded="false">Do you work outside the Phoenix metro?<span class="q-m"></span></button><div class="q-body"><div><p>Regularly. Wickenburg, Congress, Aguila, Tonopah and down to Casa Grande and Coolidge are normal weeks for us. Anything past that we quote with the haul included so there is no surprise line item.</p></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="sec" id="estimate" style="padding-top:0">
+  <div class="wrap">
+    <div class="cta-tray rv">
+      <div class="cta-core">
+        <div class="cta-l">
+          <h2>Send us the lot. We send back a number.</h2>
+          <p>Parcel number or a cross street is enough to start. We tell you what the site needs before we ever quote it.</p>
+          <div class="cinfo">
+            <!-- SWAP: real phone, email, address, hours, licence -->
+            <a href="tel:+16235550142"><em>Phone</em>(623) 555-0142</a>
+            <a href="mailto:office@setrighthomes.com"><em>Email</em>office@setrighthomes.com</a>
+            <div><em>Mail</em>PO Box 1188, Surprise, AZ 85374</div>
+            <div><em>Hours</em>Monday to Friday, 6:30am to 4pm</div>
+            <div><em>Licence</em>AZ ROC #123456</div>
+          </div>
+        </div>
+        <div class="cta-r">
+          <form id="ef" novalidate>
+            <div class="two">
+              <div class="f"><label for="n">Name</label><input id="n" type="text" placeholder="Dale Whitcomb" required><span class="err">Please add your name.</span></div>
+              <div class="f"><label for="p">Phone</label><input id="p" type="tel" placeholder="(623) 555-0142" required><span class="err">Please add a number we can reach you on.</span></div>
+            </div>
+            <div class="f"><label for="l">Lot location</label><input id="l" type="text" placeholder="Parcel number, or nearest cross street" required><span class="help">A parcel number gets you the fastest answer.</span><span class="err">Please tell us where the lot is.</span></div>
+            <div class="f"><label for="s">What do you need</label>
+              <select id="s"><option>Full package, pad through set</option><option>Dirt work and site prep only</option><option>Utility connections only</option>
+              <option>Set an already delivered home</option><option>Releveling or repair</option><option>Not sure yet</option></select>
+            </div>
+            <div class="f"><label for="m">Anything we should know</label><textarea id="m" rows="2" placeholder="28 by 56 doublewide, power is at the road, no septic yet."></textarea></div>
+            <button class="btn" type="submit" style="width:100%;justify-content:center"><span>Send it over</span>
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M2 8h11M9 4l4 4-4 4"/></svg></button>
+            <p class="fnote">This demo form does not submit anywhere yet. Hook it to your inbox before launch.</p>
+            <div class="fok" id="fok">Got it. We will call you back the same day.</div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-in">
+      <div>
+        <a class="brand" href="#top" style="font-size:24px">Set Right<em>.</em></a>
+        <p style="font-size:15px;max-width:32ch;margin-top:14px;color:var(--muted)">Dirt work, utility connections and manufactured home setting across Arizona.</p>
+        <p style="font-size:15px;margin-top:14px;font-weight:700">AZ ROC #123456</p>
+      </div>
+      <div><h5>Services</h5><a href="#services">Dirt work and site prep</a><a href="#services">Utility connections</a><a href="#services">Setting homes</a><a href="#services">Releveling</a></div>
+      <div><h5>Service area</h5><a href="#area">Surprise</a><a href="#area">Buckeye</a><a href="#area">Wittmann</a><a href="#area">Casa Grande</a></div>
+      <div><h5>Contact</h5><a href="tel:+16235550142">(623) 555-0142</a><a href="mailto:office@setrighthomes.com">office@setrighthomes.com</a><a href="#estimate">Get an estimate</a></div>
+    </div>
+    <div class="foot-bot">
+      <span>Copyright 2026 Set Right Homes LLC</span>
+      <span>Licensed, bonded and insured in Arizona</span>
+      <span>Photography: see PHOTO-CREDITS.md</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var rvs=document.querySelectorAll('.rv');
+  if(reduce || !('IntersectionObserver' in window)){ rvs.forEach(function(e){e.classList.add('on');}); }
+  else{
+    var g=new Map();
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if(!e.isIntersecting) return;
+        var p=e.target.parentElement,i=g.get(p)||0; g.set(p,i+1);
+        e.target.style.transitionDelay=Math.min(i*75,340)+'ms';
+        e.target.classList.add('on'); io.unobserve(e.target);
+      });
+    },{threshold:.14,rootMargin:'0px 0px -7% 0px'});
+    rvs.forEach(function(e){ io.observe(e); });
+  }
+  var nav=document.getElementById('nav'),s=document.createElement('div');
+  s.style.cssText='position:absolute;top:0;height:1px;width:1px';
+  document.body.prepend(s);
+  new IntersectionObserver(function(e){ nav.classList.toggle('stuck',!e[0].isIntersecting); },{threshold:0}).observe(s);
+  var b=document.getElementById('burger'),d=document.getElementById('drawer');
+  b.addEventListener('click',function(){ b.setAttribute('aria-expanded', d.classList.toggle('open')); });
+  d.querySelectorAll('a').forEach(function(a){ a.addEventListener('click',function(){ d.classList.remove('open'); b.setAttribute('aria-expanded','false'); }); });
+  var sio=new IntersectionObserver(function(es,o){
+    es.forEach(function(e){
+      if(!e.isIntersecting) return;
+      var el=e.target,t=parseInt(el.dataset.count,10),sf=el.dataset.suffix||''; o.unobserve(el);
+      if(reduce) return;
+      el.textContent='0'+sf;
+      var st=null;
+      function tick(ts){ if(!st)st=ts; var pr=Math.min((ts-st)/1200,1),e2=1-Math.pow(1-pr,3);
+        el.textContent=Math.round(t*e2)+sf; if(pr<1) requestAnimationFrame(tick); }
+      requestAnimationFrame(tick);
+    });
+  },{threshold:.5});
+  document.querySelectorAll('[data-count]').forEach(function(n){ sio.observe(n); });
+  document.querySelectorAll('#faq-list .q').forEach(function(q){
+    var btn=q.querySelector('button');
+    btn.addEventListener('click',function(){
+      var open=q.dataset.open==='1';
+      document.querySelectorAll('#faq-list .q').forEach(function(o){ o.dataset.open='0'; o.querySelector('button').setAttribute('aria-expanded','false'); });
+      if(!open){ q.dataset.open='1'; btn.setAttribute('aria-expanded','true'); }
+    });
+  });
+  var f=document.getElementById('ef');
+  f.addEventListener('submit',function(ev){
+    ev.preventDefault(); var ok=true;
+    ['n','p','l'].forEach(function(id){
+      var i=document.getElementById(id),fl=i.closest('.f');
+      if(!i.value.trim()){ fl.classList.add('bad'); ok=false; } else fl.classList.remove('bad');
+    });
+    if(!ok) return;
+    document.getElementById('fok').classList.add('on');
+    f.querySelector('button[type=submit] span').textContent='Sent';
+  });
+  f.querySelectorAll('input').forEach(function(i){ i.addEventListener('input',function(){ i.closest('.f').classList.remove('bad'); }); });
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener('click',function(ev){
+      var t=document.querySelector(a.getAttribute('href')); if(!t) return;
+      ev.preventDefault(); t.scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'});
+    });
+  });
+})();
+</script>
+</body>
+</html>
