@@ -2,187 +2,358 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Set Right Homes | Five Homepage Directions</title>
-<meta name="description" content="Five homepage design directions for Set Right Homes. Preview each one live, on desktop or phone.">
-<meta name="theme-color" content="#0A1728">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Set Right Homes, homepage directions</title>
+<meta name="description" content="Five homepage design directions for Set Right Homes, Arizona site prep, utility connections and manufactured home setting.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400..900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  color-scheme:light;
-  --paper:#EDF2F9;--white:#fff;--ink:#0A1728;--muted:#5A6B84;
-  --rule:#C9D6E8;--blue:#1B4FD8;
+  --ink:#05070B; --steel-950:#090C12; --steel-900:#0F141C; --steel-800:#161D28;
+  --steel-700:#212A38; --steel-600:#2D3848; --steel-400:#6C7A90; --steel-300:#95A3B8;
+  --paper:#E8EEF7;
+  --acc:#4C86FF; --acc-2:#8FB4FF;
+  --gut:clamp(18px,4vw,56px);
+  --ease:cubic-bezier(.19,1,.22,1);
 }
-*{box-sizing:border-box}
-body{margin:0;background:var(--paper);color:var(--ink);
-  font-family:'Schibsted Grotesk',system-ui,sans-serif;font-size:16px;line-height:1.58;font-weight:450}
-h1,h2,h3{margin:0;line-height:1.02;letter-spacing:-.038em;font-weight:800}
-p{margin:0}
-a{color:inherit}
-.wrap{max-width:1420px;margin-inline:auto;padding-inline:clamp(18px,4vw,40px)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--ink);color:var(--paper);font-family:'Archivo',system-ui,sans-serif;
+  line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:clip}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+::selection{background:var(--acc);color:var(--ink)}
+.grid-bg{position:fixed;inset:0;pointer-events:none;z-index:0;
+  background-image:linear-gradient(rgba(76,134,255,.05) 1px,transparent 1px),
+                   linear-gradient(90deg,rgba(76,134,255,.05) 1px,transparent 1px);
+  background-size:80px 80px;
+  -webkit-mask-image:radial-gradient(130% 80% at 50% 0%,#000 15%,transparent 72%);
+  mask-image:radial-gradient(130% 80% at 50% 0%,#000 15%,transparent 72%)}
+.wrap{max-width:1680px;margin-inline:auto;padding-inline:var(--gut);position:relative;z-index:2}
+.mono{font-family:'Space Mono',monospace;text-transform:uppercase;letter-spacing:.18em;font-size:10.5px;color:var(--steel-400)}
+.mono b{color:var(--acc);font-weight:700}
 
-.top{background:var(--ink);color:#fff;padding-block:clamp(32px,5vw,54px)}
-.top h1{font-size:clamp(27px,4vw,44px);max-width:22ch}
-.top p{color:rgba(255,255,255,.68);margin-top:14px;max-width:70ch;font-size:15.5px}
+header{padding-block:clamp(40px,7vw,88px) clamp(24px,4vw,46px);border-bottom:1px solid var(--steel-800)}
+.hbar{display:flex;align-items:center;gap:13px;margin-bottom:clamp(22px,4vw,40px)}
+.hbar .mk{width:50px;height:50px;border:1px solid var(--steel-700);display:grid;place-items:center;
+  font-family:'Space Mono',monospace;font-size:15px;font-weight:700;color:var(--acc);flex:none}
+.hbar .t b{display:block;font-size:16px;font-weight:800;letter-spacing:-.02em;font-stretch:118%}
+h1{font-size:clamp(2.1rem,7vw,6rem);font-weight:800;line-height:.86;letter-spacing:-.038em;
+  font-stretch:125%;text-transform:uppercase;max-width:16ch}
+h1 em{font-style:normal;color:var(--acc)}
+.lead{display:flex;gap:clamp(20px,4vw,60px);flex-wrap:wrap;align-items:flex-end;margin-top:clamp(20px,3vw,32px)}
+.lead p{max-width:62ch;color:var(--steel-300);font-size:15.5px}
+.lead p b{color:var(--paper);font-weight:600}
+.toolbar{display:flex;gap:10px;flex-wrap:wrap;margin-left:auto;align-items:center}
+.seg{display:flex;border:1px solid var(--steel-700)}
+.seg button{background:0;border:0;color:var(--steel-300);font-family:'Space Mono',monospace;font-size:10.5px;
+  letter-spacing:.16em;text-transform:uppercase;padding:10px 17px;cursor:pointer;transition:background .3s,color .3s}
+.seg button+button{border-left:1px solid var(--steel-700)}
+.seg button.on{background:var(--acc);color:var(--ink);font-weight:700}
 
-.bar{position:sticky;top:0;z-index:20;background:rgba(237,242,249,.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--rule)}
-.bar-in{display:flex;flex-wrap:wrap;gap:12px;align-items:center;padding-block:14px}
-.tabs{display:flex;flex-wrap:wrap;gap:6px}
-.tab{border:1.5px solid var(--rule);background:var(--white);color:var(--ink);font:inherit;font-weight:700;font-size:13.5px;
-  padding:9px 15px;border-radius:0;cursor:pointer;white-space:nowrap;transition:background .22s,color .22s,border-color .22s,transform .22s}
-.tab:hover{border-color:var(--ink);transform:translateY(-1px)}
-.tab[aria-selected="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
-.tab:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
-.spacer{margin-left:auto}
-.seg{display:flex;border:1.5px solid var(--rule);background:var(--white)}
-.seg button{border:0;background:none;font:inherit;font-weight:700;font-size:13px;padding:9px 15px;cursor:pointer;color:var(--muted);transition:background .2s,color .2s}
-.seg button[aria-pressed="true"]{background:var(--ink);color:#fff}
-.open{display:inline-flex;align-items:center;gap:8px;text-decoration:none;background:var(--blue);color:#fff;
-  font-weight:700;font-size:13.5px;padding:10px 18px;transition:transform .2s,background .2s}
-.open:hover{transform:translateY(-2px);background:var(--ink)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(430px,1fr));gap:clamp(18px,2.4vw,32px);
+  padding-block:clamp(30px,5vw,60px)}
+.card{border:1px solid var(--steel-800);background:var(--steel-950);display:flex;flex-direction:column;
+  opacity:0;translate:0 30px;transition:opacity .8s var(--ease),translate .8s var(--ease),border-color .4s}
+.card.is-in{opacity:1;translate:0 0}
+.card:nth-child(2){transition-delay:.08s}.card:nth-child(3){transition-delay:.16s}
+.card:nth-child(4){transition-delay:.24s}.card:nth-child(5){transition-delay:.32s}
+.card:hover{border-color:var(--steel-600)}
+.card-hd{display:flex;align-items:center;gap:11px;padding:15px 17px;border-bottom:1px solid var(--steel-800)}
+.card-hd .no{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.16em;color:var(--acc);font-weight:700;flex:none}
+.card-hd h2{font-size:19px;font-weight:800;letter-spacing:-.02em;font-stretch:118%;text-transform:uppercase}
+.card-hd .open{margin-left:auto;font-family:'Space Mono',monospace;font-size:9.5px;letter-spacing:.16em;
+  text-transform:uppercase;border:1px solid var(--steel-700);padding:8px 12px;transition:border-color .3s,color .3s;white-space:nowrap}
+.card-hd .open:hover{border-color:var(--acc);color:var(--acc)}
 
-.stage{padding-block:clamp(20px,3vw,32px) clamp(40px,6vw,66px)}
-.meta{display:flex;flex-wrap:wrap;gap:8px 26px;align-items:baseline;margin-bottom:14px}
-.meta h2{font-size:clamp(20px,2.4vw,27px)}
-.meta .note{color:var(--muted);font-size:14.5px;max-width:70ch}
-.tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
-.pill{background:var(--white);border:1px solid var(--rule);padding:6px 13px;font-size:12.5px;font-weight:700;color:var(--muted)}
+.stage{position:relative;background:var(--ink);border-bottom:1px solid var(--steel-800);overflow:hidden}
+.stage.desktop{aspect-ratio:16/11}
+.stage.mobile{aspect-ratio:16/11;display:flex;align-items:flex-start;justify-content:center;padding-top:14px}
+.holder{position:absolute;top:0;left:0;transform-origin:top left}
+.stage.mobile .holder{position:relative;transform-origin:top center}
+.holder iframe{border:0;display:block;background:var(--ink)}
+.veil{position:absolute;inset:0;z-index:5;background:rgba(5,7,11,.28);
+  display:flex;align-items:flex-end;justify-content:center;padding-bottom:18px;cursor:pointer;
+  transition:opacity .4s}
+.veil span{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;
+  background:var(--ink);border:1px solid var(--steel-700);padding:9px 15px;color:var(--paper)}
+.veil:hover span{border-color:var(--acc);color:var(--acc)}
+.stage.live .veil{opacity:0;pointer-events:none}
+.loading{position:absolute;inset:0;display:grid;place-items:center;z-index:2}
+.loading span{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.2em;color:var(--steel-600);text-transform:uppercase}
 
-.viewport{background:var(--white);border:1px solid var(--rule);overflow:hidden;
-  box-shadow:0 34px 70px -40px rgba(8,27,60,.5);transition:max-width .38s cubic-bezier(.16,1,.3,1);max-width:100%;margin-inline:auto}
-.viewport.phone{max-width:430px}
-iframe{width:100%;height:min(80vh,900px);border:0;display:block;background:#fff}
+.card-bd{padding:17px;display:flex;flex-direction:column;gap:14px;flex:1}
+.card-bd p{font-size:14.5px;color:var(--steel-300);line-height:1.62}
+.card-bd p b{color:var(--paper);font-weight:700}
+.chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:auto;padding-top:4px}
+.chip{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;
+  border:1px solid var(--steel-700);padding:6px 10px;color:var(--steel-400)}
+.chip.on{border-color:rgba(76,134,255,.5);color:var(--acc-2)}
 
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin-top:clamp(30px,5vw,50px)}
-.mini{background:var(--white);border:1px solid var(--rule);padding:0;cursor:pointer;text-align:left;font:inherit;
-  transition:transform .3s cubic-bezier(.16,1,.3,1),box-shadow .3s,border-color .3s;overflow:hidden}
-.mini:hover{transform:translateY(-4px);box-shadow:0 24px 46px -30px rgba(8,27,60,.55);border-color:var(--ink)}
-.mini .sw{display:flex;height:8px}
-.mini .sw span{flex:1}
-.mini .in{padding:18px 20px 20px}
-.mini h3{font-size:16.5px}
-.mini p{color:var(--muted);font-size:13.5px;margin-top:6px}
+.matrix{padding-block:clamp(34px,5vw,66px);border-top:1px solid var(--steel-800)}
+.matrix h3{font-size:clamp(1.3rem,3vw,2rem);font-weight:800;text-transform:uppercase;letter-spacing:-.03em;
+  font-stretch:118%;margin-bottom:8px}
+.matrix .mono{display:block;margin-bottom:22px}
+.tbl{width:100%;border-collapse:collapse;font-size:13.5px;min-width:820px}
+.tbl th,.tbl td{border:1px solid var(--steel-800);padding:11px 13px;text-align:left;vertical-align:top}
+.tbl th{font-family:'Space Mono',monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--steel-400);font-weight:400;background:var(--steel-950)}
+.tbl td:first-child{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--acc);white-space:nowrap}
+.tbl tbody tr:hover td{background:var(--steel-950)}
+.scrollx{overflow-x:auto}
 
-.foot{border-top:1px solid var(--rule);padding-block:26px;color:var(--muted);font-size:13.5px}
-.foot b{color:var(--ink)}
-.foot a{color:var(--blue)}
+.note{border:1px solid var(--steel-800);background:var(--steel-950);padding:clamp(18px,2.4vw,30px);
+  margin-bottom:clamp(30px,5vw,56px);display:grid;gap:12px}
+.note h4{font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--acc)}
+.note p{font-size:14.5px;color:var(--steel-300);max-width:86ch}
+.note p b{color:var(--paper);font-weight:600}
+.note a{color:var(--acc-2);text-decoration:underline;text-underline-offset:3px}
 
-@media (max-width:760px){
-  .spacer{margin-left:0;width:100%}
-  iframe{height:70vh}
+footer{border-top:1px solid var(--steel-800);padding-block:30px;display:flex;flex-wrap:wrap;gap:16px;
+  align-items:center;justify-content:space-between}
+.fl{display:flex;gap:20px;flex-wrap:wrap}
+
+@media(max-width:900px){
+  .cards{grid-template-columns:1fr}
+  .toolbar{margin-left:0;width:100%}
 }
-@media (prefers-reduced-motion:reduce){*{transition-duration:.01ms!important}}
+@media(prefers-reduced-motion:reduce){*{transition-duration:.01ms!important}.card{opacity:1;translate:none}}
 </style>
 </head>
 <body>
+<div class="grid-bg"></div>
 
-<header class="top">
-  <div class="wrap">
-    <h1>Five homepage directions for Set Right Homes.</h1>
-    <p>Same content and same real photography in all five, so you are comparing design and not copy. Every one is a working homepage: real pictures at full size, working FAQ, working form, mobile layout and motion. Direction 01 follows the Mesic Contracting section order you sent.</p>
+<div class="wrap">
+<header>
+  <div class="hbar">
+    <div class="mk">SR</div>
+    <div class="t"><b>SET RIGHT HOMES LLC</b><span class="mono">Site prep, utilities and home setting, Arizona</span></div>
+  </div>
+  <h1>Five homepages, five <em>looks.</em></h1>
+  <div class="lead">
+    <p>Every one uses the <b>same content and the same photographs</b>, so what you are comparing is design and nothing else. Each card below is a live, scrollable copy of that homepage. Click one to scroll it in place, or open it full screen. <b>Direction 01 follows the section order of the Mesic Contracting site you sent.</b></p>
+    <div class="toolbar">
+      <div class="seg" id="seg">
+        <button class="on" data-mode="desktop">Desktop</button>
+        <button data-mode="mobile">Mobile</button>
+      </div>
+    </div>
   </div>
 </header>
 
-<div class="bar">
-  <div class="wrap bar-in">
-    <div class="tabs" role="tablist" aria-label="Design directions" id="tabs"></div>
-    <div class="spacer"></div>
-    <div class="seg" role="group" aria-label="Preview size">
-      <button type="button" data-size="desktop" aria-pressed="true">Desktop</button>
-      <button type="button" data-size="phone" aria-pressed="false">Phone</button>
+<div class="cards" id="cards">
+
+  <article class="card">
+    <div class="card-hd">
+      <span class="no">01</span>
+      <h2>Ground</h2>
+      <a class="open" href="01-ground/index.html" target="_blank" rel="noopener">Open full screen &#8599;</a>
     </div>
-    <a class="open" id="open" href="01-ground/index.html" target="_blank" rel="noopener">Open full page</a>
-  </div>
+    <div class="stage desktop" data-src="01-ground/index.html">
+      <div class="loading"><span>Loading preview&#8230;</span></div>
+      <div class="holder"></div>
+      <div class="veil"><span>Click to interact</span></div>
+    </div>
+    <div class="card-bd">
+      <p><b>The Mesic layout, done properly.</b> Same section order as the site you sent, rebuilt so the photographs carry it instead of icons. A solid plane crosses in front of the picture and the figure plate straddles the seam, so the page physically stacks rather than sitting flat. Calmest of the five and the easiest to read on a phone.</p>
+      <div class="chips">
+        <span class="chip on">Ice blue and white</span><span class="chip">Schibsted Grotesk</span>
+        <span class="chip">Crossing planes</span><span class="chip">Photos bleed off the edge</span><span class="chip">Square corners</span>
+      </div>
+    </div>
+  </article>
+
+  <article class="card">
+    <div class="card-hd">
+      <span class="no">02</span>
+      <h2>Site</h2>
+      <a class="open" href="02-site/index.html" target="_blank" rel="noopener">Open full screen &#8599;</a>
+    </div>
+    <div class="stage desktop" data-src="02-site/index.html">
+      <div class="loading"><span>Loading preview&#8230;</span></div>
+      <div class="holder"></div>
+      <div class="veil"><span>Click to interact</span></div>
+    </div>
+    <div class="card-bd">
+      <p><b>Dark and cinematic.</b> Full screen photographs with nothing boxed on top of them, and one white card that lifts off the black and hangs across the section edge. Very few elements, very large pictures, a long quiet scroll. From the black and red flyer, with the red swapped for electric blue.</p>
+      <div class="chips">
+        <span class="chip on">Near black</span><span class="chip">Big Shoulders Display</span>
+        <span class="chip">Three depth planes</span><span class="chip">Full bleed chapters</span><span class="chip">Sparsest</span>
+      </div>
+    </div>
+  </article>
+
+  <article class="card">
+    <div class="card-hd">
+      <span class="no">03</span>
+      <h2>Poster</h2>
+      <a class="open" href="03-poster/index.html" target="_blank" rel="noopener">Open full screen &#8599;</a>
+    </div>
+    <div class="stage desktop" data-src="03-poster/index.html">
+      <div class="loading"><span>Loading preview&#8230;</span></div>
+      <div class="holder"></div>
+      <div class="veil"><span>Click to interact</span></div>
+    </div>
+    <div class="card-bd">
+      <p><b>Print, not web.</b> Every picture is a core sitting inside a coloured tray, shifted so a band of cobalt shows on two sides the way a misregistered print does. The inner corner radius is cut smaller than the outer so the curves stay concentric. Most colour of the five and the most obviously designed.</p>
+      <div class="chips">
+        <span class="chip on">Cobalt on ice</span><span class="chip">Bricolage Grotesque</span>
+        <span class="chip">Offset trays</span><span class="chip">Concentric radii</span><span class="chip">Asymmetric grid</span>
+      </div>
+    </div>
+  </article>
+
+  <article class="card">
+    <div class="card-hd">
+      <span class="no">04</span>
+      <h2>Plate</h2>
+      <a class="open" href="04-plate/index.html" target="_blank" rel="noopener">Open full screen &#8599;</a>
+    </div>
+    <div class="stage desktop" data-src="04-plate/index.html">
+      <div class="loading"><span>Loading preview&#8230;</span></div>
+      <div class="holder"></div>
+      <div class="veil"><span>Click to interact</span></div>
+    </div>
+    <div class="card-bd">
+      <p><b>Machined.</b> Steel plates with a lit top edge and a dark bottom edge so everything reads as bevelled, bolt heads in the corners, and recessed panels that rise when you point at them. A hard diagonal cuts between the dark band and the blue field. Densest of the five and the one that reads as a working trade rather than a brochure.</p>
+      <div class="chips">
+        <span class="chip on">Steel and royal blue</span><span class="chip">Saira Condensed</span>
+        <span class="chip">Bevel and bolts</span><span class="chip">Diagonal shear</span><span class="chip">Densest</span>
+      </div>
+    </div>
+  </article>
+
+  <article class="card">
+    <div class="card-hd">
+      <span class="no">05</span>
+      <h2>Burst</h2>
+      <a class="open" href="05-burst/index.html" target="_blank" rel="noopener">Open full screen &#8599;</a>
+    </div>
+    <div class="stage desktop" data-src="05-burst/index.html">
+      <div class="loading"><span>Loading preview&#8230;</span></div>
+      <div class="holder"></div>
+      <div class="veil"><span>Click to interact</span></div>
+    </div>
+    <div class="card-bd">
+      <p><b>The loud one.</b> A ray burst sits behind the headline and laps up over the bottom edge of the picture, so the pattern is a real layer rather than wallpaper. Every plate carries a hard printed offset, mirrored left and right about the centre. Friendliest of the five and the one to pick if this will run as an ad landing page.</p>
+      <div class="chips">
+        <span class="chip on">Blue on ice white</span><span class="chip">Archivo Black</span>
+        <span class="chip">Ray field laps content</span><span class="chip">Hard printed offsets</span><span class="chip">Loudest</span>
+      </div>
+    </div>
+  </article>
+
 </div>
 
-<main class="stage">
-  <div class="wrap">
-    <div class="meta">
-      <h2 id="d-name">01. Ground</h2>
-      <p class="note" id="d-note"></p>
-    </div>
-    <div class="tags" id="d-tags"></div>
-    <div class="viewport" id="viewport">
-      <iframe id="frame" src="01-ground/index.html" title="Design preview" loading="lazy"></iframe>
-    </div>
-    <div class="grid" id="minis"></div>
+<section class="matrix">
+  <h3>What actually differs</h3>
+  <span class="mono">Same words, same pictures. <b>Everything in this table is the design.</b></span>
+  <div class="scrollx">
+    <table class="tbl">
+      <thead>
+        <tr><th>&nbsp;</th><th>01 Ground</th><th>02 Site</th><th>03 Poster</th><th>04 Plate</th><th>05 Burst</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Ground</td><td>Ice blue, light</td><td>Near black</td><td>Ice, cobalt planes</td><td>Steel, dark</td><td>Ice white</td></tr>
+        <tr><td>Display face</td><td>Schibsted Grotesk</td><td>Big Shoulders Display</td><td>Bricolage Grotesque</td><td>Saira Condensed</td><td>Archivo Black</td></tr>
+        <tr><td>Depth device</td><td>Crossing planes</td><td>Three planes, plate hung across the seam</td><td>Offset tray and core</td><td>Machined bevel, bolts, recess</td><td>Ray field lapping over content</td></tr>
+        <tr><td>Corners</td><td>Square</td><td>Square</td><td>Tray 26, core 14</td><td>Square</td><td>Square, pill buttons</td></tr>
+        <tr><td>Hero</td><td>Plane crossing a bleeding photo</td><td>Full viewport photograph</td><td>Photo in an offset tray</td><td>Dark band cut by a diagonal</td><td>Ray burst behind the type</td></tr>
+        <tr><td>Services shown as</td><td>Full width bands</td><td>Full bleed chapters</td><td>Asymmetric tray modules</td><td>Recessed photo panels</td><td>Three offset plates</td></tr>
+        <tr><td>Density</td><td>Medium</td><td>Sparse</td><td>Medium</td><td>Dense</td><td>Medium loud</td></tr>
+        <tr><td>Best for</td><td>Matching the reference site</td><td>Looking expensive</td><td>Standing out in a feed</td><td>Reading as a real trade</td><td>Paid ad landing page</td></tr>
+      </tbody>
+    </table>
   </div>
-</main>
+</section>
 
-<footer class="foot">
-  <div class="wrap">
-    <b>Before this goes to the client:</b> every phone number, address, licence number and
-    statistic is a placeholder. Search any file for <b>SWAP:</b> to find them. The photographs
-    are real and licensed for commercial use, but they are stand ins for Set Right Homes' own
-    job photos. See <a href="PHOTO-CREDITS.md">PHOTO-CREDITS.md</a>.
+<div class="note">
+  <h4>Before this goes to the client</h4>
+  <p><b>Every phone number, address, licence number and figure is a placeholder.</b> Search any file for <b>SWAP:</b> to find them. The phone is a 555 number so it cannot dial a real person, and the reviews are three invented customers. Direction 05 also advertises a free lot walk, so confirm that is an offer the business actually makes.</p>
+  <p><b>The photographs are real and licensed for commercial use</b>, self hosted, nothing hotlinked. They are still stand ins for Set Right Homes' own job photos. Several are CC BY or CC BY-SA, which means the photographer has to be credited on the site if you keep them. Using the client's own photos removes that entirely. Licences are listed in <a href="PHOTO-CREDITS.md">PHOTO-CREDITS.md</a>.</p>
+  <p><b>The forms do not send anywhere yet.</b> All five validate and show a success state, but they need pointing at an inbox before launch.</p>
+</div>
+
+<footer>
+  <span class="mono">Set Right Homes &#183; five homepage directions</span>
+  <div class="fl">
+    <a class="mono" href="README.md">Readme</a>
+    <a class="mono" href="PHOTO-CREDITS.md">Photo credits</a>
   </div>
 </footer>
+</div>
 
 <script>
-var DESIGNS = [
-  { id:'01-ground', label:'01. Ground', name:'01. Ground',
-    note:'The Mesic Contracting section order, rebuilt as a light editorial page where the photography does the work. Ice blue and white.',
-    tags:['Follows Mesic order','Crossing planes','Photos bleed off the edge','Schibsted Grotesk'],
-    sw:['#EDF2F9','#1B4FD8','#0A1728','#C9D6E8'] },
-  { id:'02-site', label:'02. Site', name:'02. Site',
-    note:'From the black and red agency flyer. Near black, one electric blue accent, full bleed photograph chapters, and the single white card the flyer is built around.',
-    tags:['Darkest and most cinematic','Three depth planes','Lowest density','Big Shoulders Display'],
-    sw:['#070C14','#2E6BFF','#FFFFFF','#0C1421'] },
-  { id:'03-poster', label:'03. Poster', name:'03. Poster',
-    note:'From the blue and orange construction kit, recoloured to cobalt on ice. Every picture is a core inside a tray, offset so a band of colour shows like a misregistered print.',
-    tags:['Most colour','Nested trays','Concentric radii','Bricolage Grotesque'],
-    sw:['#F2F5FC','#1B3FE0','#080F3A','#DCE5FB'] },
-  { id:'04-plate', label:'04. Plate', name:'04. Plate',
-    note:'From the red diagonal flyer, field recoloured to royal blue. Steel plates with lit top edges, bolt heads, recessed panels, and the hard angled cut between sections.',
-    tags:['Most industrial','Machined bevel and bolts','All square corners','Saira Condensed'],
-    sw:['#131A24','#0D2E8C','#5B9BFF','#E9EEF7'] },
-  { id:'05-burst', label:'05. Burst', name:'05. Burst',
-    note:'From the orange sunburst posters, recoloured to blue. The ray field is a real layer that sits behind the headline and laps up over the picture, with hard printed offsets.',
-    tags:['Loudest','Ray field laps the content','Hard offset plates','Archivo Black'],
-    sw:['#F4F7FD','#1B3FE0','#080E33','#79A8FF'] }
-];
+/* Live previews.
+   Each stage holds a full-size iframe scaled down with a transform, so what you
+   see is the real page at a real viewport width, not a screenshot. The veil
+   swallows the first click so scrolling the gallery never scrolls a preview. */
+var DESKTOP=1440, MOBILE=390;
+var stages=[].slice.call(document.querySelectorAll('.stage'));
+var mode='desktop';
 
-var frame=document.getElementById('frame'), viewport=document.getElementById('viewport'),
-    openLink=document.getElementById('open'), tabs=document.getElementById('tabs'), minis=document.getElementById('minis');
-
-DESIGNS.forEach(function(d,i){
-  var b=document.createElement('button');
-  b.className='tab'; b.type='button'; b.setAttribute('role','tab');
-  b.textContent=d.label; b.setAttribute('aria-selected', i===0?'true':'false');
-  b.addEventListener('click',function(){ select(i); });
-  tabs.appendChild(b);
-
-  var m=document.createElement('button');
-  m.className='mini'; m.type='button';
-  m.innerHTML='<div class="sw">'+d.sw.map(function(c){return '<span style="background:'+c+'"></span>';}).join('')+
-    '</div><div class="in"><h3>'+d.name+'</h3><p>'+d.tags.slice(0,2).join('. ')+'.</p></div>';
-  m.addEventListener('click',function(){
-    select(i);
-    document.querySelector('.stage').scrollIntoView({behavior:'smooth',block:'start'});
-  });
-  minis.appendChild(m);
-});
-
-function select(i){
-  var d=DESIGNS[i];
-  frame.src=d.id+'/index.html';
-  openLink.href=d.id+'/index.html';
-  document.getElementById('d-name').textContent=d.name;
-  document.getElementById('d-note').textContent=d.note;
-  document.getElementById('d-tags').innerHTML=d.tags.map(function(t){return '<span class="pill">'+t+'</span>';}).join('');
-  Array.prototype.forEach.call(tabs.children,function(b,n){ b.setAttribute('aria-selected', n===i?'true':'false'); });
+function build(st){
+  var holder=st.querySelector('.holder');
+  var w=mode==='mobile'?MOBILE:DESKTOP;
+  var h=mode==='mobile'?Math.round(w*16/9):Math.round(w*11/16);
+  var f=holder.querySelector('iframe');
+  if(!f){
+    f=document.createElement('iframe');
+    f.setAttribute('loading','lazy');
+    f.setAttribute('title','Preview');
+    f.src=st.dataset.src;
+    f.addEventListener('load',function(){var l=st.querySelector('.loading');if(l)l.style.display='none'});
+    holder.appendChild(f);
+  }
+  f.style.width=w+'px';
+  f.style.height=h+'px';
+  fit(st);
+}
+function fit(st){
+  var holder=st.querySelector('.holder');
+  var f=holder.querySelector('iframe');
+  if(!f)return;
+  var w=parseInt(f.style.width,10);
+  var scale=st.clientWidth/w;
+  if(mode==='mobile'){
+    /* fit by height so the phone-width frame sits centred in the stage */
+    scale=Math.min(st.clientHeight/parseInt(f.style.height,10),st.clientWidth/w);
+  }
+  holder.style.transform='scale('+scale+')';
+  holder.style.width=w+'px';
+  holder.style.height=parseInt(f.style.height,10)+'px';
 }
 
-document.querySelectorAll('.seg button').forEach(function(b){
-  b.addEventListener('click',function(){
-    document.querySelectorAll('.seg button').forEach(function(o){ o.setAttribute('aria-pressed','false'); });
-    b.setAttribute('aria-pressed','true');
-    viewport.classList.toggle('phone', b.dataset.size==='phone');
+stages.forEach(function(st){
+  st.querySelector('.veil').addEventListener('click',function(){st.classList.add('live')});
+});
+
+/* only build a preview once its card is near the viewport, because five full pages
+   loading at once on a cold cache makes the gallery itself feel broken */
+var pio=new IntersectionObserver(function(es,o){
+  es.forEach(function(e){if(e.isIntersecting){build(e.target);o.unobserve(e.target)}});
+},{rootMargin:'300px'});
+stages.forEach(function(st){pio.observe(st)});
+
+document.getElementById('seg').addEventListener('click',function(e){
+  var b=e.target.closest('button');if(!b)return;
+  mode=b.dataset.mode;
+  this.querySelectorAll('button').forEach(function(x){x.classList.toggle('on',x===b)});
+  stages.forEach(function(st){
+    st.classList.remove('live');
+    st.classList.toggle('mobile',mode==='mobile');
+    st.classList.toggle('desktop',mode==='desktop');
+    if(st.querySelector('iframe'))build(st);
   });
 });
-select(0);
+
+addEventListener('resize',function(){stages.forEach(fit)});
+
+var cio=new IntersectionObserver(function(es){es.forEach(function(e){
+  if(e.isIntersecting){e.target.classList.add('is-in');cio.unobserve(e.target)}
+})},{threshold:.05});
+document.querySelectorAll('.card').forEach(function(c){cio.observe(c)});
 </script>
 </body>
 </html>
