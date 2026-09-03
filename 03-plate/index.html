@@ -338,16 +338,22 @@ h1,h2,h3,h4{margin:0;font-family:'Saira Condensed','Saira',sans-serif;font-weigh
 }
 .grain{
   position:fixed;inset:0;z-index:75;pointer-events:none;
-  opacity:.10;background-image:var(--grain);background-size:200px 200px;
+  opacity:.07;background-image:var(--grain);background-size:200px 200px;
 }
+/* ---- RHYTHM ----
+   Grain is the mill finish and covers everything. The BRUSH is a machined
+   face, and you machine the faces that matter, not the whole shop floor.
+   So the grounds are plain steel and the brush is kept for the plates
+   themselves plus two sections. The blue field stays knurled, because
+   that is the page's one coloured-and-textured ground. */
 body{
   background-color:var(--steel);
-  background-image:var(--sweep),var(--brush);
-  background-attachment:fixed,scroll;
+  background-image:linear-gradient(180deg,rgba(255,255,255,.035),transparent 40%);
+  background-attachment:fixed;
 }
-/* the deeper bands are the same alloy, one shade down and brushed harder */
-.sec[style*="steel-3"],.foot,.hero{
-  background-color:var(--steel-3);
+.sec[style*="steel-3"],.foot,.hero{background-color:var(--steel-3);background-image:none}
+/* .milled: a brushed face, used on two sections only */
+.milled{
   background-image:
     linear-gradient(90deg,rgba(255,255,255,.05),rgba(255,255,255,.008) 26%,rgba(255,255,255,.06) 52%,rgba(255,255,255,.008) 78%,rgba(255,255,255,.045)),
     repeating-linear-gradient(180deg,
@@ -371,11 +377,7 @@ body{
   background-image:var(--sweep),var(--brush);
 }
 .plate figcaption,.rev .core{background-image:var(--brush)}
-.hero::after{
-  background-image:
-    linear-gradient(96deg,rgba(12,17,25,.95) 26%,rgba(12,17,25,.5) 62%,rgba(13,46,140,.34)),
-    repeating-linear-gradient(180deg,rgba(255,255,255,.03) 0 1px,transparent 1px 4px);
-}
+/* the hero is a photographic ground: scrim only, no striations over the picture */
 
 /* ============================================================
    ARMOURED GLASS
@@ -627,7 +629,7 @@ body{
 </section>
 
 <!-- ============ STATEMENT ============ -->
-<section class="sec" style="background:var(--steel-3);border-block:1px solid var(--line)">
+<section class="sec milled" style="background:var(--steel-3);border-block:1px solid var(--line)">
   <div class="wrap">
     <p class="say rv">A manufactured home rides on a steel frame, moves with the ground, and is inspected against <b>HUD rules, not framing rules.</b></p>
     <div class="notes">
@@ -678,7 +680,7 @@ body{
 </section>
 
 <!-- ============ AREA ============ -->
-<section class="sec" id="area">
+<section class="sec milled" id="area">
   <div class="wrap">
     <div class="rv">
       <h2 style="font-size:clamp(30px,4.4vw,52px);max-width:14ch">Where we take the equipment.</h2>

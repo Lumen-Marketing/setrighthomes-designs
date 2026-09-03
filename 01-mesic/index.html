@@ -392,31 +392,38 @@ h1,h2,h3,h4{margin:0;font-weight:800;line-height:1.15;letter-spacing:-.028em}
 }
 .grain{
   position:fixed;inset:0;z-index:70;pointer-events:none;
-  opacity:.085;mix-blend-mode:multiply;
+  opacity:.06;mix-blend-mode:multiply;
   background-image:var(--grain);background-size:180px 180px;
 }
-/* the drafting sheet: 24px minor rule, 144px major rule, continuous */
-body{
+/* ---- RHYTHM ----
+   Grain is the paper and sits on every page. The DRAWING is the ink, and
+   you do not draw on every square inch of a sheet. So the grounds are
+   plain by default and the drafting rules appear on two sections only,
+   with plain ground either side of each.
+
+   .ruled: the drafting sheet, 24px minor rule and 144px major */
+body{background-color:var(--white)}
+.ruled{
   background-color:var(--white);
   background-image:
     linear-gradient(rgba(21,64,128,.075) 1px,transparent 1px),
     linear-gradient(90deg,rgba(21,64,128,.075) 1px,transparent 1px),
     linear-gradient(rgba(21,64,128,.16) 1.3px,transparent 1.3px),
-    linear-gradient(90deg,rgba(21,64,128,.16) 1.3px,transparent 1.3px);
-  background-size:24px 24px,24px 24px,144px 144px,144px 144px;
+    linear-gradient(90deg,rgba(21,64,128,.16) 1.3px,transparent 1.3px),
+    radial-gradient(ellipse 1200px 560px at 82% -12%,rgba(255,255,255,.85),transparent 64%);
+  background-size:24px 24px,24px 24px,144px 144px,144px 144px,100% 100%;
 }
-/* ice is now a translucent wash, so the grid under it stays continuous */
-/* ice carries survey contours: concentric rings like a grading plan,
-   over a wash thin enough that the drafting rules still read through */
-.ice{
-  background-color:rgba(207,226,247,.70);
+/* ice is a plain ground: it is the rest between the drawn sections */
+.ice{background-color:var(--ice)}
+/* .plotted: survey contours on ice, used where the page talks about ground */
+.plotted{
+  background-color:var(--ice);
   background-image:
     repeating-radial-gradient(ellipse 820px 460px at 90% 4%,
-      transparent 0 32px,rgba(15,46,95,.075) 32px 33.6px),
+      transparent 0 32px,rgba(15,46,95,.08) 32px 33.6px),
     repeating-radial-gradient(ellipse 640px 380px at 2% 96%,
-      transparent 0 27px,rgba(15,46,95,.06) 27px 28.4px),
-    radial-gradient(ellipse 1100px 540px at 84% -10%,rgba(255,255,255,.7),transparent 66%),
-    radial-gradient(ellipse 780px 460px at 0% 108%,rgba(29,111,224,.12),transparent 72%);
+      transparent 0 27px,rgba(15,46,95,.062) 27px 28.4px),
+    radial-gradient(ellipse 1100px 540px at 84% -10%,rgba(255,255,255,.8),transparent 66%);
 }
 /* navy: raked hatch + aggregate + two lights */
 .navypanel,.cta{
@@ -431,11 +438,7 @@ body{
 }
 .foot{
   background-color:var(--navy-3);
-  background-image:
-    radial-gradient(ellipse 1000px 340px at 16% -40%,rgba(29,111,224,.24),transparent 66%),
-    var(--hatch),var(--grain);
-  background-size:auto,auto,180px 180px;
-  background-blend-mode:normal,normal,soft-light;
+  background-image:radial-gradient(ellipse 1000px 340px at 16% -40%,rgba(29,111,224,.20),transparent 66%);
 }
 .util{background-color:var(--navy-3);background-image:var(--hatch)}
 .ticker{
@@ -453,12 +456,7 @@ body{
   background-size:auto,auto,180px 180px;
   background-blend-mode:normal,normal,soft-light;
 }
-/* the hero scrim picks up the same rake so the photo sits on the material */
-.hero::after{
-  background-image:
-    linear-gradient(96deg,rgba(10,25,52,.9) 4%,rgba(10,25,52,.62) 42%,rgba(10,25,52,.24) 72%,rgba(10,25,52,.42)),
-    repeating-linear-gradient(58deg,rgba(255,255,255,.028) 0 1px,transparent 1px 11px);
-}
+/* the hero is a photographic ground, so nothing is laid over it */
 
 /* ============================================================
    LIQUID GLASS, EXTENDED ACROSS THE PAGE
@@ -859,7 +857,7 @@ body{
 </section>
 
 <!-- ============ CORE SERVICES ============ -->
-<section class="sec" id="services">
+<section class="sec ruled" id="services">
   <div class="wrap">
     <h2 class="sh rv">Core Services</h2>
     <div class="cards">
@@ -994,7 +992,7 @@ body{
 </section>
 
 <!-- ============ SERVICE AREA ============ -->
-<section class="sec ice" id="area" style="padding-top:0">
+<section class="sec plotted" id="area" style="padding-top:0">
   <div class="wrap area">
     <div class="rv">
       <h2 class="sh">Serving Greater Phoenix &amp; Statewide</h2>

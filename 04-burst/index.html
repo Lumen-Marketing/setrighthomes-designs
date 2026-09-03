@@ -290,24 +290,38 @@ h1,h2,h3,h4{margin:0;font-family:'Archivo Black','Archivo',sans-serif;font-weigh
   opacity:.085;mix-blend-mode:multiply;
   background-image:var(--grain);background-size:190px 190px;
 }
-/* paper stock: a halftone screen laid on the ground, plus its
-   misregistered second pull two pixels off */
-body{
-  background-color:var(--paper);
+/* ---- RHYTHM ----
+   Grain is the paper stock and covers the whole page. HALFTONE is the ink,
+   and you do not print ink on every square inch: it goes on the hero, the
+   blue plane, the service area and the contact band, with plain paper
+   either side of each. */
+body{background-color:var(--paper)}
+.white{background-color:var(--white)}
+
+/* .screened: the ink. Two dot layers at the same pitch, the second offset
+   half a tile, which is what puts the screen on a 45 degree angle. */
+.screened{
   background-image:
     radial-gradient(circle,rgba(27,63,224,.15) 0 1.5px,transparent 1.9px),
     radial-gradient(circle,rgba(8,14,51,.075) 0 1.3px,transparent 1.7px);
   background-size:9px 9px,9px 9px;
   background-position:0 0,4.5px 4.5px;
 }
-/* the white plates are a lighter pull of the same screen */
-.white{
+.white.screened{
   background-color:var(--white);
   background-image:
-    radial-gradient(circle,rgba(27,63,224,.10) 0 1.4px,transparent 1.8px),
-    radial-gradient(circle,rgba(8,14,51,.05) 0 1.2px,transparent 1.6px);
+    radial-gradient(circle,rgba(27,63,224,.11) 0 1.4px,transparent 1.8px),
+    radial-gradient(circle,rgba(8,14,51,.055) 0 1.2px,transparent 1.6px);
   background-size:10px 10px,10px 10px;
   background-position:0 0,5px 5px;
+}
+.hero{
+  background-color:var(--paper);
+  background-image:
+    radial-gradient(circle,rgba(27,63,224,.15) 0 1.5px,transparent 1.9px),
+    radial-gradient(circle,rgba(8,14,51,.075) 0 1.3px,transparent 1.7px);
+  background-size:9px 9px,9px 9px;
+  background-position:0 0,4.5px 4.5px;
 }
 /* the blue plane: white ink screened over the rays, heavy at the top
    and running out toward the bottom, the way a gradient screen prints */
@@ -327,14 +341,7 @@ body{
   background-size:10px 10px,10px 10px;
   background-position:0 0,5px 5px;
 }
-.foot{
-  background-color:var(--ice);
-  background-image:
-    radial-gradient(circle,rgba(27,63,224,.14) 0 1.5px,transparent 1.9px),
-    radial-gradient(circle,rgba(8,14,51,.06) 0 1.2px,transparent 1.6px);
-  background-size:9px 9px,9px 9px;
-  background-position:0 0,4.5px 4.5px;
-}
+.foot{background-color:var(--ice)}
 /* a solid ink block laid over the screen, so the dots stop at its edge */
 .plate{background-color:var(--white);background-image:none}
 
@@ -453,6 +460,51 @@ body{
   .nbox,.rev,.fbox,.acard{backdrop-filter:none;-webkit-backdrop-filter:none;
     background-image:linear-gradient(152deg,rgba(255,255,255,.97),rgba(240,245,255,.97))}
   .cinfo{backdrop-filter:none;-webkit-backdrop-filter:none}
+}
+
+
+/* ---- the third ground: a photograph ----
+   This direction had plain paper and screened paper but no photographic
+   ground, so the rhythm only had two gears. One full bleed band, kept
+   clean: a scrim for legibility and nothing patterned laid over the
+   picture, because a photograph is a ground in its own right. */
+.band{
+  position:relative;overflow:hidden;
+  min-height:clamp(340px,42vw,540px);display:flex;align-items:flex-end;
+  border-block:2px solid var(--ink);
+}
+.band>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 58%;z-index:0}
+.band::after{content:"";position:absolute;inset:0;z-index:1;
+  background:linear-gradient(96deg,rgba(8,14,51,.86) 6%,rgba(8,14,51,.5) 44%,rgba(8,14,51,.14) 76%)}
+.band-in{position:relative;z-index:2;width:100%;padding-block:clamp(34px,5vw,60px);
+  display:grid;grid-template-columns:minmax(0,1fr) auto;gap:clamp(22px,4vw,54px);align-items:end}
+.band h2{color:#fff;font-size:clamp(26px,3.8vw,50px);max-width:15ch}
+.band p{color:rgba(255,255,255,.84);margin-top:14px;max-width:46ch;font-size:16px}
+/* one more acetate sheet, this time over a photograph rather than the print */
+.bcard{
+  width:min(300px,34vw);padding:18px 20px 16px;border:2px solid #fff;
+  background-image:linear-gradient(152deg,rgba(255,255,255,.24),rgba(255,255,255,.08));
+  backdrop-filter:blur(16px) saturate(160%);
+  -webkit-backdrop-filter:blur(16px) saturate(160%);
+  box-shadow:inset 0 1.5px 0 rgba(255,255,255,.5),var(--off) var(--off) 0 var(--blue);
+}
+.bcard .k{font-family:'Archivo Black',sans-serif;font-size:11px;letter-spacing:.16em;
+  text-transform:uppercase;color:#fff;opacity:.72}
+.bcard .r{display:flex;justify-content:space-between;gap:12px;padding:8px 0;
+  border-bottom:1px solid rgba(255,255,255,.28);font-size:14px;color:rgba(255,255,255,.86);font-weight:600}
+.bcard .r:first-of-type{margin-top:12px;border-top:2px solid #fff}
+.bcard .r:last-of-type{border-bottom:0}
+.bcard .r b{font-family:'Archivo Black',sans-serif;font-size:15px;color:#fff;letter-spacing:-.03em}
+@media (max-width:860px){
+  .band-in{grid-template-columns:1fr}
+  .bcard{width:100%}
+  .band::after{background:linear-gradient(180deg,rgba(8,14,51,.5),rgba(8,14,51,.9))}
+}
+@media (prefers-reduced-transparency: reduce){
+  .bcard{background-image:none;background-color:rgba(8,14,51,.9);backdrop-filter:none;-webkit-backdrop-filter:none}
+}
+@media (max-width:760px){
+  .bcard{backdrop-filter:none;-webkit-backdrop-filter:none;background-image:none;background-color:rgba(8,14,51,.82)}
 }
 
 /* ---------- responsive ---------- */
@@ -620,6 +672,26 @@ body{
   </div>
 </section>
 
+
+<!-- ============ PHOTOGRAPHIC BAND ============ -->
+<section class="band">
+  <img src="../assets/earthworks-wide.jpg" width="2000" height="1360" loading="lazy"
+       alt="A wide earthworks site with machines working cut and fill">
+  <div class="wrap band-in">
+    <div class="rv">
+      <h2>Every home starts as a pile of dirt.</h2>
+      <p>Cut, fill, compact, test. Get that part wrong and it shows up two years later as a door that will not close.</p>
+    </div>
+    <div class="bcard rv">
+      <div class="k">On this lot</div>
+      <!-- SWAP: real figures -->
+      <div class="r"><span>Cut and fill</span><b>1,400 yd&#179;</b></div>
+      <div class="r"><span>Compaction</span><b>95%</b></div>
+      <div class="r"><span>Pad to set</span><b>5 days</b></div>
+    </div>
+  </div>
+</section>
+
 <!-- ============ PROJECTS ============ -->
 <section class="sec white" id="work">
   <div class="wrap">
@@ -654,7 +726,7 @@ body{
 </section>
 
 <!-- ============ AREA ============ -->
-<section class="sec white" id="area">
+<section class="sec white screened" id="area">
   <div class="wrap">
     <div class="rv">
       <h2 style="font-size:clamp(28px,3.8vw,48px);max-width:14ch">Where we take the equipment.</h2>

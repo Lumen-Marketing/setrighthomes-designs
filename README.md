@@ -52,6 +52,39 @@ the page scrolls.
 
 ---
 
+## Rhythm
+
+Texture only reads as texture when something plain sits next to it. The first pass had it
+on every ground, which flattened it back out again. So each page now runs **three kinds of
+ground**, and no two patterned ones sit next to each other:
+
+| Ground | What it is | How often |
+|---|---|---|
+| **Plain** | flat colour, nothing on it | most sections. This is the rest |
+| **Photograph** | a picture is a ground in its own right, so nothing patterned is laid over it | heroes, chapters, contact bands |
+| **Colour + texture** | the page's material at full strength | two or three sections, deliberately placed |
+
+The split that decides it: **grain is the surface, the pattern is the ink.** Grain is the
+paper, the film stock, the mill finish — it belongs everywhere and you should barely notice
+it. The drafting rules, the light shafts, the brushed face and the halftone are marks made
+*on* that surface, and you do not mark every square inch.
+
+Where the ink lands:
+
+- **01 Mesic** drafting rules on Core Services, survey contours on the service area. The
+  navy panels, the review ticker and the blue strip keep their raked hatch, because those
+  are objects on the page rather than the ground under it.
+- **02 Site** raked light shafts on the process rail and the service area. Five sections
+  are photographs. Everything else is flat near black.
+- **03 Plate** the brushed face on the statement band and the service area; the blue field
+  and the contact bar stay knurled. The plates themselves stay milled everywhere, because
+  that is object material, not ground.
+- **04 Burst** halftone on the hero, the blue plane, the service area and the contact band.
+  It also gained a **full bleed photographic band**, which it did not have before, so all
+  three grounds are present.
+
+---
+
 ## Liquid glass
 
 It runs through all four now, not just 01's nav. It is the same physical recipe every

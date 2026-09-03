@@ -290,7 +290,7 @@ h1,h2,h3,h4{
 }
 .grain{
   position:fixed;inset:-6%;z-index:80;pointer-events:none;
-  opacity:.13;background-image:var(--grain);background-size:220px 220px;
+  opacity:.085;background-image:var(--grain);background-size:220px 220px;
   animation:gate 1.1s steps(4,end) infinite;
 }
 @keyframes gate{
@@ -302,7 +302,7 @@ h1,h2,h3,h4{
 }
 .scan{
   position:fixed;inset:0;z-index:79;pointer-events:none;
-  background:repeating-linear-gradient(180deg,rgba(255,255,255,.024) 0 1px,transparent 1px 3px);
+  background:repeating-linear-gradient(180deg,rgba(255,255,255,.012) 0 1px,transparent 1px 3px);
 }
 .vig{
   position:fixed;inset:0;z-index:78;pointer-events:none;
@@ -310,42 +310,38 @@ h1,h2,h3,h4{
 }
 @media (prefers-reduced-motion:reduce){ .grain{animation:none} }
 
+/* ---- RHYTHM ----
+   Grain is the film stock and runs the whole page. The LIGHT SHAFTS are
+   the lighting rig, and a scene is not lit from every angle at once, so
+   they fall on two sections only. Everything else is a plain ground or
+   a photograph, with the two big blue lights left in because that is
+   lighting, not pattern. */
 body{
   background-color:var(--bg);
   background-image:
-    radial-gradient(ellipse 980px 660px at 80% 10%,rgba(46,107,255,.16),transparent 62%),
-    radial-gradient(ellipse 860px 600px at 6% 86%,rgba(46,107,255,.10),transparent 66%),
-    var(--shafts);
-  background-attachment:fixed,fixed,scroll;
+    radial-gradient(ellipse 980px 660px at 80% 10%,rgba(46,107,255,.14),transparent 62%),
+    radial-gradient(ellipse 860px 600px at 6% 86%,rgba(46,107,255,.09),transparent 66%);
+  background-attachment:fixed,fixed;
 }
-/* the deeper bands: same rake, one stop harder, plus a top light */
+/* the deeper bands are plain: just one stop down, with a top light */
 .band{
   background-color:var(--bg-2);
+  background-image:radial-gradient(ellipse 1280px 440px at 50% -12%,rgba(46,107,255,.14),transparent 72%);
+}
+/* .lit: the raked shafts, used on two sections only */
+.lit{
   background-image:
-    radial-gradient(ellipse 1280px 440px at 50% -12%,rgba(46,107,255,.18),transparent 72%),
+    radial-gradient(ellipse 1280px 460px at 50% -12%,rgba(46,107,255,.17),transparent 72%),
     repeating-linear-gradient(104deg,
       rgba(255,255,255,.042) 0 2px, transparent 2px 6px,
       rgba(255,255,255,.018) 6px 7px, transparent 7px 26px);
 }
 .foot{
   background-color:var(--bg-2);
-  background-image:
-    radial-gradient(ellipse 1100px 380px at 14% -40%,rgba(46,107,255,.14),transparent 68%),
-    var(--shafts);
+  background-image:radial-gradient(ellipse 1100px 380px at 14% -40%,rgba(46,107,255,.12),transparent 68%);
 }
-/* the hero and chapter scrims pick up the same rake, so the photographs
-   sit inside the material instead of on top of it */
-.hero::after{
-  background-image:
-    linear-gradient(178deg,rgba(7,12,20,.82) 0%,rgba(7,12,20,.18) 34%,rgba(7,12,20,.72) 74%,rgba(7,12,20,.97) 100%),
-    repeating-linear-gradient(104deg,rgba(255,255,255,.022) 0 2px,transparent 2px 7px);
-}
-.chap.l::after{background-image:
-  linear-gradient(90deg,rgba(7,12,20,.94) 6%,rgba(7,12,20,.58) 46%,rgba(7,12,20,.2)),
-  repeating-linear-gradient(104deg,rgba(255,255,255,.02) 0 2px,transparent 2px 7px)}
-.chap.r::after{background-image:
-  linear-gradient(270deg,rgba(7,12,20,.94) 6%,rgba(7,12,20,.58) 46%,rgba(7,12,20,.2)),
-  repeating-linear-gradient(104deg,rgba(255,255,255,.02) 0 2px,transparent 2px 7px)}
+/* the hero, the chapters and the contact band are photographic grounds:
+   scrim only, nothing patterned laid over the picture */
 
 /* ============================================================
    SMOKED LIQUID GLASS
@@ -670,7 +666,7 @@ body{
 </section>
 
 <!-- ============ PROCESS ============ -->
-<section class="sec band" id="process" style="border-block:1px solid var(--line)">
+<section class="sec band lit" id="process" style="border-block:1px solid var(--line)">
   <div class="wrap">
     <h2 class="rv" style="font-size:clamp(40px,6.4vw,92px);max-width:12ch">Raw lot to keys, in five moves</h2>
     <div class="rail">
@@ -720,7 +716,7 @@ body{
 </section>
 
 <!-- ============ AREA ============ -->
-<section class="sec" id="area">
+<section class="sec lit" id="area">
   <div class="wrap">
     <h2 class="rv" style="font-size:clamp(36px,5.4vw,74px);max-width:13ch">Where we take the equipment</h2>
     <p class="lede rv" style="margin-top:18px">West Valley is home base. We run out to the rural lots most crews will not drive to, and the haul is priced up front.</p>
