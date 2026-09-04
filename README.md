@@ -228,11 +228,16 @@ Three things were wrong and one was missing.
 
 ### The glass was a tinted rectangle
 
-`backdrop-filter` on its own is a blur, not a material. What makes a pane read as glass
-is the **edge**: real glass is thick, so the rim bends far more light than the middle.
-That is now four directional inner glows, one per side, plus a bright top-left catch
-line and a dim bottom-right one. Underneath them sits a faint cool/warm split across the
-rim, which is the bit of chromatic aberration the eye reads as thickness.
+`backdrop-filter` on its own is a blur, not a material. The first attempt at fixing it
+overcorrected: four directional inner glows, one per side, plus a 1px border and rim
+lines down both edges. That is not thickness, that is **a white frame drawn round a
+box**, and it was the next thing to get flagged.
+
+Glass is lit from ONE direction. So the pane now has no border at all, no side or bottom
+glows, and only a hairline catch along the top edge with a soft falloff under it. A
+shallow sheen sits across the top third, inset from both sides so it can never close
+into an outline. Everything else is the backdrop coming through, at `saturate(230%)` so
+the colour of whatever is behind survives the tint.
 
 The second missing piece is that light on glass **moves**. A specular hot spot now
 follows the pointer, driven by two custom properties written from one passive
@@ -276,5 +281,5 @@ read as one repeated block:
 The empty ground both of those sections left underneath got filled: a photograph under
 the estimate checklist, and a sticky short column beside the long about list.
 
-**Shape rule, updated:** everything square, buttons 4px, glass 20px. That is the one
+**Shape rule, updated:** everything square, buttons 4px, glass 26px. That is the one
 documented exception and it applies to nothing else.
