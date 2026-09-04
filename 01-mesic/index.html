@@ -605,6 +605,33 @@ body{background-color:var(--white)}
   .pbcard{width:100%}
 }
 
+/* ---- the proof band: a dark ground so the white panel actually reads ----
+   The panel and the ice under it were within a few percent of each other in
+   value, so the card had nothing to lift off. Inverting the pair is a stronger
+   move than restyling the card: the ground goes navy and the white panel keeps
+   its contents, so the before and after photographs gain contrast rather than
+   losing it. It also reads as a different idea from the navy panel further
+   down, which is a dark card on a light ground rather than the reverse. */
+.navyfield{
+  background-color:var(--navy);
+  background-image:
+    radial-gradient(ellipse 1250px 640px at 84% -16%,rgba(29,111,224,.55),transparent 60%),
+    radial-gradient(ellipse 900px 520px at 0% 112%,rgba(10,31,66,.65),transparent 66%),
+    var(--hatch);
+}
+/* the glass fill is tuned for a light ground. Over navy it dropped the panel
+   to a mid blue grey and took the body copy under the contrast floor with it,
+   so on this ground the fill goes near opaque. The blur and the lit edge stay,
+   so it still reads as glass at the rim. */
+.navyfield .panel{
+  background:linear-gradient(150deg,rgba(255,255,255,.975),rgba(255,255,255,.94) 48%,rgba(232,241,254,.96));
+  border-color:rgba(255,255,255,.62);
+  box-shadow:
+    inset 0 1px 0 #fff,
+    inset 0 -1px 0 rgba(255,255,255,.6),
+    0 40px 90px -44px rgba(4,12,30,.85);
+}
+
 /* ---- the blue field ---- */
 .blueband{
   background-color:var(--navy-2);
@@ -853,7 +880,7 @@ body{background-color:var(--white)}
 </section>
 
 <!-- ============ BEFORE / AFTER PROOF ============ -->
-<section class="sec ice" style="padding-top:0">
+<section class="sec navyfield">
   <div class="wrap">
     <div class="panel rv">
       <span class="badge">Real project proof</span>

@@ -132,6 +132,29 @@ h1,h2,h3,h4{
 
 /* ---------- plane three: a plate hung across the boundary ---------- */
 .hang{position:relative;z-index:5;margin-top:clamp(-110px,-9vw,-70px)}
+/* The white plate is 640px wide and was alone on the row, which left the whole
+   right half of a wide screen as dead ground. The plate is the point of this
+   section, so it keeps its size and position; a second plate goes beside it
+   instead, carrying a picture. Two plates hung across the same boundary reads
+   as a composition. Below 1000px the picture drops away rather than shrinking
+   to a strip. */
+.hang>.wrap{display:grid;grid-template-columns:minmax(0,640px) minmax(0,1fr);
+  gap:clamp(14px,2vw,24px);align-items:stretch}
+.hang .wshot{position:relative;overflow:hidden;background:#000;min-height:100%}
+.hang .wshot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  transition:transform 1.1s cubic-bezier(.16,1,.3,1)}
+.hang .wshot:hover img{transform:scale(1.045)}
+.hang .wshot figcaption{position:absolute;left:0;right:0;bottom:0;z-index:2;
+  padding:clamp(18px,2.4vw,28px);
+  background:linear-gradient(180deg,rgba(7,12,20,0),rgba(7,12,20,.9));
+  font-size:14px;color:var(--fg-2)}
+.hang .wshot figcaption b{display:block;font-family:'Big Shoulders Display',sans-serif;
+  font-size:clamp(22px,2.4vw,30px);font-weight:800;text-transform:uppercase;
+  letter-spacing:.03em;color:#fff;margin-bottom:3px}
+@media (max-width:1000px){
+  .hang>.wrap{grid-template-columns:1fr}
+  .hang .wshot{display:none}
+}
 .wcard{
   background:var(--card);color:var(--card-ink);box-shadow:var(--sh);
   padding:clamp(30px,4vw,52px);max-width:640px;
@@ -589,6 +612,14 @@ body{
       <a class="btn ink" href="#estimate"><span>Get an estimate</span>
         <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
     </div>
+
+    <!-- second plate on the same boundary, so the row is a composition rather
+         than one card and a large piece of nothing -->
+    <figure class="wshot rv" style="margin:0">
+      <img src="../assets/home-marriage-line.jpg" width="1600" height="1067" loading="lazy"
+           alt="Two halves of a manufactured home being pulled together at the marriage line">
+      <figcaption><b>Marriage line, closed</b>Halves pulled together, shimmed level, then checked again after the first settle.</figcaption>
+    </figure>
   </div>
 </div>
 
