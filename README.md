@@ -219,3 +219,62 @@ What it has now:
 Directions 02, 03 and 04 were audited the same way and passed. 02 has one corner radius
 and one boxed type. 03's bolted plates and 04's ink keylines are the concept of those
 directions, not decoration, so they stay.
+
+---
+
+## The glass, the grounds and the photo galleries (01 Mesic)
+
+Three things were wrong and one was missing.
+
+### The glass was a tinted rectangle
+
+`backdrop-filter` on its own is a blur, not a material. What makes a pane read as glass
+is the **edge**: real glass is thick, so the rim bends far more light than the middle.
+That is now four directional inner glows, one per side, plus a bright top-left catch
+line and a dim bottom-right one. Underneath them sits a faint cool/warm split across the
+rim, which is the bit of chromatic aberration the eye reads as thickness.
+
+The second missing piece is that light on glass **moves**. A specular hot spot now
+follows the pointer, driven by two custom properties written from one passive
+`pointermove` coalesced into a single animation frame. It is dim at rest and only lights
+up while the pointer is on that pane, which is both more physical and safer for
+contrast.
+
+The third is shape. A lens has no corners. The glass is the only thing on this page with
+a radius, and that is what makes it read as a different material from the paper it
+floats over.
+
+**Contrast was measured on the rendered pixels, not assumed.** At the first attempt the
+white labels on the stat bar sat at 3.4:1 and the menu labels at 2.4:1. Fixing it took
+a heavier navy tint, `brightness(.94)` (glass attenuates, it does not brighten), moving
+the resting highlight off the label row, and dropping its strength from .40 to .13.
+Worst ratio on any glass now measures 4.81:1.
+
+### Two grounds that were flat colour
+
+- **`.aggregate`** on the estimate block. Four dot lattices at sizes that share no
+  factor, so they never line up into a visible grid. It reads as compacted base course,
+  which is the material this company actually sells.
+- **`.blurshot`** on the manufactured-homes block. A photograph at `blur(34px)` used as a
+  colour field rather than as an image. The scrim is light because the type on it is
+  ink. Measured at 3.7:1 against the body grey on the first pass, so that section scopes
+  its own darker `--muted` and the scrim was lifted. Now 5.25:1 at its worst row.
+
+### The same three-photo grid, twice
+
+Photography is what this business sells and a 320px thumbnail sells nothing. Both grids
+are gone, replaced by two different layout families so the two photo sections do not
+read as one repeated block:
+
+- **Accordion strip** for the services. Six panels share the width; the one under the
+  pointer takes a third of it and opens its copy. Hover, focus and tap all drive the same
+  state. Below 900px it becomes a plain stack with every caption already open.
+- **Drag filmstrip** for recent work. Mixed slide widths, scroll snapped, running off the
+  right edge of the page. Drag to pan, arrow buttons, arrow keys, and a progress rule that
+  is sized once and then only translated so nothing lays out while the strip moves.
+
+The empty ground both of those sections left underneath got filled: a photograph under
+the estimate checklist, and a sticky short column beside the long about list.
+
+**Shape rule, updated:** everything square, buttons 4px, glass 20px. That is the one
+documented exception and it applies to nothing else.

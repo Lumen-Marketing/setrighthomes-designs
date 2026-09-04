@@ -54,7 +54,11 @@
   --ink-2:#2C3E5C;
   --muted:#4F6285;
   --line:#D6E2F1;
-  --r:0px;      /* shape lock: everything square */
+  /* SHAPE RULE. Everything on this page is square. Buttons are 4px.
+     The glass is the one exception at 20px, because a lens has no
+     corners, and that is what makes it read as a different material
+     from the paper it floats over. */
+  --r:0px;
   --r-sm:0px;
   --pad:clamp(18px,4vw,40px);
   --maxw:1240px;
@@ -86,31 +90,56 @@ h1,h2,h3,h4{margin:0;font-family:'Bricolage Grotesque','Hanken Grotesk',sans-ser
   letter-spacing:.14em;text-transform:uppercase;padding:8px 12px;border-radius:0;margin-bottom:16px}
 
 /* ---------- LIQUID GLASS (web approximation) ---------- */
-.glass{
-  position:relative;isolation:isolate;overflow:hidden;
-  border:1px solid rgba(255,255,255,.34);
+:root{ --rg:20px; }   /* the glass radius. Nothing else on the page is round. */
+
+.glass,.gbar,.pbcard{
+  position:relative;isolation:isolate;overflow:hidden;border-radius:var(--rg);
+  border:1px solid rgba(255,255,255,.30);
+  /* --gx and --gy are the pointer position, written by JS. The defaults
+     put the catch light top left so the material still reads on load and
+     on touch, where there is no pointer. */
+  --gx:30%; --gy:34%; --gi:.13;   /* pointer x, y, and highlight strength */
   background:
-    linear-gradient(135deg,rgba(255,255,255,.30),rgba(255,255,255,.07)),
-    rgba(255,255,255,.10);
-  backdrop-filter:blur(22px) saturate(180%) contrast(1.04);
-  -webkit-backdrop-filter:blur(22px) saturate(180%) contrast(1.04);
+    linear-gradient(140deg,rgba(255,255,255,.22),rgba(255,255,255,.04) 46%,rgba(255,255,255,.12)),
+    linear-gradient(180deg,rgba(7,19,42,.56),rgba(7,19,42,.68));
+  /* glass attenuates. Over a bright photograph the pane has to hold a
+     floor for the white type on it, and this was measured: at the old
+     tint the small labels sat at 3.4:1. */
+  backdrop-filter:blur(30px) saturate(200%) brightness(.94);
+  -webkit-backdrop-filter:blur(30px) saturate(200%) brightness(.94);
+  /* THE EDGE. Four directional glows, one per side, are what make a pane
+     read as thick. Without them backdrop-filter alone is just a blur. */
   box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.52),
-    inset 0 -1px 0 rgba(255,255,255,.13),
-    0 20px 54px rgba(8,20,50,.30);
+    inset 0 0 0 1px rgba(255,255,255,.22),
+    inset 1.5px 1.5px 0 rgba(255,255,255,.60),
+    inset -1.2px -1.2px 0 rgba(255,255,255,.16),
+    inset 0 16px 24px -16px rgba(255,255,255,.62),
+    inset 0 -20px 28px -20px rgba(255,255,255,.34),
+    inset 16px 0 26px -18px rgba(255,255,255,.36),
+    inset -16px 0 26px -18px rgba(255,255,255,.30),
+    0 30px 72px -30px rgba(6,17,42,.66);
 }
-.glass::before{
+/* the specular sheet: a hot spot that tracks the pointer, plus a fixed
+   diagonal sweep so there is always something to catch */
+.glass::before,.gbar::before,.pbcard::before{
   content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;border-radius:inherit;
+  transition:background .18s linear;
   background:
-    radial-gradient(circle at 18% 0%, rgba(255,255,255,.5), transparent 36%),
-    linear-gradient(90deg, rgba(255,255,255,.16), transparent 44%, rgba(255,255,255,.12));
+    radial-gradient(220px 220px at var(--gx) var(--gy),rgba(255,255,255,var(--gi)),transparent 72%),
+    radial-gradient(circle at 12% 4%,rgba(255,255,255,.22),transparent 38%),
+    linear-gradient(104deg,transparent 26%,rgba(255,255,255,.20) 42%,transparent 56%);
+  transition:background-position .2s linear;
 }
-.glass::after{
-  content:"";position:absolute;inset:1px;border-radius:inherit;pointer-events:none;
-  border:1px solid rgba(255,255,255,.14);
+/* the rim: a faint cool/warm split across the edge, which is the bit of
+   chromatic aberration that sells a thick pane */
+.glass::after,.gbar::after,.pbcard::after{
+  content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;
+  box-shadow:
+    inset 1px 0 0 rgba(190,222,255,.34),
+    inset -1px 0 0 rgba(255,238,214,.20);
 }
 @media (prefers-reduced-transparency: reduce){
-  .glass{background:rgba(12,27,51,.92);backdrop-filter:none;-webkit-backdrop-filter:none}
+  .glass,.gbar,.pbcard{background:rgba(12,27,51,.94);backdrop-filter:none;-webkit-backdrop-filter:none}
   .nav.stuck .glass,.nav.stuck.glass{background:var(--white)}
 }
 
@@ -143,6 +172,7 @@ h1,h2,h3,h4{margin:0;font-family:'Bricolage Grotesque','Hanken Grotesk',sans-ser
 .nav{position:sticky;top:0;z-index:60;transition:background .35s,box-shadow .35s,border-color .35s;
   border-bottom:1px solid transparent;background:transparent}
 .nav .glass{border-radius:0;border-left:0;border-right:0;border-top:0}
+.nav .glass::after{display:none}
 .nav.stuck{background:var(--white);border-bottom-color:var(--line);box-shadow:0 6px 22px -16px rgba(10,31,66,.5)}
 .nav.stuck .glass{background:transparent;backdrop-filter:none;-webkit-backdrop-filter:none;border-color:transparent;box-shadow:none}
 .nav.stuck .glass::before,.nav.stuck .glass::after{display:none}
@@ -188,15 +218,16 @@ h1,h2,h3,h4{margin:0;font-family:'Bricolage Grotesque','Hanken Grotesk',sans-ser
 .hero-act{display:flex;flex-wrap:wrap;gap:11px;margin-top:26px}
 
 /* the glass menu card over the hero, from the supplied component */
-.gmenu{border-radius:0;padding:16px;width:100%;max-width:304px;margin-left:auto;cursor:grab;touch-action:none}
+.gmenu{padding:16px;width:100%;max-width:304px;margin-left:auto;cursor:grab;touch-action:none}
 .gmenu:active{cursor:grabbing}
-.gmenu .ttl{color:rgba(255,255,255,.72);font-size:10.5px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;padding:2px 6px 12px}
+.gmenu .ttl{color:rgba(255,255,255,.9);font-size:10.5px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;padding:2px 6px 12px}
 .gmenu nav{display:grid;gap:6px;position:relative;z-index:3}
-.gmenu a{display:flex;align-items:center;gap:12px;padding:12px 16px;border-radius:0;color:#fff;
+.gmenu a{display:flex;align-items:center;gap:12px;padding:12px 16px;border-radius:12px;color:#fff;
   text-decoration:none;font-weight:700;font-size:14px;transition:background .25s,transform .25s}
 .gmenu a svg{width:17px;height:17px;flex:none;opacity:.9}
 .gmenu a:hover{background:rgba(255,255,255,.2);transform:translateX(3px)}
-.gmenu a.on{background:var(--white);color:var(--navy)}
+.gmenu a.on{background:rgba(255,255,255,.92);color:var(--navy);
+  box-shadow:inset 0 1px 0 #fff,0 8px 22px -12px rgba(6,17,42,.7)}
 .gmenu a.on:hover{background:var(--white);transform:translateX(3px)}
 
 /* ---------- review ticker, the reference's blue strip ---------- */
@@ -217,7 +248,6 @@ h1,h2,h3,h4{margin:0;font-family:'Bricolage Grotesque','Hanken Grotesk',sans-ser
 .formcard{background:var(--white);border:1px solid var(--line);border-radius:var(--r);padding:clamp(20px,2.6vw,28px);box-shadow:var(--sh)}
 .formcard .hd{display:flex;align-items:center;gap:10px;padding-bottom:14px;margin-bottom:16px;border-bottom:1px solid var(--line);
   font-size:12px;font-weight:700;color:var(--muted)}
-.formcard .hd .dot{width:8px;height:8px;border-radius:50%;background:var(--blue)}
 .f{display:grid;gap:6px;margin-bottom:12px}
 .f label{font-size:12.5px;font-weight:700;color:var(--ink-2)}
 .f input,.f select,.f textarea{font:inherit;font-size:15px;padding:11px 13px;border:1px solid var(--line);border-radius:0;
@@ -262,7 +292,6 @@ h1,h2,h3,h4{margin:0;font-family:'Bricolage Grotesque','Hanken Grotesk',sans-ser
 .row{border:1px solid var(--line);border-radius:var(--r-sm);padding:13px 15px;display:flex;gap:11px;align-items:flex-start;
   transition:border-color .25s,background .25s,transform .25s}
 .row:hover{border-color:var(--blue);background:var(--ice);transform:translateX(3px)}
-.row .d{width:8px;height:8px;border-radius:50%;background:var(--blue);flex:none;margin-top:7px}
 .row b{display:block;font-size:14px;font-weight:800}
 .row span{color:var(--muted);font-size:12.5px;line-height:1.5}
 .hint{margin-top:14px;background:var(--ice-2);border-radius:var(--r-sm);padding:13px 16px;font-size:13.5px;font-weight:700;color:var(--navy)}
@@ -282,7 +311,6 @@ h1,h2,h3,h4{margin:0;font-family:'Bricolage Grotesque','Hanken Grotesk',sans-ser
 .nlist{display:grid;gap:9px;margin-top:14px}
 .nlist div{display:flex;gap:10px;align-items:flex-start;background:rgba(255,255,255,.07);border-radius:var(--r-sm);padding:11px 14px;
   font-size:13px;font-weight:600;color:rgba(255,255,255,.88)}
-.nlist .d{width:7px;height:7px;border-radius:50%;background:var(--sky);flex:none;margin-top:6px}
 
 /* ---------- photo card grids, the reference's service cards ---------- */
 .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,2vw,22px);margin-top:26px}
@@ -296,13 +324,6 @@ h1,h2,h3,h4{margin:0;font-family:'Bricolage Grotesque','Hanken Grotesk',sans-ser
 .pcard p{color:var(--muted);font-size:13.5px;padding:0 6px 10px;line-height:1.55}
 
 /* ---------- results card ---------- */
-.thumbs{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:18px}
-.thumbs figure{margin:0;border:1px solid var(--line);border-radius:var(--r-sm);overflow:hidden;background:var(--ice);
-  transition:transform .32s cubic-bezier(.16,1,.3,1),box-shadow .32s}
-.thumbs figure:hover{transform:translateY(-4px);box-shadow:var(--sh)}
-.thumbs .shot{aspect-ratio:16/9;overflow:hidden}
-.thumbs img{width:100%;height:100%;object-fit:cover}
-.thumbs figcaption{padding:11px 13px;font-size:12.5px;font-weight:700;color:var(--ink-2)}
 .acts{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
 
 /* ---------- blue three up strip ---------- */
@@ -429,6 +450,43 @@ body{background-color:var(--white)}
       transparent 0 27px,rgba(15,46,95,.062) 27px 28.4px),
     radial-gradient(ellipse 1100px 540px at 84% -10%,rgba(255,255,255,.8),transparent 66%);
 }
+
+/* .aggregate: a granular ground for the estimate block. Three dot
+   lattices at sizes that do not share a factor, so they never line up
+   into a visible grid. It reads as compacted base course, which is the
+   material this company actually sells. */
+.aggregate{
+  background-color:var(--ice);
+  background-image:
+    radial-gradient(circle at 50% 50%,rgba(15,46,95,.20) 1.1px,transparent 1.4px),
+    radial-gradient(circle at 50% 50%,rgba(15,46,95,.13) 1px,transparent 1.3px),
+    radial-gradient(circle at 50% 50%,rgba(255,255,255,.9) 1.2px,transparent 1.5px),
+    radial-gradient(circle at 50% 50%,rgba(15,46,95,.09) 1.6px,transparent 2px),
+    radial-gradient(ellipse 980px 540px at 10% -10%,rgba(255,255,255,.9),transparent 64%);
+  background-size:11px 11px,19px 17px,15px 21px,37px 41px,100% 100%;
+  background-position:0 0,6px 4px,3px 9px,13px 21px,0 0;
+}
+
+/* .blurshot: a photograph out of focus, used as a colour field rather
+   than as an image. The scrim is light because the type on it is ink,
+   and the pair was measured on the rendered pixels, not guessed. */
+.blurshot{position:relative;isolation:isolate;background-color:var(--ice);overflow:hidden;
+  /* the photograph under this section is darker than flat ice, so the
+     body grey is darkened with it. Measured on the rendered pixels:
+     the pale default sat at 3.7:1 here, under the 4.5 floor. */
+  --muted:#3B4E70}
+.blurshot>img{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 40%;
+  z-index:0;filter:blur(34px) saturate(1.45) brightness(1.2);transform:scale(1.2);
+}
+.blurshot::after{
+  content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:
+    radial-gradient(ellipse 980px 660px at 14% 2%,rgba(255,255,255,.55),transparent 66%),
+    linear-gradient(176deg,rgba(233,241,253,.72),rgba(230,238,251,.78) 40%,rgba(224,235,251,.90));
+}
+.blurshot>.wrap{position:relative;z-index:2}
+
 /* navy: raked hatch + aggregate + two lights */
 .navypanel,.cta{
   background-color:var(--navy);
@@ -492,7 +550,7 @@ body{background-color:var(--white)}
 .panel{border-radius:0}
 
 /* ---- everything below was a card and is now not ---- */
-.pcard,.rev,.q,.mapcard,.thumbs figure,.trio div,.towns span,.hint,
+.pcard,.rev,.q,.mapcard,.trio div,.towns span,.hint,
 .row,.nlist div,.cinfo a,.cinfo div{
   background:none;border:0;border-radius:0;box-shadow:none;backdrop-filter:none;
   -webkit-backdrop-filter:none;padding:0;
@@ -507,10 +565,6 @@ body{background-color:var(--white)}
 .pcard:hover .shot img{transform:scale(1.04)}
 
 /* results: photo, caption, nothing else */
-.thumbs figure{border:0}
-.thumbs figure:hover{transform:none;box-shadow:none}
-.thumbs .shot{border-radius:0}
-.thumbs figcaption{padding:12px 0 0;font-size:14px;font-weight:500;color:var(--muted)}
 
 /* the trio: three columns split by a single rule, no boxes */
 .trio{border-top:1px solid var(--line);padding-top:24px;gap:32px}
@@ -563,8 +617,6 @@ body{background-color:var(--white)}
   transition:padding-left .3s cubic-bezier(.16,1,.3,1),color .25s}
 .cinfo a:hover{background:none;transform:none;padding-left:8px;color:var(--sky)}
 
-/* the decorative dots go. Twenty of them, none semantic. */
-.row .d,.nlist .d,.formcard .hd .dot{display:none}
 
 /* the blue strip keeps one container because it is a band, not a card */
 .strip3{border-radius:0}
@@ -582,31 +634,19 @@ body{background-color:var(--white)}
 /* ---------- the glass stat bar, a full width row at the foot of the hero ---------- */
 .nav:not(.stuck) .glass{
   background:
-    linear-gradient(135deg,rgba(255,255,255,.16),rgba(255,255,255,.04)),
-    linear-gradient(180deg,rgba(9,24,50,.5),rgba(9,24,50,.3));
+    linear-gradient(140deg,rgba(255,255,255,.11),rgba(255,255,255,.02)),
+    linear-gradient(180deg,rgba(7,19,42,.74),rgba(7,19,42,.62));
+  backdrop-filter:blur(26px) saturate(165%);
+  -webkit-backdrop-filter:blur(26px) saturate(165%);
 }
 .gbar{
-  grid-column:1/-1;margin-top:clamp(20px,2.6vw,34px);
-  border-radius:var(--r);padding:6px;
+  grid-column:1/-1;margin-top:clamp(20px,2.6vw,34px);padding:8px;
   display:grid;grid-template-columns:repeat(4,1fr);
-  border:1px solid rgba(255,255,255,.4);
-  background:
-    linear-gradient(140deg,rgba(255,255,255,.22),rgba(255,255,255,.06)),
-    linear-gradient(180deg,rgba(9,24,50,.46),rgba(9,24,50,.6));
-  backdrop-filter:blur(24px) saturate(180%);
-  -webkit-backdrop-filter:blur(24px) saturate(180%);
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.6),
-    inset 0 -1px 0 rgba(255,255,255,.14),
-    0 26px 60px -28px rgba(8,20,50,.55);
 }
-.gbar>div{
-  position:relative;padding:16px 20px;border-radius:0;
-  border:1px solid rgba(255,255,255,.14);
-}
+.gbar>div{position:relative;padding:16px 20px;border:0}
 .gbar>div+div::before{content:"";position:absolute;left:-3px;top:18%;bottom:18%;width:1px;background:rgba(255,255,255,.24)}
 .gbar b{display:block;color:#fff;font-size:clamp(22px,2.6vw,30px);font-weight:800;letter-spacing:-.035em;line-height:1}
-.gbar span{display:block;margin-top:5px;color:rgba(255,255,255,.84);font-size:12.5px;font-weight:700;letter-spacing:.03em}
+.gbar span{display:block;margin-top:6px;color:#fff;font-size:12.5px;font-weight:600;letter-spacing:.03em}
 
 /* ---------- fallbacks ---------- */
 @media (prefers-reduced-transparency: reduce){
@@ -634,19 +674,10 @@ body{background-color:var(--white)}
 .photoband p{color:rgba(255,255,255,.86);margin-top:14px;max-width:50ch;font-size:16px}
 .photoband .acts{margin-top:24px}
 /* one more glass card, over the picture where it has something to refract */
-.pbcard{
-  width:min(300px,30vw);border-radius:var(--r);padding:6px;
-  border:1px solid rgba(255,255,255,.38);
-  background:
-    linear-gradient(140deg,rgba(255,255,255,.24),rgba(255,255,255,.07)),
-    linear-gradient(180deg,rgba(9,24,50,.4),rgba(9,24,50,.54));
-  backdrop-filter:blur(22px) saturate(180%);
-  -webkit-backdrop-filter:blur(22px) saturate(180%);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.55),0 26px 60px -30px rgba(8,20,50,.6);
-}
-.pbcard>div{padding:13px 16px;border-radius:0;border:1px solid rgba(255,255,255,.13);
+.pbcard{width:min(300px,30vw);padding:8px}
+.pbcard>div{padding:13px 16px;border:0;
   display:flex;justify-content:space-between;gap:14px;align-items:baseline}
-.pbcard>div+div{margin-top:4px}
+.pbcard>div+div{margin-top:2px;border-top:1px solid rgba(255,255,255,.14)}
 .pbcard span{color:rgba(255,255,255,.8);font-size:13px;font-weight:700}
 .pbcard b{color:#fff;font-size:17px;font-weight:800;letter-spacing:-.03em}
 @media (max-width:900px){
@@ -753,7 +784,6 @@ body{background-color:var(--white)}
 .panel-hd{margin-bottom:32px;gap:24px}
 .panel-hd h2{font-size:clamp(22px,2.8vw,32px);max-width:20ch}
 .revs{gap:40px;margin-top:40px}
-.thumbs{gap:24px;margin-top:24px}
 .trio{margin-top:24px}
 .faq{margin-top:32px}
 .towns{margin-top:24px}
@@ -768,11 +798,99 @@ body{background-color:var(--white)}
   .cards.feature>.pcard:first-child .shot{min-height:0;aspect-ratio:16/9}
 }
 
+
+/* the estimate block: a photograph fills the run of empty ground under
+   the checklist, rather than leaving half a screen of texture */
+.introshot{margin:36px 0 0;height:clamp(190px,19vw,268px);overflow:hidden}
+.introshot img{width:100%;height:100%;object-fit:cover;object-position:50% 58%}
+
+/* the about block: the short column keeps pace with the long list */
+@media (min-width:981px){
+  .blurshot .split>div:first-child{position:sticky;top:104px;align-self:start}
+}
+
+/* ---------- accordion strip ---------- */
+.accord{
+  display:flex;gap:4px;margin-top:40px;
+  height:clamp(340px,44vw,520px);
+  --exp:3.4;
+}
+.pnl{
+  position:relative;flex:1 1 0;min-width:0;overflow:hidden;
+  border:0;padding:0;margin:0;background:var(--navy);
+  cursor:pointer;text-align:left;font:inherit;color:#fff;
+  transition:flex-grow .62s cubic-bezier(.16,1,.3,1);
+}
+.pnl img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  transition:transform .9s cubic-bezier(.16,1,.3,1),filter .5s ease}
+.pnl::after{content:"";position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(6,17,42,.88) 0,rgba(6,17,42,.38) 40%,rgba(6,17,42,.04) 74%)}
+.pnl .lbl{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:18px 20px}
+.pnl .short{display:block;font-family:'Bricolage Grotesque',sans-serif;font-size:14px;
+  font-weight:700;letter-spacing:-.008em;white-space:nowrap;transition:opacity .3s}
+.pnl .full{display:block;max-width:36ch;opacity:0;max-height:0;overflow:hidden;transform:translateY(12px);
+  transition:opacity .4s ease .08s,transform .55s cubic-bezier(.16,1,.3,1) .08s,max-height .55s cubic-bezier(.16,1,.3,1)}
+.pnl .full h3{font-size:clamp(19px,1.8vw,25px);margin-bottom:8px;letter-spacing:-.02em}
+.pnl .full p{font-size:14.5px;line-height:1.55;font-weight:300;color:rgba(255,255,255,.86)}
+.pnl:not(.open) img{filter:saturate(.7) brightness(.84)}
+.pnl.open{flex-grow:var(--exp)}
+.pnl.open .short{opacity:0}
+.pnl.open .full{opacity:1;transform:none;max-height:240px}
+.pnl.open img{transform:scale(1.05)}
+.pnl:focus-visible{outline:2px solid var(--sky);outline-offset:-3px}
+
+/* ---------- drag filmstrip ---------- */
+.reel-hd{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap}
+.rnav{display:flex;gap:8px}
+.rbtn{width:48px;height:48px;border:1.5px solid var(--line);background:var(--white);
+  color:var(--navy);display:grid;place-items:center;cursor:pointer;border-radius:0;
+  transition:background .25s,border-color .25s,color .25s}
+.rbtn svg{width:19px;height:19px}
+.rbtn:hover:not(:disabled){background:var(--navy);border-color:var(--navy);color:#fff}
+.rbtn:disabled{opacity:.3;cursor:default}
+.reel{
+  display:flex;gap:16px;margin-top:32px;padding-bottom:6px;
+  overflow-x:auto;overscroll-behavior-x:contain;
+  scroll-snap-type:x mandatory;cursor:grab;
+  scrollbar-width:none;-ms-overflow-style:none;
+  padding-inline:max(var(--pad),calc((100% - var(--maxw))/2 + var(--pad)));
+  scroll-padding-inline:max(var(--pad),calc((100% - var(--maxw))/2 + var(--pad)));
+}
+.reel::-webkit-scrollbar{display:none}
+.reel.drag{cursor:grabbing;scroll-snap-type:none;user-select:none}
+.reel.drag img{pointer-events:none}
+.slide{flex:none;margin:0;scroll-snap-align:start;width:clamp(228px,26vw,320px)}
+.slide.w{width:clamp(300px,50vw,620px)}
+.slide .shot{height:clamp(250px,31vw,410px);overflow:hidden;background:var(--ice-2)}
+.slide img{width:100%;height:100%;object-fit:cover;transition:transform .9s cubic-bezier(.16,1,.3,1)}
+.slide:hover img{transform:scale(1.05)}
+.slide figcaption{padding-top:14px;font-size:14px;color:var(--muted);font-weight:400}
+.slide figcaption b{display:block;color:var(--ink);font-weight:600;font-size:15.5px;
+  letter-spacing:-.012em;margin-bottom:3px}
+.reel-bar{position:relative;height:2px;background:var(--line);margin-top:36px;overflow:hidden}
+.reel-bar i{position:absolute;inset-block:0;left:0;width:var(--rw,30%);background:var(--navy);
+  transform:translateX(var(--rx,0px))}
+
+@media (prefers-reduced-motion: reduce){
+  .pnl,.pnl .full,.pnl img,.slide img{transition:none}
+}
+@media (max-width:900px){
+  /* the accordion cannot work on a narrow screen, so it becomes a plain
+     stack with every caption already open */
+  .accord{display:grid;grid-template-columns:1fr;gap:2px;height:auto}
+  .pnl{height:clamp(230px,54vw,300px)}
+  .pnl .short{display:none}
+  .pnl .full{opacity:1;max-height:none;transform:none}
+  .pnl:not(.open) img{filter:none}
+  .slide.w{width:clamp(280px,80vw,520px)}
+  .slide{width:clamp(228px,66vw,300px)}
+}
+
 /* ---------- responsive ---------- */
 @media (max-width:1040px){
   .hero-in,.intro,.split,.navypanel,.area,.cta{grid-template-columns:1fr}
   .gmenu{max-width:none;margin-left:0}
-  .cards,.revs,.thumbs,.strip3{grid-template-columns:1fr 1fr}
+  .cards,.revs,.strip3{grid-template-columns:1fr 1fr}
   .strip3 div{border-right:0;border-bottom:1px solid rgba(255,255,255,.24)}
   .foot-in{grid-template-columns:1fr 1fr}
 }
@@ -787,7 +905,7 @@ body{background-color:var(--white)}
   .drawer.open{transform:translateY(0)}
   .drawer a{display:block;padding:13px 0;border-bottom:1px solid var(--line);text-decoration:none;font-weight:800;font-size:16px}
   .drawer .btn,.drawer .tel{width:100%;margin-top:12px}
-  .ba,.cards,.revs,.thumbs,.trio,.towns{grid-template-columns:1fr}
+  .ba,.cards,.revs,.trio,.towns{grid-template-columns:1fr}
   .strip3{grid-template-columns:1fr}
   .two{grid-template-columns:1fr}
   .foot-in{grid-template-columns:1fr}
@@ -922,7 +1040,7 @@ body{background-color:var(--white)}
 </div>
 
 <!-- ============ INTRO + FORM ============ -->
-<section class="sec ice">
+<section class="sec aggregate">
   <div class="wrap intro">
     <div class="rv">
       <h2 style="font-size:clamp(25px,3.4vw,38px);max-width:17ch">Get Help From An Arizona Site Prep &amp; Home Setting Specialist</h2>
@@ -935,6 +1053,10 @@ body{background-color:var(--white)}
         <!-- SWAP: real year established -->
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Serving Arizona since 2009</li>
       </ul>
+      <figure class="introshot">
+        <img src="../assets/hydraulics-detail.jpg" width="1600" height="1065" loading="lazy"
+             alt="Close detail of the hydraulic rams on a working excavator">
+      </figure>
     </div>
 
     <div class="formcard rv">
@@ -996,7 +1118,8 @@ body{background-color:var(--white)}
 </section>
 
 <!-- ============ MANUFACTURED HOMES ARE DIFFERENT ============ -->
-<section class="sec ice" id="about" style="padding-top:0">
+<section class="sec blurshot" id="about">
+  <img src="../assets/homes-staged.jpg" width="1600" height="1200" loading="lazy" alt="">
   <div class="wrap">
     <div class="panel rv">
       <div class="split">
@@ -1099,55 +1222,100 @@ body{background-color:var(--white)}
 <section class="sec ice">
   <div class="wrap">
     <h2 class="sh rv">Also On The Truck</h2>
-    <div class="cards">
-      <article class="pcard rv">
-        <div class="shot"><img src="../assets/compaction-roller.jpg" width="1600" height="1067" loading="lazy" alt="A roller compacting the base course on a prepared surface"></div>
-        <h3>Compaction &amp; Testing</h3>
-        <p>Rough grade, finish grade and a compaction result that goes in the file with the stamped plan.</p>
-      </article>
-      <article class="pcard rv">
-        <div class="shot"><img src="../assets/brush-clearing.jpg" width="1600" height="900" loading="lazy" alt="A machine clearing brush from a lot"></div>
-        <h3>Lot Clearing &amp; Grubbing</h3>
-        <p>Brush, stumps and debris removed so the pad can be cut where the plan actually puts it.</p>
-      </article>
-      <article class="pcard rv">
-        <div class="shot"><img src="../assets/earthworks-wide.jpg" width="2000" height="1360" loading="lazy" alt="A wide earthworks site with machines working cut and fill"></div>
-        <h3>Driveways &amp; Culverts</h3>
-        <p>Base, grade and pipe sized so the county approves the approach and water goes where it should.</p>
-      </article>
-      <article class="pcard rv">
-        <div class="shot"><img src="../assets/home-marriage-line.jpg" width="2000" height="1208" loading="lazy" alt="A doublewide part way through the set with the marriage line still open"></div>
-        <h3>Marriage Line &amp; Leveling</h3>
-        <p>Halves pulled together, closed up and shimmed level, then checked again after the first settle.</p>
-      </article>
-      <article class="pcard rv">
-        <div class="shot"><img src="../assets/home-finished.jpg" width="1600" height="1030" loading="lazy" alt="A finished manufactured home with skirting and porch"></div>
-        <h3>Skirting &amp; Final Grade</h3>
-        <p>Skirting, steps and a finished grade that falls away from the home on every side.</p>
-      </article>
-      <article class="pcard rv">
-        <div class="shot"><img src="../assets/excavator-gravel.jpg" width="1600" height="1066" loading="lazy" alt="An excavator working a stockpile on a prepared site"></div>
-        <h3>Releveling &amp; Pier Repair</h3>
-        <p>Sticking doors, sloping floors and cracks at the marriage line on homes already set.</p>
-      </article>
+    <!-- accordion strip: hover, focus or tap a panel to open it -->
+    <div class="accord rv" id="accord">
+      <button class="pnl open" type="button">
+        <img src="../assets/compaction-roller.jpg" width="1600" height="1067" loading="lazy" alt="A roller compacting the base course on a prepared surface">
+        <span class="lbl">
+          <span class="short">Compaction</span>
+          <span class="full"><h3>Compaction &amp; Testing</h3><p>Rough grade, finish grade and a compaction result that goes in the file with the stamped plan.</p></span>
+        </span>
+      </button>
+      <button class="pnl" type="button">
+        <img src="../assets/brush-clearing.jpg" width="1600" height="900" loading="lazy" alt="A machine clearing brush from a lot">
+        <span class="lbl">
+          <span class="short">Clearing</span>
+          <span class="full"><h3>Lot Clearing &amp; Grubbing</h3><p>Brush, stumps and debris removed so the pad can be cut where the plan actually puts it.</p></span>
+        </span>
+      </button>
+      <button class="pnl" type="button">
+        <img src="../assets/earthworks-wide.jpg" width="2000" height="1360" loading="lazy" alt="A wide earthworks site with machines working cut and fill">
+        <span class="lbl">
+          <span class="short">Driveways</span>
+          <span class="full"><h3>Driveways &amp; Culverts</h3><p>Base, grade and pipe sized so the county approves the approach and water goes where it should.</p></span>
+        </span>
+      </button>
+      <button class="pnl" type="button">
+        <img src="../assets/home-marriage-line.jpg" width="2000" height="1208" loading="lazy" alt="A doublewide part way through the set with the marriage line still open">
+        <span class="lbl">
+          <span class="short">Marriage line</span>
+          <span class="full"><h3>Marriage Line &amp; Leveling</h3><p>Halves pulled together, closed up and shimmed level, then checked again after the first settle.</p></span>
+        </span>
+      </button>
+      <button class="pnl" type="button">
+        <img src="../assets/home-finished.jpg" width="1600" height="1030" loading="lazy" alt="A finished manufactured home with skirting and porch">
+        <span class="lbl">
+          <span class="short">Skirting</span>
+          <span class="full"><h3>Skirting &amp; Final Grade</h3><p>Skirting, steps and a finished grade that falls away from the home on every side.</p></span>
+        </span>
+      </button>
+      <button class="pnl" type="button">
+        <img src="../assets/excavator-gravel.jpg" width="1600" height="1066" loading="lazy" alt="An excavator working a stockpile on a prepared site">
+        <span class="lbl">
+          <span class="short">Releveling</span>
+          <span class="full"><h3>Releveling &amp; Pier Repair</h3><p>Sticking doors, sloping floors and cracks at the marriage line on homes already set.</p></span>
+        </span>
+      </button>
     </div>
   </div>
 </section>
 
-<!-- ============ REAL RESULTS ============ -->
-<section class="sec ice" id="work" style="padding-top:0">
+<!-- ============ RECENT WORK, DRAG FILMSTRIP ============ -->
+<section class="sec" id="work">
+  <div class="wrap reel-hd">
+    <h2 class="sh rv" style="margin-bottom:0">Recent Work Across Arizona</h2>
+    <div class="rnav rv">
+      <button class="rbtn" id="rprev" type="button" aria-label="Scroll to previous projects" aria-controls="reel">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18 9 12l6-6"/></svg>
+      </button>
+      <button class="rbtn" id="rnext" type="button" aria-label="Scroll to more projects" aria-controls="reel">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <div class="reel" id="reel" tabindex="0" role="region" aria-label="Recent projects, scroll sideways">
+    <figure class="slide w">
+      <div class="shot"><img src="../assets/home-marriage-line.jpg" width="2000" height="1208" loading="lazy" alt="A doublewide part way through the set with the marriage line open"></div>
+      <figcaption><b>Doublewide set on five acres</b>Wittmann. Pad, utilities and set.</figcaption>
+    </figure>
+    <figure class="slide">
+      <div class="shot"><img src="../assets/compaction-roller.jpg" width="1600" height="1067" loading="lazy" alt="A roller compacting a prepared surface"></div>
+      <figcaption><b>Pad only, compaction tested</b>Buckeye. Home came from another supplier.</figcaption>
+    </figure>
+    <figure class="slide">
+      <div class="shot"><img src="../assets/homes-staged.jpg" width="1600" height="1200" loading="lazy" alt="A row of manufactured homes staged before delivery"></div>
+      <figcaption><b>Four home community</b>Casa Grande. Four pads, one utility run.</figcaption>
+    </figure>
+    <figure class="slide w">
+      <div class="shot"><img src="../assets/home-on-pad.jpg" width="2000" height="1348" loading="lazy" alt="A manufactured home set level on a finished pad"></div>
+      <figcaption><b>Singlewide on a permanent foundation</b>Maricopa. Refinance passed first time.</figcaption>
+    </figure>
+    <figure class="slide">
+      <div class="shot"><img src="../assets/trench-utilities.jpg" width="1600" height="1067" loading="lazy" alt="Machines working an open utility trench alongside a road"></div>
+      <figcaption><b>Water and power to a rural parcel</b>Wickenburg. 400 feet of trench.</figcaption>
+    </figure>
+    <figure class="slide">
+      <div class="shot"><img src="../assets/home-finished.jpg" width="1600" height="1030" loading="lazy" alt="A finished manufactured home with skirting and a porch"></div>
+      <figcaption><b>Skirting and final grade</b>Coolidge. Relevel plus finish work.</figcaption>
+    </figure>
+  </div>
+
   <div class="wrap">
-    <div class="panel rv">
-      <h2 style="font-size:clamp(21px,2.8vw,30px)">Real Site Work Results Across Arizona</h2>
-      <div class="thumbs">
-        <figure><div class="shot"><img src="../assets/home-marriage-line.jpg" width="2000" height="1208" loading="lazy" alt="A doublewide part way through the set with the marriage line open"></div><figcaption>Doublewide set on five acres, Wittmann</figcaption></figure>
-        <figure><div class="shot"><img src="../assets/compaction-roller.jpg" width="1600" height="1067" loading="lazy" alt="A roller compacting a prepared surface"></div><figcaption>Pad only, compaction tested, Buckeye</figcaption></figure>
-        <figure><div class="shot"><img src="../assets/homes-staged.jpg" width="1600" height="1200" loading="lazy" alt="A row of manufactured homes staged before delivery"></div><figcaption>Four home community, Casa Grande</figcaption></figure>
-      </div>
-      <div class="acts">
-        <a class="btn navy" href="#estimate">View More Projects</a>
-        <a class="btn" href="#estimate">Get Estimate</a>
-      </div>
+    <div class="reel-bar"><i id="reelbar"></i></div>
+    <div class="acts">
+      <a class="btn navy" href="#estimate">View More Projects</a>
+      <a class="btn" href="#estimate">Get Estimate</a>
     </div>
   </div>
 </section>
@@ -1339,6 +1507,106 @@ body{background-color:var(--white)}
       el.style.transition='transform .5s cubic-bezier(.16,1,.3,1)';
     }
     el.addEventListener('pointerup',end); el.addEventListener('pointercancel',end);
+  })();
+
+
+  /* ---- glass: the specular follows the pointer ----
+     Light on a real pane moves when you move. One passive pointermove,
+     coalesced into a single animation frame, writing two custom
+     properties. No scroll listener, no per-frame layout. */
+  (function(){
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var panes = [].slice.call(document.querySelectorAll('.glass,.gbar,.pbcard'));
+    if (!panes.length) return;
+    var px = 0, py = 0, queued = false;
+    function paint(){
+      queued = false;
+      for (var i = 0; i < panes.length; i++){
+        var el = panes[i], r = el.getBoundingClientRect();
+        if (r.bottom < -200 || r.top > innerHeight + 200) continue;
+        var on = px >= r.left - 40 && px <= r.right + 40 && py >= r.top - 40 && py <= r.bottom + 40;
+        el.style.setProperty('--gi', on ? '.34' : '.13');
+        if (!on) continue;
+        el.style.setProperty('--gx', ((px - r.left) / r.width * 100).toFixed(1) + '%');
+        el.style.setProperty('--gy', ((py - r.top) / r.height * 100).toFixed(1) + '%');
+      }
+    }
+    addEventListener('pointermove', function(ev){
+      if (ev.pointerType === 'touch') return;
+      px = ev.clientX; py = ev.clientY;
+      if (!queued){ queued = true; requestAnimationFrame(paint); }
+    }, {passive:true});
+  })();
+
+  /* ---- accordion strip ---- */
+  (function(){
+    var wrap = document.getElementById('accord'); if (!wrap) return;
+    var pnls = [].slice.call(wrap.querySelectorAll('.pnl'));
+    function open(el){ pnls.forEach(function(o){ o.classList.toggle('open', o === el); }); }
+    pnls.forEach(function(el){
+      el.addEventListener('pointerenter', function(ev){ if (ev.pointerType !== 'touch') open(el); });
+      el.addEventListener('focus', function(){ open(el); });
+      el.addEventListener('click', function(){ open(el); });
+    });
+  })();
+
+  /* ---- drag filmstrip ---- */
+  (function(){
+    var reel = document.getElementById('reel'); if (!reel) return;
+    var prev = document.getElementById('rprev'),
+        next = document.getElementById('rnext'),
+        bar  = document.getElementById('reelbar'),
+        rail = bar.parentElement;
+
+    function step(){
+      var s = reel.querySelector('.slide');
+      return s ? s.getBoundingClientRect().width + 16 : 320;
+    }
+    /* the indicator is sized once and then only translated, so nothing
+       lays out while the strip is moving */
+    var queued = false;
+    function paint(){
+      queued = false;
+      var max = reel.scrollWidth - reel.clientWidth;
+      var frac = max > 0 ? reel.scrollLeft / max : 0;
+      var vis = Math.max(.12, Math.min(1, reel.clientWidth / reel.scrollWidth));
+      bar.style.setProperty('--rw', (vis * 100).toFixed(2) + '%');
+      bar.style.setProperty('--rx', (frac * rail.clientWidth * (1 - vis)).toFixed(1) + 'px');
+      prev.disabled = reel.scrollLeft < 4;
+      next.disabled = reel.scrollLeft > max - 4;
+    }
+    function schedule(){ if (!queued){ queued = true; requestAnimationFrame(paint); } }
+    reel.addEventListener('scroll', schedule, {passive:true});
+    addEventListener('resize', schedule, {passive:true});
+    paint();
+
+    prev.addEventListener('click', function(){ reel.scrollBy({left:-step(), behavior:'smooth'}); });
+    next.addEventListener('click', function(){ reel.scrollBy({left: step(), behavior:'smooth'}); });
+
+    /* drag to pan. The threshold keeps a plain click on a slide working. */
+    var down = false, moved = false, sx = 0, sl = 0;
+    reel.addEventListener('pointerdown', function(ev){
+      if (ev.pointerType === 'touch') return;
+      down = true; moved = false; sx = ev.clientX; sl = reel.scrollLeft;
+      reel.setPointerCapture(ev.pointerId);
+    });
+    reel.addEventListener('pointermove', function(ev){
+      if (!down) return;
+      var dx = ev.clientX - sx;
+      if (!moved && Math.abs(dx) > 5){ moved = true; reel.classList.add('drag'); }
+      if (moved) reel.scrollLeft = sl - dx;
+    });
+    function end(){
+      if (!down) return;
+      down = false; reel.classList.remove('drag');
+    }
+    reel.addEventListener('pointerup', end);
+    reel.addEventListener('pointercancel', end);
+
+    reel.addEventListener('keydown', function(ev){
+      if (ev.key === 'ArrowRight'){ ev.preventDefault(); reel.scrollBy({left: step(), behavior:'smooth'}); }
+      if (ev.key === 'ArrowLeft'){ ev.preventDefault(); reel.scrollBy({left:-step(), behavior:'smooth'}); }
+    });
   })();
 
   document.querySelectorAll('#faq-list .q').forEach(function(q){
