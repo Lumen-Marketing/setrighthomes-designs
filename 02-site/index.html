@@ -131,7 +131,11 @@ h1,h2,h3,h4{
 .hero-act{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px}
 
 /* ---------- plane three: a plate hung across the boundary ---------- */
-.hang{position:relative;z-index:5;margin-top:clamp(-110px,-9vw,-70px)}
+.hang{position:relative;z-index:5;
+  margin-top:clamp(-110px,-9vw,-70px);
+  /* the chapters butted straight up against the plates. Give the row the
+     same breathing space the rest of the page uses between sections. */
+  margin-bottom:clamp(66px,9.5vw,144px)}
 /* The white plate is 640px wide and was alone on the row, which left the whole
    right half of a wide screen as dead ground. The plate is the point of this
    section, so it keeps its size and position; a second plate goes beside it
