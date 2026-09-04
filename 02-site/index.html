@@ -454,35 +454,30 @@ body{
 
 /* ---------- the glass site card, floated over the hero photograph ---------- */
 .hcard{
-  position:relative;z-index:3;width:100%;
-  padding:16px 20px 14px;cursor:grab;touch-action:none;
+  position:absolute;right:var(--pad);z-index:3;
+  /* lifted clear of the plate that hangs up over the hero's bottom edge */
+  bottom:calc(clamp(56px,9vw,120px) + 28px);
+  width:min(620px,46vw);padding:13px 18px 15px;cursor:grab;touch-action:none;
 }
-@media (min-width:1280px) and (min-height:840px){
-  /* the card gets its own grid row above the copy, so the browser measures the
-     lane rather than trusting a pixel figure that only held at one window size */
-  .hero-in{
-    display:grid;
-    grid-template-columns:minmax(0,1fr) min(320px,25vw);
-    column-gap:clamp(24px,3vw,52px);
-  }
-  .hero-in>.hcard{grid-column:2;grid-row:1;justify-self:end;margin-bottom:clamp(22px,3.5vh,48px)}
-  /* the copy spans both columns: it is the row below the card, not beside it,
-     so the headline keeps its full measure and still cannot reach the card */
-  .hero-in>h1{grid-column:1/-1;grid-row:2}
-  .hero-in>.lede{grid-column:1/-1;grid-row:3}
-  .hero-in>.hero-act{grid-column:1/-1;grid-row:4}
-}
+
 .hcard:active{cursor:grabbing}
 .hcard .k{font-family:'Big Shoulders Display',sans-serif;font-size:15px;font-weight:700;
-  letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.6)}
-.hcard .big{font-family:'Big Shoulders Display',sans-serif;font-size:clamp(30px,3.2vw,42px);
-  font-weight:900;line-height:.92;margin-top:5px;text-transform:uppercase}
-.hcard .big em{font-style:normal;color:var(--blue-2)}
-.hcard ul{list-style:none;margin:12px 0 0;padding:0;position:relative;z-index:2}
-.hcard li{display:flex;justify-content:space-between;gap:14px;padding:7px 0;
-  border-top:1px solid rgba(255,255,255,.12);font-size:13.5px;color:var(--fg-2);font-weight:400}
-.hcard li b{color:#fff;font-weight:600}
-@media (max-width:1279px),(max-height:839px){.hcard{display:none}}
+  letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.62)}
+.hcard ul{list-style:none;margin:9px 0 0;padding:0;position:relative;z-index:2;
+  display:grid;grid-template-columns:repeat(4,1fr)}
+.hcard li{position:relative;padding:0 15px}
+.hcard li:first-child{padding-left:0}
+.hcard li+li::before{content:"";position:absolute;left:0;top:3px;bottom:3px;width:1px;background:rgba(255,255,255,.17)}
+.hcard b{display:block;font-family:'Big Shoulders Display',sans-serif;
+  font-size:clamp(30px,2.7vw,40px);font-weight:900;line-height:.92;color:#fff;font-variant-numeric:tabular-nums}
+.hcard span{display:block;margin-top:1px;font-size:12.5px;color:var(--fg-2);font-weight:400;line-height:1.3}
+/* below this the buttons and the card would meet, so it drops out */
+@media (max-width:1199px){.hcard{display:none}}
+@media (min-width:1200px){
+  /* the strip shares a band with the lede, so the lede stops short of it.
+     The headline is a row above and keeps its full measure. */
+  .hero .lede{max-width:min(54ch,46%)}
+}
 
 /* ---------- the floating glass call pill ---------- */
 .pill{
@@ -578,16 +573,15 @@ body{
   <img src="../assets/excavator-storm.jpg" width="2000" height="1443"
        alt="An excavator with its bucket down on a working site under a heavy sky" fetchpriority="high">
   <div class="wrap hero-in">
-    <!-- smoked glass card, draggable, sitting over the photograph -->
+    <!-- smoked glass card, draggable, sitting over the photograph beside the buttons -->
     <aside class="hcard smoke" id="hcard">
       <div class="k">This week on site</div>
-      <div class="big">Pads <em>&amp; sets</em></div>
       <ul>
         <!-- SWAP: real figures -->
-        <li><span>Pads graded</span><b>4</b></li>
-        <li><span>Homes set</span><b>3</b></li>
-        <li><span>Trenches signed off</span><b>6</b></li>
-        <li><span>Counties working</span><b>5</b></li>
+        <li><b>4</b><span>Pads graded</span></li>
+        <li><b>3</b><span>Homes set</span></li>
+        <li><b>6</b><span>Trenches signed off</span></li>
+        <li><b>5</b><span>Counties working</span></li>
       </ul>
     </aside>
     <h1>We move the dirt<em>and set the home.</em></h1>
