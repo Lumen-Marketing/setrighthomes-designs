@@ -365,3 +365,21 @@ for a block this dark.
 **The check worth keeping:** walk every element that paints its own background, and flag
 any that has text and under 10px of horizontal padding. A grep cannot find this one, because
 the fill and the padding were declared in two different rules.
+
+### The hero now ends at the fold
+
+`min-height:clamp(560px,74vh,720px)` capped the hero at 720px, so on a normal laptop the
+review ticker and the top of the next section were both visible on load. It is now
+`clamp(560px,calc(100dvh - 36px),1000px)`: the `- 36px` is the utility bar above it, so the
+hero ends **at** the fold rather than overshooting it, which is what pushed the stat bar
+under on a short window.
+
+The content still has to fit inside that, and below about 760px of window height it does
+not. So everything in the hero steps down together in one query rather than the stat bar
+falling off the bottom: headline to 44px, lede to 15px, and the stat bar to tighter
+padding. Verified at 1440x900, 1920x1080, 1440x760, 1366x720 and 1600x820: the stat bar
+and the floating menu both fit, and the ticker is below the fold every time.
+
+The service area section was the last one still carrying `padding-top:0` from when it
+followed a section with the same ground, and the two dark panels went to
+`clamp(32px,5vw,68px)` of padding, so the text inset never drops below 32px at any width.
