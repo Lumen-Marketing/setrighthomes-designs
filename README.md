@@ -283,3 +283,44 @@ the estimate checklist, and a sticky short column beside the long about list.
 
 **Shape rule, updated:** everything square, buttons 4px, glass 26px. That is the one
 documented exception and it applies to nothing else.
+
+---
+
+## Why every section heading was stuck at 40% of the row (02, 03, 04)
+
+The section headings were capped with `max-width:12ch` to `16ch`. **`ch` is the advance
+width of the digit zero**, and on a condensed display face that is roughly 0.40em, so a
+`13ch` cap on a 74px headline lands at about 480px inside a 1160px measure. The headline
+wrapped to five or six short lines against an empty right hand side, and the same cap sat
+on the big statement block.
+
+The fix was not to guess a wider number. Each heading was rendered in its own real
+typeface at 100px, its natural single line width measured off the box, and the font size
+worked back from that so the string fills the measure:
+
+| | fills one line at |
+|---|---|
+| 02 Big Shoulders Display | 94px to 112px, was capped near 74px |
+| 03 Saira Condensed | 84px to 103px, was capped near 62px |
+| 04 Archivo Black | 69px to 88px, was capped near 56px |
+
+Sizes were then set at about 96% of the fill so a rounding difference cannot push one
+word onto a second line, with the `vw` term at `px / 14.4` so the fill holds as the
+window narrows. Measured after the change: every section heading is **one line at 89% to
+93%** of the measure at 1440, and still 85% at 1024.
+
+The statement block is uncapped and sized to **three lines with the last at 59%**, read
+off the real line boxes rather than estimated. At the first attempt it left a single
+orphan word on a fourth line, which is what the `ch` caps had been hiding.
+
+The three notes under it were capped at `76ch` to `80ch` and stopped between 65% and 78%
+of the row. The body column now keeps a readable 64ch and the label column absorbs the
+remainder, so the row spans the full width and the copy still sets at a sane length. A
+sweep for any block reaching under 86% of its measure now returns nothing on all three
+pages.
+
+Two things fell out of the same audit and were fixed: 04's note body sat at **4.1:1** on
+the burst ground and is now full white, and the nav carried both a phone link and a CTA
+between 760px and 1010px where it did not fit, which pushed 03 into a 48px sideways
+scroll. The phone link now steps out first. Horizontal overflow is zero at 505, 780, 880,
+1024 and 1440.

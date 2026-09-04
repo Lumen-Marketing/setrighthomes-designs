@@ -191,12 +191,12 @@ h1,h2,h3,h4{
 .jobs div:hover{color:#fff;letter-spacing:.012em}
 
 /* ---------- statement ---------- */
-.say{font-size:clamp(30px,5vw,74px);font-weight:800;line-height:.94;max-width:17ch;
+.say{font-size:clamp(30px,4.44vw,64px);font-weight:800;line-height:.94;max-width:none;
   font-family:'Big Shoulders Display',sans-serif;text-transform:uppercase;letter-spacing:.004em}
 .say b{color:var(--blue-2);font-weight:800}
-.notes{margin-top:44px;border-top:1px solid var(--line);max-width:76ch}
-.note{padding:24px 0;border-bottom:1px solid rgba(255,255,255,.1);display:grid;grid-template-columns:minmax(0,24ch) 1fr;gap:clamp(14px,3vw,44px);align-items:baseline}
-.note h4{font-size:23px}
+.notes{margin-top:44px;border-top:1px solid var(--line);max-width:none}
+.note{padding:24px 0;border-bottom:1px solid rgba(255,255,255,.1);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,64ch);gap:clamp(14px,3vw,44px);align-items:baseline}
+.note h4{font-size:clamp(23px,2.2vw,31px)}
 .note p{color:var(--fg-2);font-size:15.5px;font-weight:300}
 
 /* ---------- process: sparse ruled rail ---------- */
@@ -506,6 +506,16 @@ body{
 }
 
 /* ---------- responsive ---------- */
+/* the nav has to hold one line. Between 760 and 1010 it did not,
+   so the phone link steps out first. It is still in the hero, the
+   drawer and the footer. */
+@media (max-width:1010px){
+  .nav-tel{display:none}
+  .nav-links{gap:22px;font-size:14px}
+}
+@media (max-width:860px){
+  .nav-links{gap:15px;font-size:13px}
+}
 @media (max-width:1040px){
   .chap.r .chap-txt{margin-left:0;text-align:left}
   .chap.r .lede{margin-left:0}
@@ -697,7 +707,7 @@ body{
 <!-- ============ PROCESS ============ -->
 <section class="sec band lit" id="process" style="border-block:1px solid var(--line)">
   <div class="wrap">
-    <h2 class="rv" style="font-size:clamp(40px,6.4vw,92px);max-width:12ch">Raw lot to keys, in five moves</h2>
+    <h2 class="rv" style="font-size:clamp(38px,6.67vw,96px)">Raw lot to keys, in five moves</h2>
     <div class="rail">
       <div class="rstep rv"><span class="n">01</span><h4>Walk the lot</h4><p>Soil, slope, setbacks, and where the utilities actually stub out. Free, and usually about an hour.</p></div>
       <div class="rstep rv"><span class="n">02</span><h4>Plans and permits</h4><p>Engineered pad detail drawn and stamped, county submittal filed, inspection dates on the calendar.</p></div>
@@ -711,7 +721,7 @@ body{
 <!-- ============ PROJECTS ============ -->
 <section class="sec" id="work">
   <div class="wrap">
-    <h2 class="rv" style="font-size:clamp(40px,6.4vw,92px);max-width:12ch">Lots we cleared this season</h2>
+    <h2 class="rv" style="font-size:clamp(38px,7.15vw,103px)">Lots we cleared this season</h2>
     <div class="gal">
       <figure class="shot a rv" style="margin:0">
         <img src="../assets/home-marriage-line.jpg" width="2000" height="1208" loading="lazy"
@@ -735,7 +745,7 @@ body{
 <!-- ============ REVIEWS ============ -->
 <section class="sec band" style="border-block:1px solid var(--line)">
   <div class="wrap">
-    <h2 class="rv" style="font-size:clamp(36px,5.4vw,74px);max-width:13ch">What owners tell us after</h2>
+    <h2 class="rv" style="font-size:clamp(38px,7.43vw,107px)">What owners tell us after</h2>
     <div class="revs">
       <figure class="rev rv" style="margin:0"><p>Pad was tested and passed the first time. Home landed on a Tuesday and we were level by Thursday.</p><footer><b>Dale Whitcomb</b>Wittmann, five acre lot</footer></figure>
       <figure class="rev rv" style="margin:0"><p>We send them every buyer who needs site work. They call the inspector themselves, which saves my team the chasing.</p><footer><b>Renee Ocampo</b>Sales manager, Sunland Home Center</footer></figure>
@@ -747,7 +757,7 @@ body{
 <!-- ============ AREA ============ -->
 <section class="sec lit" id="area">
   <div class="wrap">
-    <h2 class="rv" style="font-size:clamp(36px,5.4vw,74px);max-width:13ch">Where we take the equipment</h2>
+    <h2 class="rv" style="font-size:clamp(38px,6.88vw,99px)">Where we take the equipment</h2>
     <p class="lede rv" style="margin-top:18px">West Valley is home base. We run out to the rural lots most crews will not drive to, and the haul is priced up front.</p>
     <div class="towns rv">
       <span>Surprise</span><span>Wittmann</span><span>Buckeye</span><span>Tonopah</span>
@@ -760,7 +770,7 @@ body{
 <!-- ============ FAQ ============ -->
 <section class="sec band" id="faq" style="border-block:1px solid var(--line)">
   <div class="wrap">
-    <h2 class="rv" style="font-size:clamp(40px,6.4vw,92px);max-width:13ch">Questions we get on every walk</h2>
+    <h2 class="rv" style="font-size:clamp(38px,6.25vw,90px)">Questions we get on every walk</h2>
     <div class="faq" id="faq-list">
       <div class="q" data-open="0"><button type="button" aria-expanded="false">Do you handle the permits?<span class="q-m"></span></button><div class="q-body"><div><p>We do. Pad detail goes to the county with the application, we handle corrections, and we call in every inspection. You get the approved card at the end. If you would rather pull them yourself we will hand you the drawings.</p></div></div></div>
       <div class="q" data-open="0"><button type="button" aria-expanded="false">How long before the home can be delivered?<span class="q-m"></span></button><div class="q-body"><div><p>On a clean lot with utilities at the road, plan on two to three weeks of field work. Permit review is the variable. Rural lots needing a well, septic and a long power run stretch that out, and we tell you which one is the long pole before you sign.</p></div></div></div>

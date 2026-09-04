@@ -215,11 +215,11 @@ h1,h2,h3,h4{margin:0;font-family:'Saira Condensed','Saira',sans-serif;font-weigh
 .nbox .t{margin-top:9px;font-size:14px;color:var(--fg-2);max-width:19ch}
 
 /* ---------- statement ---------- */
-.say{font-family:'Saira Condensed',sans-serif;font-size:clamp(30px,4.8vw,66px);font-weight:800;text-transform:uppercase;letter-spacing:.004em;line-height:.98;max-width:18ch}
+.say{font-family:'Saira Condensed',sans-serif;font-size:clamp(28px,4.03vw,58px);font-weight:800;text-transform:uppercase;letter-spacing:.004em;line-height:.98;max-width:none}
 .say b{color:var(--bright)}
-.notes{margin-top:38px;border-top:1px solid var(--line);max-width:80ch}
-.note{padding:22px 0;border-bottom:1px solid rgba(255,255,255,.08);display:grid;grid-template-columns:minmax(0,24ch) 1fr;gap:clamp(12px,3vw,40px);align-items:baseline}
-.note h4{font-size:21px;letter-spacing:.05em}
+.notes{margin-top:38px;border-top:1px solid var(--line);max-width:none}
+.note{padding:22px 0;border-bottom:1px solid rgba(255,255,255,.08);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,64ch);gap:clamp(12px,3vw,40px);align-items:baseline}
+.note h4{font-size:clamp(21px,2.1vw,29px);letter-spacing:.05em}
 .note p{color:var(--fg-2);font-size:15px}
 
 /* ---------- projects ---------- */
@@ -470,6 +470,16 @@ body{
 .spec .r{display:flex;justify-content:space-between;gap:14px;padding:9px 0;
   border-top:1px solid rgba(255,255,255,.16);font-size:14px;color:var(--fg-2)}
 .spec .r b{color:#fff;font-family:'Saira Condensed',sans-serif;font-size:18px;font-weight:700;letter-spacing:.05em}
+/* the nav has to hold one line. Between 760 and 1010 it did not,
+   so the phone link steps out first. It is still in the hero, the
+   drawer and the footer. */
+@media (max-width:1010px){
+  .nav-tel{display:none}
+  .nav-links{gap:22px;font-size:14px}
+}
+@media (max-width:860px){
+  .nav-links{gap:15px;font-size:13px}
+}
 @media (max-width:1040px){.spec{display:none}}
 
 @media (prefers-reduced-transparency: reduce){
@@ -591,7 +601,7 @@ body{
 <!-- ============ SERVICES ============ -->
 <section class="sec" id="services">
   <div class="wrap">
-    <div class="rv"><h2 style="font-size:clamp(32px,5vw,62px);max-width:16ch">Three jobs, and we own all three.</h2></div>
+    <div class="rv"><h2 style="font-size:clamp(32px,5.56vw,80px)">Three jobs, and we own all three.</h2></div>
     <div class="svcs">
       <article class="svc a rv">
         <div class="pic"><img src="../assets/cleared-lot.jpg" width="2000" height="1333" loading="lazy" alt="A lot cleared and turned over, ready for grading"></div>
@@ -643,7 +653,7 @@ body{
 <!-- ============ PROJECTS ============ -->
 <section class="sec" id="work">
   <div class="wrap">
-    <div class="rv"><h2 style="font-size:clamp(32px,5vw,62px);max-width:13ch">Lots we cleared this season.</h2></div>
+    <div class="rv"><h2 style="font-size:clamp(32px,6.60vw,95px)">Lots we cleared this season.</h2></div>
     <div class="proj">
       <figure class="r1 rv">
         <div class="plate bolts"><span class="b2"></span><span class="b3"></span>
@@ -670,7 +680,7 @@ body{
 <!-- ============ REVIEWS ============ -->
 <section class="sec" style="background:var(--steel-3);border-block:1px solid var(--line)">
   <div class="wrap">
-    <div class="rv"><h2 style="font-size:clamp(30px,4.4vw,52px);max-width:14ch">What owners tell us after.</h2></div>
+    <div class="rv"><h2 style="font-size:clamp(32px,6.88vw,99px)">What owners tell us after.</h2></div>
     <div class="revs">
       <figure class="rev bolts rv" style="margin:0"><span class="b2"></span><span class="b3"></span><div class="core"><p>Pad was tested and passed the first time. Home landed on a Tuesday and we were level by Thursday.</p><footer><b>Dale Whitcomb</b>Wittmann, five acre lot</footer></div></figure>
       <figure class="rev bolts rv" style="margin:0"><span class="b2"></span><span class="b3"></span><div class="core"><p>We send them every buyer who needs site work. They call the inspector themselves, which saves my team the chasing.</p><footer><b>Renee Ocampo</b>Sales manager, Sunland Home Center</footer></div></figure>
@@ -683,7 +693,7 @@ body{
 <section class="sec milled" id="area">
   <div class="wrap">
     <div class="rv">
-      <h2 style="font-size:clamp(30px,4.4vw,52px);max-width:14ch">Where we take the equipment.</h2>
+      <h2 style="font-size:clamp(32px,6.25vw,90px)">Where we take the equipment.</h2>
       <p class="lede" style="margin-top:16px">West Valley is home base. We run out to the rural lots most crews will not drive to, and the haul is priced up front.</p>
     </div>
     <div class="towns rv">
@@ -697,7 +707,7 @@ body{
 <!-- ============ FAQ ============ -->
 <section class="sec" id="faq" style="background:var(--steel-3);border-top:1px solid var(--line);padding-bottom:clamp(80px,10vw,140px)">
   <div class="wrap">
-    <div class="rv"><h2 style="font-size:clamp(32px,5vw,62px);max-width:14ch">Questions we get on every walk.</h2></div>
+    <div class="rv"><h2 style="font-size:clamp(32px,5.76vw,83px)">Questions we get on every walk.</h2></div>
     <div class="faq" id="faq-list">
       <div class="q" data-open="0"><button type="button" aria-expanded="false">Do you handle the permits?<span class="q-m"></span></button><div class="q-body"><div><p>We do. Pad detail goes to the county with the application, we handle corrections, and we call in every inspection. You get the approved card at the end. If you would rather pull them yourself we will hand you the drawings.</p></div></div></div>
       <div class="q" data-open="0"><button type="button" aria-expanded="false">How long before the home can be delivered?<span class="q-m"></span></button><div class="q-body"><div><p>On a clean lot with utilities at the road, plan on two to three weeks of field work. Permit review is the variable. Rural lots needing a well, septic and a long power run stretch that out, and we tell you which one is the long pole before you sign.</p></div></div></div>

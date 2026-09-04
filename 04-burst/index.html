@@ -159,12 +159,12 @@ h1,h2,h3,h4{margin:0;font-family:'Archivo Black','Archivo',sans-serif;font-weigh
 .blue{position:relative;overflow:hidden;background:var(--blue);color:#fff}
 .blue .rays{--ry:50%;--r1:rgba(255,255,255,.13)}
 .blue .wrap{position:relative;z-index:2}
-.say{font-size:clamp(28px,4.4vw,60px);line-height:1.02;letter-spacing:-.04em;max-width:18ch;font-family:'Archivo Black',sans-serif}
+.say{font-size:clamp(26px,3.33vw,48px);line-height:1.02;letter-spacing:-.04em;max-width:none;font-family:'Archivo Black',sans-serif}
 .say b{color:#C6D8FF;font-weight:400}
-.notes{margin-top:38px;border-top:2px solid rgba(255,255,255,.4);max-width:80ch}
-.note{padding:22px 0;border-bottom:1px solid rgba(255,255,255,.22);display:grid;grid-template-columns:minmax(0,24ch) 1fr;gap:clamp(12px,3vw,40px);align-items:baseline}
-.note h4{font-size:19px}
-.note p{color:rgba(255,255,255,.8);font-size:15.5px}
+.notes{margin-top:38px;border-top:2px solid rgba(255,255,255,.4);max-width:none}
+.note{padding:22px 0;border-bottom:1px solid rgba(255,255,255,.22);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,64ch);gap:clamp(12px,3vw,40px);align-items:baseline}
+.note h4{font-size:clamp(19px,1.9vw,26px)}
+.note p{color:#fff;font-size:15.5px}   /* measured 4.1:1 at .8 alpha on the burst */
 
 /* ---------- process ---------- */
 .rail{margin-top:44px;border-top:2px solid var(--ink)}
@@ -420,6 +420,16 @@ body{background-color:var(--paper)}
 .acard .r:first-of-type{margin-top:12px;border-top:2px solid var(--ink)}
 .acard .r:last-of-type{border-bottom:0}
 .acard .r b{font-family:'Archivo Black',sans-serif;font-size:15px;color:var(--ink);letter-spacing:-.03em}
+/* the nav has to hold one line. Between 760 and 1010 it did not,
+   so the phone link steps out first. It is still in the hero, the
+   drawer and the footer. */
+@media (max-width:1010px){
+  .nav-tel{display:none}
+  .nav-links{gap:22px;font-size:14px}
+}
+@media (max-width:860px){
+  .nav-links{gap:15px;font-size:13px}
+}
 @media (max-width:1040px){.acard{position:static;width:auto;margin-top:26px}}
 
 /* contact details become smoked acetate over the ray field */
@@ -606,7 +616,7 @@ body{background-color:var(--paper)}
 <section class="sec" id="services">
   <div class="wrap">
     <div class="rv">
-      <h2 style="font-size:clamp(30px,4.4vw,56px);max-width:16ch">Most lots need four contractors. We are one.</h2>
+      <h2 style="font-size:clamp(30px,6.11vw,88px)">Most lots need four contractors. We are one.</h2>
       <p class="lede" style="margin-top:18px">Hiring a grader, a plumber, an electrician and a set crew separately is where schedules fall apart.</p>
     </div>
     <div class="mods">
@@ -654,7 +664,7 @@ body{background-color:var(--paper)}
 <!-- ============ PROCESS ============ -->
 <section class="sec" id="process">
   <div class="wrap">
-    <div class="rv"><h2 style="font-size:clamp(30px,4.4vw,56px);max-width:13ch">Raw lot to keys, in five moves.</h2></div>
+    <div class="rv"><h2 style="font-size:clamp(30px,5.00vw,72px)">Raw lot to keys, in five moves.</h2></div>
     <div class="rail">
       <div class="rstep rv"><span class="n">01</span><h4>Walk the lot</h4><p>Soil, slope, setbacks, and where the utilities actually stub out. Free, and usually about an hour.</p></div>
       <div class="rstep rv"><span class="n">02</span><h4>Plans and permits</h4><p>Engineered pad detail drawn and stamped, county submittal filed, inspection dates on the calendar.</p></div>
@@ -695,7 +705,7 @@ body{background-color:var(--paper)}
 <!-- ============ PROJECTS ============ -->
 <section class="sec white" id="work">
   <div class="wrap">
-    <div class="rv"><h2 style="font-size:clamp(30px,4.4vw,56px);max-width:13ch">Lots we cleared this season.</h2></div>
+    <div class="rv"><h2 style="font-size:clamp(30px,5.28vw,76px)">Lots we cleared this season.</h2></div>
     <div class="proj">
       <figure class="g1 rv">
         <div class="plate"><img src="../assets/home-marriage-line.jpg" width="2000" height="1208" loading="lazy" alt="A doublewide part way through the set with the marriage line still open"></div>
@@ -716,7 +726,7 @@ body{background-color:var(--paper)}
 <!-- ============ REVIEWS ============ -->
 <section class="sec">
   <div class="wrap">
-    <div class="rv"><h2 style="font-size:clamp(28px,3.8vw,48px);max-width:14ch">What owners tell us after.</h2></div>
+    <div class="rv"><h2 style="font-size:clamp(30px,5.83vw,84px)">What owners tell us after.</h2></div>
     <div class="revs">
       <figure class="rev rv" style="margin:0"><p>Pad was tested and passed the first time. Home landed on a Tuesday and we were level by Thursday.</p><footer><b>Dale Whitcomb</b>Wittmann, five acre lot</footer></figure>
       <figure class="rev rv" style="margin:0"><p>We send them every buyer who needs site work. They call the inspector themselves, which saves my team the chasing.</p><footer><b>Renee Ocampo</b>Sales manager, Sunland Home Center</footer></figure>
@@ -729,7 +739,7 @@ body{background-color:var(--paper)}
 <section class="sec white screened" id="area">
   <div class="wrap">
     <div class="rv">
-      <h2 style="font-size:clamp(28px,3.8vw,48px);max-width:14ch">Where we take the equipment.</h2>
+      <h2 style="font-size:clamp(30px,4.93vw,71px)">Where we take the equipment.</h2>
       <p class="lede" style="margin-top:16px">West Valley is home base. We run out to the rural lots most crews will not drive to, and the haul is priced up front.</p>
     </div>
     <div class="towns rv">
@@ -743,7 +753,7 @@ body{background-color:var(--paper)}
 <!-- ============ FAQ ============ -->
 <section class="sec" id="faq">
   <div class="wrap">
-    <div class="rv"><h2 style="font-size:clamp(30px,4.4vw,56px);max-width:14ch">Questions we get on every walk.</h2></div>
+    <div class="rv"><h2 style="font-size:clamp(30px,4.58vw,66px)">Questions we get on every walk.</h2></div>
     <div class="faq" id="faq-list">
       <div class="q" data-open="0"><button type="button" aria-expanded="false">Do you handle the permits, or is that on me?<span class="q-m"></span></button><div class="q-body"><div><p>We do. Pad detail goes to the county with the application, we handle corrections, and we call in every inspection. You get the approved card at the end. If you would rather pull them yourself we will hand you the drawings.</p></div></div></div>
       <div class="q" data-open="0"><button type="button" aria-expanded="false">How long does the site work take before delivery?<span class="q-m"></span></button><div class="q-body"><div><p>On a clean lot with utilities at the road, plan on two to three weeks of field work. Permit review is the variable. Rural lots needing a well, septic and a long power run stretch that out, and we tell you which one is the long pole before you sign.</p></div></div></div>
