@@ -351,3 +351,17 @@ Two more from the same pass on 01:
 
 The tablet nav fix was applied to 01 as well: it had the same phone pill plus CTA that
 does not fit between 760px and 1010px.
+
+### One row style survived the de-card pass, and it was the one hugging the edge
+
+The de-card pass reset `.row` to no fill. `.navypanel .row` is a more specific selector, so
+it kept its `rgba(255,255,255,.05)` tint while picking up `padding:16px 0` from the same
+pass. A tinted block with zero horizontal padding puts the text flush against its own left
+edge, which is what got flagged. Rows on this page are separated by a hairline and nothing
+else, so the fill is gone and the panel padding went from `clamp(24px,3.4vw,48px)` to
+`clamp(28px,4.2vw,56px)`, since the old clamp resolved to 30px at 880 and that is tight
+for a block this dark.
+
+**The check worth keeping:** walk every element that paints its own background, and flag
+any that has text and under 10px of horizontal padding. A grep cannot find this one, because
+the fill and the padding were declared in two different rules.
