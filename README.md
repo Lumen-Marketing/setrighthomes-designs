@@ -11,7 +11,7 @@ dirt work / site prep, utility connections, and setting manufactured homes.
 
 | # | Name | From | Material | Glass | Type |
 |---|------|------|----------|-------|------|
-| 01 | **Mesic** | A direct copy of mesiccontracting.com's layout, recoloured to bluish white | Drafting linen: one continuous grid under the whole page, survey contours, film grain | Frosted, over the drafting ground | Plus Jakarta Sans |
+| 01 | **Mesic** | mesiccontracting.com's layout, recoloured to bluish white and de-boxed | Drafting linen: rules, survey contours, paper grain | Frosted, on the three floating elements only | Bricolage Grotesque + Hanken Grotesk |
 | 02 | **Site** | Black + red agency flyer, accent to electric blue | Film stock: grain on a shuffling gate, scanline, vignette, raked light shafts | Smoked, over photographs | Big Shoulders Display |
 | 03 | **Plate** | Red diagonal flyer, field to royal blue | Brushed steel with a specular sweep, knurled blue field, tread plate on the seams | Machine guard glazing, bolted at four corners | Saira Condensed |
 | 04 | **Burst** | Orange sunburst posters, recoloured blue | Screen print: 45 degree halftone with a misregistered second pull, paper grain | Frosted acetate, ink keyline and hard offset kept | Archivo Black |
@@ -96,9 +96,8 @@ It runs through all four now, not just 01's nav. It is the same physical recipe 
 time, retinted for the page it sits on: a blur, a saturation lift, a lit top edge, and a
 hairline set 1px inside the border so the edge has thickness.
 
-- **01** frosted glass on the nav, the draggable jump menu, a stat bar sitting on the hero
-  photograph so it has something to refract, the form card, every panel, card, review,
-  FAQ row, process row, town chip and the map. Dark glass inside the navy panels.
+- **01** frosted glass on three elements only: the nav, the draggable jump menu, and the
+  stat bar sitting on the hero photograph. Everything else lost its container, see below.
 - **02** smoked glass: a draggable card floated over the hero photograph, the job lists
   inside each full bleed chapter, the figures rail, the contact details, the sticky nav,
   and a floating call pill that appears once the hero is behind you.
@@ -181,3 +180,42 @@ PHOTO-CREDITS.md         licence and attribution for each
 03-plate/index.html
 04-burst/index.html
 ```
+
+---
+
+## The de-slop pass on 01
+
+The client's boss said it read as AI made. He was right, and the cause was mine: liquid
+glass had been asked for, and I had put a card round every single thing on the page.
+
+Audited against the anti-slop checklist, 01 failed six ways and the other three
+directions failed none of them. What it had:
+
+- **17 boxed component types** on one page. Panel, form, service card, review, FAQ row,
+  map, thumbnail, trio, town chip, hint, list row, nav list, contact row, strip cell,
+  stat cell, photo band cell, badge.
+- **Six identical three-equal-column grids.** The single most templated AI pattern.
+- **20 decorative dots**, none of which meant anything.
+- **One font family** for the whole page, so nothing had a voice.
+- **Explainer paragraphs** restating their own heading.
+- **Eight different corner radii**, and spacing off any grid: 9, 11, 13, 14.5px.
+
+What it has now:
+
+- **Four containers, and each earns it.** The form, because a form is genuinely a
+  container. The proof plate, because it is the one white plate on the navy field. The
+  navy panel, because it is a colour block. The three glass elements, because they float
+  over photography and are the thing that was asked for. Everything else is separated by
+  a hairline, by space, or by weight.
+- **Core Services is one large item beside two stacked**, which is a different layout
+  family from the three up that follows it.
+- **Bricolage Grotesque** for display against a light **Hanken Grotesk** body. Bold
+  engineered display against a quiet body carries the hierarchy the boxes were carrying.
+- **One shape rule**: everything square, buttons 4px.
+- **8pt spacing** throughout: 8 16 24 32 40 48 64 80 96.
+- Explainer paragraphs, both eyebrow pills, every decorative dot and two duplicate CTA
+  labels are gone. The hero headline is two lines instead of four.
+
+Directions 02, 03 and 04 were audited the same way and passed. 02 has one corner radius
+and one boxed type. 03's bolted plates and 04's ink keylines are the concept of those
+directions, not decoration, so they stay.
