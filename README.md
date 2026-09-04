@@ -324,3 +324,30 @@ the burst ground and is now full white, and the nav carried both a phone link an
 between 760px and 1010px where it did not fit, which pushed 03 into a 48px sideways
 scroll. The phone link now steps out first. Horizontal overflow is zero at 505, 780, 880,
 1024 and 1440.
+
+### The same `ch` mistake, one level deeper
+
+The first sweep measured fill against the page container, so it passed anything sitting
+in a grid column. A second sweep, measuring every text block against **its own box**,
+found the contact headings: they sit in a half width column and then carried a `13ch`
+cap on top of that, so "Send us the lot. We send back a number." wrapped to **four lines
+inside a 361px box**. Caps removed and sizes set from the measurement: 03 and 04 are now
+two lines at 85% and 96%, and 02 needed its heading column widened to `1.14fr` as well.
+
+The same second sweep is the one to run in future. Measuring against the page container
+is not enough; anything inside a column has to be measured against the column.
+
+### How A Job Runs, and the section that butted the one above it
+
+Two more from the same pass on 01:
+
+- The process block was five ruled rows of 15px copy on flat ice, the thinnest thing on
+  the page. The sequence is the point, so it now has a numbered spine, headings at
+  19-24px, and a photograph beside it. Ground stays plain, because the blue field above
+  it and the survey contours below are both already carrying pattern.
+- The navy panel section still had `padding-top:0` from when it followed another ice
+  section. It follows the blurred photo block now, so it was butting a ground change with
+  a negative gap. Measured section by section, text bottom to text top, rather than eyed.
+
+The tablet nav fix was applied to 01 as well: it had the same phone pill plus CTA that
+does not fit between 760px and 1010px.

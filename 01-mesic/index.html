@@ -788,6 +788,16 @@ body{background-color:var(--white)}
 .navypanel{padding:clamp(24px,3.4vw,48px);gap:clamp(24px,3.4vw,48px);border-radius:0}
 .cta{padding:clamp(24px,3.4vw,48px);gap:clamp(24px,3.4vw,48px);border-radius:0}
 .lede{font-size:17px;font-weight:300;line-height:1.6}
+/* the nav has to hold one line. Between 760 and 1010 it did not,
+   so the phone pill steps out first. It is still in the utility bar,
+   the drawer, the hero and the footer. */
+@media (max-width:1010px){
+  .nav-cta .tel{display:none}
+  .nav-links{gap:20px;font-size:14px}
+}
+@media (max-width:860px){
+  .nav-links{gap:14px;font-size:13px}
+}
 @media (max-width:1040px){
   .cards.feature{grid-template-columns:1fr}
   .cards.feature>.pcard:first-child{grid-row:auto}
@@ -803,6 +813,39 @@ body{background-color:var(--white)}
 /* the about block: the short column keeps pace with the long list */
 @media (min-width:981px){
   .blurshot .split>div:first-child{position:sticky;top:104px;align-self:start}
+}
+
+
+/* ---------- how a job runs ----------
+   Five ruled rows of 15px copy on flat ice was the thinnest block on the
+   page. The sequence is the point, so it gets a spine and real numerals,
+   and the section gets a photograph to stand on. */
+.steps-in{display:grid;grid-template-columns:1.28fr .72fr;gap:clamp(32px,4.6vw,76px);align-items:start}
+.steps{list-style:none;margin:40px 0 0;padding:0;position:relative}
+.steps::before{
+  content:"";position:absolute;left:23px;top:26px;bottom:34px;width:2px;
+  background:linear-gradient(var(--blue),var(--line));
+}
+.steps li{position:relative;display:grid;grid-template-columns:48px 1fr;
+  gap:clamp(20px,2.4vw,32px);padding:0 0 32px;align-items:start}
+.steps li:last-child{padding-bottom:0}
+.sn{
+  position:relative;z-index:1;justify-self:start;
+  font-family:'Bricolage Grotesque',sans-serif;font-size:15px;font-weight:800;
+  letter-spacing:.02em;color:var(--white);background:var(--navy);
+  width:48px;height:48px;display:grid;place-items:center;
+}
+.steps b{display:block;font-family:'Bricolage Grotesque',sans-serif;
+  font-size:clamp(19px,1.9vw,24px);font-weight:700;letter-spacing:-.02em;
+  line-height:1.15;margin:10px 0 8px}
+.steps p{margin:0;color:var(--muted);font-size:16px;line-height:1.6;max-width:54ch}
+.steps-pic{margin:40px 0 0;height:clamp(380px,44vw,600px);overflow:hidden;
+  position:sticky;top:104px;background:var(--ice-2)}
+.steps-pic img{width:100%;height:100%;object-fit:cover;object-position:52% 50%}
+.steps-pic figcaption{display:none}
+@media (max-width:900px){
+  .steps-in{grid-template-columns:1fr}
+  .steps-pic{position:static;height:clamp(220px,50vw,300px);margin-top:32px}
 }
 
 /* ---------- accordion strip ---------- */
@@ -1143,7 +1186,7 @@ body{background-color:var(--white)}
 </section>
 
 <!-- ============ NAVY PANEL ============ -->
-<section class="sec ice" style="padding-top:0">
+<section class="sec ice">
   <div class="wrap">
     <div class="navypanel rv">
       <div>
@@ -1355,15 +1398,21 @@ body{background-color:var(--white)}
 
 <!-- ============ PROCESS ============ -->
 <section class="sec ice" id="process">
-  <div class="wrap">
-    <h2 class="sh rv">How A Job Runs</h2>
-    <div class="rows rv" style="margin-top:26px">
-      <div class="row"><div><b>1. Walk the lot</b><span>Soil, slope, setbacks and where the utilities actually stub out. Free, and usually about an hour.</span></div></div>
-      <div class="row"><div><b>2. Plans and permits</b><span>Engineered pad detail drawn and stamped, county submittal filed, inspection dates on the calendar.</span></div></div>
-      <div class="row"><div><b>3. Dirt work</b><span>Clear, cut, fill, compact, test. Driveway and drainage go in while the machines are already on site.</span></div></div>
-      <div class="row"><div><b>4. Utilities in the ground</b><span>Trench, lay, pressure test, inspect, backfill. Nothing gets covered before it is signed off.</span></div></div>
-      <div class="row"><div><b>5. Set and tie down</b><span>Home placed, blocked, leveled, anchored, marriage line closed, then skirting and final grade.</span></div></div>
+  <div class="wrap steps-in">
+    <div>
+      <h2 class="sh rv">How A Job Runs</h2>
+      <ol class="steps rv">
+        <li><span class="sn">01</span><div><b>Walk the lot</b><p>Soil, slope, setbacks and where the utilities actually stub out. Free, and usually about an hour.</p></div></li>
+        <li><span class="sn">02</span><div><b>Plans and permits</b><p>Engineered pad detail drawn and stamped, county submittal filed, inspection dates on the calendar.</p></div></li>
+        <li><span class="sn">03</span><div><b>Dirt work</b><p>Clear, cut, fill, compact, test. Driveway and drainage go in while the machines are already on site.</p></div></li>
+        <li><span class="sn">04</span><div><b>Utilities in the ground</b><p>Trench, lay, pressure test, inspect, backfill. Nothing gets covered before it is signed off.</p></div></li>
+        <li><span class="sn">05</span><div><b>Set and tie down</b><p>Home placed, blocked, leveled, anchored, marriage line closed, then skirting and final grade.</p></div></li>
+      </ol>
     </div>
+    <figure class="steps-pic rv">
+      <img src="../assets/clearing-slope.jpg" width="1600" height="900" loading="lazy"
+           alt="A machine cutting into a sloped lot to open up a building pad">
+    </figure>
   </div>
 </section>
 
