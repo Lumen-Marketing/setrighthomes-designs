@@ -36,7 +36,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Hanken+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
 :root{
@@ -54,8 +54,8 @@
   --ink-2:#2C3E5C;
   --muted:#4F6285;
   --line:#D6E2F1;
-  --r:14px;
-  --r-sm:10px;
+  --r:0px;      /* shape lock: everything square */
+  --r-sm:0px;
   --pad:clamp(18px,4vw,40px);
   --maxw:1240px;
   --sh:0 18px 44px -26px rgba(10,31,66,.42);
@@ -64,13 +64,15 @@
 html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
 body{
   margin:0;background:var(--white);color:var(--ink);
-  font-family:'Plus Jakarta Sans',system-ui,-apple-system,'Segoe UI',sans-serif;
-  font-size:16px;line-height:1.62;font-weight:500;overflow-x:hidden;
+  font-family:'Hanken Grotesk',system-ui,-apple-system,'Segoe UI',sans-serif;
+  font-size:17px;line-height:1.65;font-weight:400;overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
 }
 img{max-width:100%;display:block}
 a{color:inherit}
 p{margin:0}
-h1,h2,h3,h4{margin:0;font-weight:800;line-height:1.15;letter-spacing:-.028em}
+h1,h2,h3,h4{margin:0;font-family:'Bricolage Grotesque','Hanken Grotesk',sans-serif;
+  font-weight:800;line-height:1.08;letter-spacing:-.024em}
 .wrap{width:100%;max-width:var(--maxw);margin-inline:auto;padding-inline:var(--pad)}
 .sec{padding-block:clamp(48px,6.5vw,86px)}
 .ice{background:var(--ice)}
@@ -78,10 +80,10 @@ h1,h2,h3,h4{margin:0;font-weight:800;line-height:1.15;letter-spacing:-.028em}
 
 /* the reference's section heading: bold, left, short accent rule under it */
 .sh{font-size:clamp(24px,3.2vw,34px);padding-bottom:12px;position:relative;display:inline-block}
-.sh::after{content:"";position:absolute;left:0;bottom:0;width:96px;height:3px;background:var(--blue);border-radius:2px}
+.sh::after{content:"";position:absolute;left:0;bottom:0;width:64px;height:2px;background:var(--blue);border-radius:0}
 /* the reference's small pill badge above a heading */
-.badge{display:inline-block;background:var(--ice-2);color:var(--navy);font-size:11px;font-weight:800;
-  letter-spacing:.13em;text-transform:uppercase;padding:7px 13px;border-radius:6px;margin-bottom:16px}
+.badge{display:inline-block;background:var(--ice-2);color:var(--navy);font-size:11px;font-weight:700;
+  letter-spacing:.14em;text-transform:uppercase;padding:8px 12px;border-radius:0;margin-bottom:16px}
 
 /* ---------- LIQUID GLASS (web approximation) ---------- */
 .glass{
@@ -115,8 +117,8 @@ h1,h2,h3,h4{margin:0;font-weight:800;line-height:1.15;letter-spacing:-.028em}
 /* ---------- buttons, copied shapes from the reference ---------- */
 .btn{
   --b:var(--blue);--f:#fff;
-  display:inline-flex;align-items:center;justify-content:center;gap:9px;white-space:nowrap;
-  padding:12px 22px;border-radius:8px;border:1.5px solid var(--b);background:var(--b);color:var(--f);
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;white-space:nowrap;
+  padding:14px 24px;border-radius:4px;border:1.5px solid var(--b);background:var(--b);color:var(--f);
   font:inherit;font-weight:800;font-size:14.5px;text-decoration:none;cursor:pointer;
   transition:transform .18s cubic-bezier(.16,1,.3,1),box-shadow .25s,background .25s,border-color .25s,color .25s;
   box-shadow:0 8px 18px -10px rgba(29,111,224,.75);
@@ -146,23 +148,23 @@ h1,h2,h3,h4{margin:0;font-weight:800;line-height:1.15;letter-spacing:-.028em}
 .nav.stuck .glass::before,.nav.stuck .glass::after{display:none}
 .nav-in{height:70px;display:flex;align-items:center;gap:22px;position:relative;z-index:2}
 .brand{display:flex;align-items:center;gap:10px;text-decoration:none;flex:none}
-.brand .mk{width:36px;height:36px;border-radius:8px;background:var(--blue);color:#fff;display:grid;place-items:center;
+.brand .mk{width:36px;height:36px;border-radius:0;background:var(--blue);color:#fff;display:grid;place-items:center;
   font-weight:800;font-size:14px;letter-spacing:-.02em}
 .brand b{font-size:16.5px;font-weight:800;letter-spacing:-.035em;line-height:1.05;color:#fff;transition:color .3s}
 .brand small{display:block;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.66);font-weight:700;transition:color .3s}
 .nav.stuck .brand b{color:var(--ink)}
 .nav.stuck .brand small{color:var(--muted)}
 .nav-links{display:flex;gap:4px;margin-left:14px}
-.nav-links a{text-decoration:none;font-size:13.5px;font-weight:700;color:rgba(255,255,255,.86);padding:8px 11px;border-radius:7px;transition:background .22s,color .22s}
+.nav-links a{text-decoration:none;font-size:13.5px;font-weight:700;color:rgba(255,255,255,.86);padding:8px 11px;border-radius:4px;transition:background .22s,color .22s}
 .nav-links a:hover{background:rgba(255,255,255,.16);color:#fff}
 .nav.stuck .nav-links a{color:var(--ink-2)}
 .nav.stuck .nav-links a:hover{background:var(--ice);color:var(--navy)}
 .nav-cta{margin-left:auto;display:flex;gap:9px;align-items:center}
-.tel{display:inline-flex;align-items:center;gap:8px;padding:11px 18px;border-radius:8px;background:var(--navy);color:#fff;
+.tel{display:inline-flex;align-items:center;gap:8px;padding:14px 20px;border-radius:4px;background:var(--navy);color:#fff;
   text-decoration:none;font-weight:800;font-size:14px;white-space:nowrap;transition:background .25s,transform .18s}
 .tel:hover{background:var(--navy-2);transform:translateY(-2px)}
 .burger{display:none;width:42px;height:42px;border:1px solid rgba(255,255,255,.4);background:rgba(255,255,255,.14);
-  border-radius:8px;margin-left:auto;cursor:pointer}
+  border-radius:4px;margin-left:auto;cursor:pointer}
 .nav.stuck .burger{border-color:var(--line);background:var(--white)}
 .burger i{display:block;width:17px;height:2px;background:#fff;margin:0 auto;position:relative;transition:background .3s}
 .burger i::before,.burger i::after{content:"";position:absolute;left:0;width:17px;height:2px;background:#fff;transition:transform .3s}
@@ -179,18 +181,18 @@ h1,h2,h3,h4{margin:0;font-weight:800;line-height:1.15;letter-spacing:-.028em}
 .hero::after{content:"";position:absolute;inset:0;z-index:1;
   background:linear-gradient(96deg,rgba(10,25,52,.9) 4%,rgba(10,25,52,.62) 42%,rgba(10,25,52,.24) 72%,rgba(10,25,52,.42))}
 .hero-in{position:relative;z-index:2;width:100%;padding-top:70px;padding-bottom:clamp(18px,2.4vw,30px);
-  display:grid;grid-template-columns:1.25fr .75fr;gap:clamp(24px,4vw,50px);align-items:center}
+  display:grid;grid-template-columns:1.55fr .45fr;gap:clamp(24px,4vw,48px);align-items:center}
 .eyebrow{color:rgba(255,255,255,.86);font-size:12.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:14px}
-.hero h1{color:#fff;font-size:clamp(32px,4.6vw,56px);max-width:16ch;letter-spacing:-.035em;line-height:1.08}
+.hero h1{color:#fff;font-size:clamp(34px,4.8vw,60px);max-width:24ch;letter-spacing:-.03em;line-height:1.04}
 .hero p{color:rgba(255,255,255,.84);margin-top:16px;max-width:48ch;font-size:16.5px}
 .hero-act{display:flex;flex-wrap:wrap;gap:11px;margin-top:26px}
 
 /* the glass menu card over the hero, from the supplied component */
-.gmenu{border-radius:14px;padding:14px;width:100%;max-width:300px;margin-left:auto;cursor:grab;touch-action:none}
+.gmenu{border-radius:0;padding:16px;width:100%;max-width:304px;margin-left:auto;cursor:grab;touch-action:none}
 .gmenu:active{cursor:grabbing}
 .gmenu .ttl{color:rgba(255,255,255,.72);font-size:10.5px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;padding:2px 6px 12px}
 .gmenu nav{display:grid;gap:6px;position:relative;z-index:3}
-.gmenu a{display:flex;align-items:center;gap:11px;padding:11px 14px;border-radius:10px;color:#fff;
+.gmenu a{display:flex;align-items:center;gap:12px;padding:12px 16px;border-radius:0;color:#fff;
   text-decoration:none;font-weight:700;font-size:14px;transition:background .25s,transform .25s}
 .gmenu a svg{width:17px;height:17px;flex:none;opacity:.9}
 .gmenu a:hover{background:rgba(255,255,255,.2);transform:translateX(3px)}
@@ -218,7 +220,7 @@ h1,h2,h3,h4{margin:0;font-weight:800;line-height:1.15;letter-spacing:-.028em}
 .formcard .hd .dot{width:8px;height:8px;border-radius:50%;background:var(--blue)}
 .f{display:grid;gap:6px;margin-bottom:12px}
 .f label{font-size:12.5px;font-weight:700;color:var(--ink-2)}
-.f input,.f select,.f textarea{font:inherit;font-size:15px;padding:11px 13px;border:1px solid var(--line);border-radius:8px;
+.f input,.f select,.f textarea{font:inherit;font-size:15px;padding:11px 13px;border:1px solid var(--line);border-radius:0;
   background:var(--ice);color:var(--ink);width:100%;transition:border-color .22s,background .22s,box-shadow .22s}
 .f input::placeholder,.f textarea::placeholder{color:#94A5BE}
 .f input:focus,.f select:focus,.f textarea:focus{outline:0;border-color:var(--blue);background:#fff;box-shadow:0 0 0 3px rgba(29,111,224,.16)}
@@ -227,11 +229,12 @@ h1,h2,h3,h4{margin:0;font-weight:800;line-height:1.15;letter-spacing:-.028em}
 .f.bad .err{display:block}
 .two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .fnote{font-size:11.5px;color:var(--muted);margin-top:11px;line-height:1.5}
-.fok{display:none;margin-top:12px;padding:11px 13px;border-radius:8px;background:#E7F4EA;border:1px solid #A9D6B6;color:#14532D;font-weight:700;font-size:13.5px}
+.fok{display:none;margin-top:16px;padding:12px 16px;border-radius:0;background:#E7F4EA;border:1px solid #A9D6B6;color:#14532D;font-weight:700;font-size:13.5px}
 .fok.on{display:block}
 
-/* ---------- white rounded card panels on ice ---------- */
-.panel{background:var(--white);border:1px solid var(--line);border-radius:var(--r);padding:clamp(22px,3vw,38px);box-shadow:var(--sh)}
+/* ---------- section blocks. Only the proof block on navy is a plate. ---------- */
+.panel{background:none;border:0;border-radius:0;padding:0;box-shadow:none}
+.navyfield .panel{background:var(--white);padding:clamp(24px,3vw,40px)}
 .panel-hd{display:flex;flex-wrap:wrap;gap:14px;align-items:flex-end;justify-content:space-between;margin-bottom:20px}
 .panel-hd h2{font-size:clamp(21px,2.8vw,30px);max-width:22ch}
 .panel-hd p{color:var(--muted);font-size:14.5px;max-width:62ch;margin-top:8px}
@@ -243,7 +246,7 @@ h1,h2,h3,h4{margin:0;font-weight:800;line-height:1.15;letter-spacing:-.028em}
 .ba .shot img{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.16,1,.3,1)}
 .ba figure:hover .shot img{transform:scale(1.05)}
 .ba .tag{position:absolute;left:10px;top:10px;background:var(--navy-3);color:#fff;font-size:10.5px;font-weight:800;
-  letter-spacing:.13em;text-transform:uppercase;padding:6px 11px;border-radius:5px}
+  letter-spacing:.13em;text-transform:uppercase;padding:6px 12px;border-radius:0}
 .ba .tag.a{background:var(--blue)}
 .ba figcaption{padding-top:12px}
 .ba figcaption b{display:block;font-size:15px;font-weight:800}
@@ -322,7 +325,7 @@ h1,h2,h3,h4{margin:0;font-weight:800;line-height:1.15;letter-spacing:-.028em}
 /* ---------- service area ---------- */
 .area{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,48px);align-items:start}
 .towns{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:20px}
-.towns span{background:var(--white);border:1px solid var(--line);border-radius:8px;padding:10px 12px;text-align:center;
+.towns span{background:var(--white);border:1px solid var(--line);border-radius:0;padding:10px 12px;text-align:center;
   font-size:13.5px;font-weight:700;transition:border-color .25s,background .25s,transform .25s,color .25s}
 .towns span:hover{border-color:var(--blue);color:var(--blue);transform:translateY(-2px)}
 .mapcard{border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:var(--white)}
@@ -460,70 +463,121 @@ body{background-color:var(--white)}
 /* the hero is a photographic ground, so nothing is laid over it */
 
 /* ============================================================
-   LIQUID GLASS, EXTENDED ACROSS THE PAGE
-   The same material as the nav and the floating menu, in two more
-   tints: LIGHT glass for the drafting grounds, DARK glass inside the
-   navy. Each keeps the four things that make glass read as glass:
-   a blur, a saturation lift, a lit top edge, and a hairline set 1px
-   inside the border so the edge has thickness.
-   Blur radii stay modest on content cards and are dropped entirely
-   on small screens, where a dozen blurred layers costs real frames.
+   CONTAINERS, DELIBERATELY FEW
+   Four things on this page are containers. Everything else is
+   separated by a hairline, by space, or by weight.
    ============================================================ */
-.panel,.formcard,.pcard,.rev,.q,.mapcard,.thumbs figure,.trio div,.towns span,.hint,
-.sec>.wrap>.rows>.row{
-  position:relative;isolation:isolate;
-  border:1px solid rgba(255,255,255,.9);
-  background:linear-gradient(150deg,rgba(255,255,255,.88),rgba(255,255,255,.52) 46%,rgba(228,239,253,.66));
-  backdrop-filter:blur(13px) saturate(168%);
-  -webkit-backdrop-filter:blur(13px) saturate(168%);
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.96),
-    inset 0 -1px 0 rgba(255,255,255,.5),
-    0 1px 0 rgba(21,64,128,.07),
-    0 20px 44px -30px rgba(10,31,66,.46);
-}
-.panel::before,.formcard::before,.pcard::before,.rev::before,.q::before,.mapcard::before,
-.thumbs figure::before,.trio div::before,.towns span::before,.hint::before,
-.sec>.wrap>.rows>.row::before{
-  content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;border-radius:inherit;
-  background:
-    radial-gradient(circle at 14% -6%,rgba(255,255,255,.85),transparent 42%),
-    linear-gradient(100deg,rgba(255,255,255,.3),transparent 38%);
-}
-.panel::after,.formcard::after,.pcard::after,.q::after,.mapcard::after,
-.thumbs figure::after,.trio div::after{
-  content:"";position:absolute;inset:1px;border-radius:inherit;pointer-events:none;
-  border:1px solid rgba(255,255,255,.55);
-}
-.hint{color:var(--navy)}
-.trio div{background:linear-gradient(150deg,rgba(255,255,255,.72),rgba(219,233,251,.62))}
-.towns span{background:linear-gradient(150deg,rgba(255,255,255,.82),rgba(226,238,253,.6))}
-.towns span:hover{border-color:rgba(29,111,224,.55);background:linear-gradient(150deg,#fff,rgba(214,231,252,.86))}
-.pcard:hover,.rev:hover,.thumbs figure:hover{
-  border-color:#fff;
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,1),
-    inset 0 -1px 0 rgba(255,255,255,.55),
-    0 30px 60px -30px rgba(10,31,66,.5);
-}
-.q[data-open="1"]{border-color:rgba(29,111,224,.55)}
-/* inputs become recessed glass rather than filled boxes */
-.f input,.f select,.f textarea{
-  background:rgba(255,255,255,.55);border-color:rgba(21,64,128,.16);
-  box-shadow:inset 0 1px 3px rgba(21,64,128,.09);
-}
-.f input:focus,.f select:focus,.f textarea:focus{background:rgba(255,255,255,.94)}
 
-/* dark glass, inside the navy panels and the contact band */
-.navypanel .row,.nlist div,.cinfo a,.cinfo div{
-  border:1px solid rgba(255,255,255,.24);
-  background:linear-gradient(150deg,rgba(255,255,255,.18),rgba(255,255,255,.05));
-  backdrop-filter:blur(11px) saturate(150%);
-  -webkit-backdrop-filter:blur(11px) saturate(150%);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.30),inset 0 -1px 0 rgba(255,255,255,.07);
+/* the form: a real container, plain white, one hairline, no glass */
+.formcard{
+  background:var(--white);border:0;border-radius:0;
+  padding:clamp(24px,3vw,40px);box-shadow:none;
 }
-.navypanel .row:hover{border-color:rgba(90,166,245,.75);background:linear-gradient(150deg,rgba(255,255,255,.28),rgba(255,255,255,.1))}
-.cinfo a:hover{background:linear-gradient(150deg,rgba(255,255,255,.3),rgba(255,255,255,.12))}
+.formcard .hd{
+  padding-bottom:16px;margin-bottom:24px;border-bottom:1px solid var(--line);
+  font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);
+}
+.f input,.f select,.f textarea{
+  background:var(--white);border:0;border-bottom:1.5px solid var(--line);border-radius:0;
+  padding:12px 0;box-shadow:none;
+}
+.f input:focus,.f select:focus,.f textarea:focus{
+  background:var(--white);border-bottom-color:var(--blue);border-bottom-width:2px;box-shadow:none;
+}
+.f label{font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.f{gap:0;margin-bottom:24px}
+.two{gap:24px}
+
+/* the proof plate on the navy field: the one white container in the page body */
+.panel{border-radius:0}
+
+/* ---- everything below was a card and is now not ---- */
+.pcard,.rev,.q,.mapcard,.thumbs figure,.trio div,.towns span,.hint,
+.row,.nlist div,.cinfo a,.cinfo div{
+  background:none;border:0;border-radius:0;box-shadow:none;backdrop-filter:none;
+  -webkit-backdrop-filter:none;padding:0;
+}
+
+/* services and truck: photo does the work, caption sits under it, left set */
+.pcard{text-align:left;padding-bottom:32px;border-bottom:1px solid var(--line)}
+.pcard .shot{border-radius:0;margin-bottom:20px}
+.pcard h3{font-size:22px;margin-bottom:8px;letter-spacing:-.02em}
+.pcard p{color:var(--muted);font-size:15px;padding:0;line-height:1.6;font-weight:400;max-width:34ch}
+.pcard:hover{box-shadow:none;transform:none}
+.pcard:hover .shot img{transform:scale(1.04)}
+
+/* results: photo, caption, nothing else */
+.thumbs figure{border:0}
+.thumbs figure:hover{transform:none;box-shadow:none}
+.thumbs .shot{border-radius:0}
+.thumbs figcaption{padding:12px 0 0;font-size:14px;font-weight:500;color:var(--muted)}
+
+/* the trio: three columns split by a single rule, no boxes */
+.trio{border-top:1px solid var(--line);padding-top:24px;gap:32px}
+.trio div{position:relative}
+.trio div+div::before{content:"";position:absolute;left:-16px;top:2px;bottom:2px;width:1px;background:var(--line)}
+.trio b{font-size:15px;font-weight:700;margin-bottom:4px}
+.trio span{color:var(--muted);font-size:14px}
+
+/* reviews: a rule, the stars, the quote, the name. No box, no quote mark. */
+.rev{border-top:2px solid var(--navy);padding-top:24px}
+.rev:hover{transform:none;box-shadow:none}
+.rev .stars{margin-bottom:16px}
+.rev p{font-size:19px;line-height:1.5;color:var(--ink);font-weight:400;letter-spacing:-.012em}
+.rev b{margin-top:24px;font-size:14px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.rev .qm{display:none}
+
+/* faq: ruled rows */
+.faq{border-top:1px solid var(--line);gap:0}
+.q{border-bottom:1px solid var(--line)}
+.q[data-open="1"]{border-color:var(--line);box-shadow:none}
+.q button{padding:24px 56px 24px 0;font-family:'Bricolage Grotesque',sans-serif;font-size:19px;font-weight:700;letter-spacing:-.015em}
+.q-body p{padding:0 0 24px;font-size:16px;color:var(--muted)}
+.q-m{right:8px}
+
+/* towns: a set list, ruled, not a chip cloud */
+.towns{gap:0;border-top:1px solid var(--line)}
+.towns span{padding:14px 0;border-bottom:1px solid var(--line);text-align:left;
+  font-size:17px;font-weight:600;letter-spacing:-.01em;transition:color .2s,padding-left .3s cubic-bezier(.16,1,.3,1)}
+.towns span:hover{color:var(--blue);padding-left:8px;transform:none;background:none}
+.mapcard{border:0}
+.mapcard .lbl{padding:0 0 12px;border-bottom:0;font-size:12px;font-weight:600;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+
+/* process and list rows: a rule under each, nothing around them */
+.rows{gap:0}
+.row{padding:20px 0;border-bottom:1px solid var(--line)}
+.row:hover{background:none;transform:none;border-color:var(--navy);padding-left:8px}
+.row b{font-size:17px;font-weight:700;letter-spacing:-.015em}
+.row span{color:var(--muted);font-size:15px}
+.hint{color:var(--muted);font-size:15px;font-weight:400;padding:16px 0 0;border-top:1px solid var(--line)}
+
+/* inside the navy: the same treatment, inverted */
+.navypanel .rows{margin-top:24px}
+.navypanel .row{padding:16px 0;border-bottom:1px solid rgba(255,255,255,.18)}
+.navypanel .row:hover{background:none;border-color:var(--sky)}
+.nlist{gap:0;margin-top:16px;border-top:1px solid rgba(255,255,255,.18)}
+.nlist div{padding:14px 0;border-bottom:1px solid rgba(255,255,255,.18);font-weight:400}
+.cinfo{gap:0;border-top:1px solid rgba(255,255,255,.24)}
+.cinfo a,.cinfo div{padding:14px 0;border-bottom:1px solid rgba(255,255,255,.18);
+  transition:padding-left .3s cubic-bezier(.16,1,.3,1),color .25s}
+.cinfo a:hover{background:none;transform:none;padding-left:8px;color:var(--sky)}
+
+/* the decorative dots go. Twenty of them, none semantic. */
+.row .d,.nlist .d,.formcard .hd .dot{display:none}
+
+/* the blue strip keeps one container because it is a band, not a card */
+.strip3{border-radius:0}
+.strip3 div{border-right-color:rgba(255,255,255,.28)}
+
+/* ---- the glass that stays: only things that float over photography ---- */
+.blueband .strip3,.blueband .rev{backdrop-filter:none;-webkit-backdrop-filter:none}
+.blueband .strip3{background-image:none;background-color:rgba(255,255,255,.10);border-color:rgba(255,255,255,.24)}
+.blueband .rev{background:none;border:0;border-top:2px solid rgba(255,255,255,.5);box-shadow:none}
+.blueband .rev:hover{border-top-color:#fff;box-shadow:none}
+.blueband .rev p{color:#fff}
+.blueband .rev b{color:rgba(255,255,255,.7)}
+.blueband .rev::before{display:none}
 
 /* ---------- the glass stat bar, a full width row at the foot of the hero ---------- */
 .nav:not(.stuck) .glass{
@@ -547,7 +601,7 @@ body{background-color:var(--white)}
     0 26px 60px -28px rgba(8,20,50,.55);
 }
 .gbar>div{
-  position:relative;padding:16px 20px;border-radius:calc(var(--r) - 6px);
+  position:relative;padding:16px 20px;border-radius:0;
   border:1px solid rgba(255,255,255,.14);
 }
 .gbar>div+div::before{content:"";position:absolute;left:-3px;top:18%;bottom:18%;width:1px;background:rgba(255,255,255,.24)}
@@ -556,12 +610,7 @@ body{background-color:var(--white)}
 
 /* ---------- fallbacks ---------- */
 @media (prefers-reduced-transparency: reduce){
-  .panel,.formcard,.pcard,.rev,.q,.mapcard,.thumbs figure,.trio div,.towns span,.hint,
-  .sec>.wrap>.rows>.row{
-    background:var(--white);backdrop-filter:none;-webkit-backdrop-filter:none}
-  .navypanel .row,.nlist div,.cinfo a,.cinfo div{
-    background:rgba(255,255,255,.1);backdrop-filter:none;-webkit-backdrop-filter:none}
-  .gbar{background:var(--navy);backdrop-filter:none;-webkit-backdrop-filter:none}
+  .gbar,.pbcard,.gmenu{background:var(--navy);backdrop-filter:none;-webkit-backdrop-filter:none}
 }
 
 
@@ -595,7 +644,7 @@ body{background-color:var(--white)}
   -webkit-backdrop-filter:blur(22px) saturate(180%);
   box-shadow:inset 0 1px 0 rgba(255,255,255,.55),0 26px 60px -30px rgba(8,20,50,.6);
 }
-.pbcard>div{padding:13px 16px;border-radius:calc(var(--r) - 6px);border:1px solid rgba(255,255,255,.13);
+.pbcard>div{padding:13px 16px;border-radius:0;border:1px solid rgba(255,255,255,.13);
   display:flex;justify-content:space-between;gap:14px;align-items:baseline}
 .pbcard>div+div{margin-top:4px}
 .pbcard span{color:rgba(255,255,255,.8);font-size:13px;font-weight:700}
@@ -643,32 +692,24 @@ body{background-color:var(--white)}
 }
 .blueband .sh{color:#fff}
 .blueband .sh::after{background:var(--sky)}
-/* the three up strip is glass on the field rather than a blue card on white */
+/* the three up strip is a ruled band on the field, not a card on it */
 .blueband .strip3{
-  background-color:transparent;
-  background-image:linear-gradient(150deg,rgba(255,255,255,.2),rgba(255,255,255,.06));
-  border:1px solid rgba(255,255,255,.28);
-  backdrop-filter:blur(14px) saturate(150%);
-  -webkit-backdrop-filter:blur(14px) saturate(150%);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.36),0 24px 52px -32px rgba(5,15,40,.6);
+  background:none;backdrop-filter:none;-webkit-backdrop-filter:none;box-shadow:none;
+  border:0;border-top:1px solid rgba(255,255,255,.34);border-bottom:1px solid rgba(255,255,255,.34);
 }
-.blueband .strip3 div{border-right-color:rgba(255,255,255,.22)}
-/* reviews become dark glass so they read on the field */
+.blueband .strip3 div{padding:24px 32px 24px 0;border-right:0;position:relative}
+.blueband .strip3 div+div{padding-left:32px}
+.blueband .strip3 div+div::before{content:"";position:absolute;left:0;top:24px;bottom:24px;width:1px;background:rgba(255,255,255,.28)}
+.blueband .strip3 b{font-family:'Bricolage Grotesque',sans-serif;font-size:17px;margin-bottom:8px}
+/* reviews on the field: a rule and the words, same as on the light ground */
 .blueband .rev{
-  border:1px solid rgba(255,255,255,.26);
-  background:linear-gradient(150deg,rgba(255,255,255,.17),rgba(255,255,255,.05));
-  backdrop-filter:blur(14px) saturate(150%);
-  -webkit-backdrop-filter:blur(14px) saturate(150%);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.32),0 26px 56px -32px rgba(5,15,40,.66);
+  border:0;border-top:2px solid rgba(255,255,255,.55);padding-top:24px;
+  background:none;backdrop-filter:none;-webkit-backdrop-filter:none;box-shadow:none;
 }
-.blueband .rev::before{background:radial-gradient(circle at 14% -6%,rgba(255,255,255,.26),transparent 44%)}
-.blueband .rev p{color:rgba(255,255,255,.92)}
-.blueband .rev b{color:#fff}
-.blueband .rev .qm{color:rgba(255,255,255,.15)}
-.blueband .rev:hover{
-  border-color:rgba(255,255,255,.5);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.45),0 34px 66px -30px rgba(5,15,40,.75);
-}
+.blueband .rev::before,.blueband .rev::after{display:none}
+.blueband .rev p{color:#fff}
+.blueband .rev b{color:rgba(255,255,255,.72)}
+.blueband .rev:hover{border-top-color:#fff;box-shadow:none;transform:none}
 /* white CTA, because a blue button on a blue field is not a button */
 .blueband .btn{--b:#fff;--f:var(--navy);background:#fff;border-color:#fff;color:var(--navy);
   box-shadow:0 10px 22px -12px rgba(5,15,40,.7)}
@@ -680,6 +721,51 @@ body{background-color:var(--white)}
 }
 @media (max-width:760px){
   .blueband .strip3,.blueband .rev{backdrop-filter:none;-webkit-backdrop-filter:none}
+}
+
+
+/* ============================================================
+   LAYOUT AND SPACING
+   Six identical three-equal-column grids read as a template no matter
+   what is in them. Core Services is now one large item beside two
+   stacked, so it is a different layout family from the three up that
+   follows it.
+
+   Everything below is on an 8pt grid: 8 16 24 32 40 48 64 80 96.
+   ============================================================ */
+.cards{gap:40px 40px;margin-top:40px}
+.cards.feature{grid-template-columns:1.12fr .88fr}
+.cards.feature>.pcard:first-child{grid-row:1/3;display:flex;flex-direction:column}
+.cards.feature>.pcard:first-child .shot{aspect-ratio:auto;flex:1;min-height:320px}
+.cards.feature>.pcard:first-child h3{font-size:28px}
+.cards.feature>.pcard:first-child p{font-size:16px;max-width:38ch}
+.cards.feature>.pcard{border-bottom:0}
+.cards.feature>.pcard:not(:first-child) .shot{aspect-ratio:16/8}
+
+.sec{padding-block:clamp(56px,7vw,96px)}
+.sh{padding-bottom:16px;font-size:clamp(26px,3.4vw,40px)}
+.sh::after{width:64px;height:2px}
+.hero-act{gap:16px;margin-top:32px}
+.checks{gap:16px;margin-top:24px}
+.checks li{font-size:16px;font-weight:400;color:var(--ink-2)}
+.intro{gap:clamp(32px,4vw,64px)}
+.panel{padding:clamp(24px,3vw,40px)}
+.panel-hd{margin-bottom:32px;gap:24px}
+.panel-hd h2{font-size:clamp(22px,2.8vw,32px);max-width:20ch}
+.revs{gap:40px;margin-top:40px}
+.thumbs{gap:24px;margin-top:24px}
+.trio{margin-top:24px}
+.faq{margin-top:32px}
+.towns{margin-top:24px}
+.acts{gap:16px;margin-top:32px}
+.area{gap:clamp(32px,4vw,64px)}
+.navypanel{padding:clamp(24px,3.4vw,48px);gap:clamp(24px,3.4vw,48px);border-radius:0}
+.cta{padding:clamp(24px,3.4vw,48px);gap:clamp(24px,3.4vw,48px);border-radius:0}
+.lede{font-size:17px;font-weight:300;line-height:1.6}
+@media (max-width:1040px){
+  .cards.feature{grid-template-columns:1fr}
+  .cards.feature>.pcard:first-child{grid-row:auto}
+  .cards.feature>.pcard:first-child .shot{min-height:0;aspect-ratio:16/9}
 }
 
 /* ---------- responsive ---------- */
@@ -721,11 +807,8 @@ body{background-color:var(--white)}
   .gbar>div+div::before{left:14px;right:14px;top:-3px;bottom:auto;width:auto;height:1px}
 }
 @media (max-width:760px){
-  /* stacked blurs are the single most expensive thing on a phone */
-  .panel,.formcard,.pcard,.rev,.q,.mapcard,.thumbs figure,.trio div,.towns span,.hint,
-  .sec>.wrap>.rows>.row{
-    backdrop-filter:none;-webkit-backdrop-filter:none;background:rgba(255,255,255,.94)}
-  .navypanel .row,.nlist div,.cinfo a,.cinfo div{backdrop-filter:none;-webkit-backdrop-filter:none}
+  /* only three elements blur now, and none of them on a phone */
+  .gbar,.pbcard,.gmenu{backdrop-filter:none;-webkit-backdrop-filter:none;background:rgba(10,25,52,.92)}
 }
 </style>
 </head>
@@ -782,8 +865,8 @@ body{background-color:var(--white)}
        alt="A new manufactured home sitting level on a finished pad with graded dirt around it" fetchpriority="high">
   <div class="wrap hero-in">
     <div>
-      <p class="eyebrow">Site prep, utilities and home setting. Statewide Arizona.</p>
-      <h1>Dirt Work, Utilities &amp; Manufactured Home Setting Across AZ</h1>
+      <p class="eyebrow">Statewide Arizona</p>
+      <h1>Dirt Work, Utilities &amp; Manufactured Home Setting</h1>
       <p>We clear and grade the lot, put the utilities in the ground, and set your home level. One crew from raw dirt to the day you get keys.</p>
       <div class="hero-act">
         <a class="btn" href="#estimate">Get Estimate</a>
@@ -809,7 +892,7 @@ body{background-color:var(--white)}
           <span>Owner reviews</span></a>
         <a href="#estimate">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.6h.09A1.65 1.65 0 0 0 10 3.09V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9v.09a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
-          <span>Get an estimate</span></a>
+          <span>Get Estimate</span></a>
       </nav>
     </div>
 
@@ -855,7 +938,7 @@ body{background-color:var(--white)}
     </div>
 
     <div class="formcard rv">
-      <div class="hd"><span class="dot"></span> Free estimate, no obligation</div>
+      <div class="hd">Free estimate, no obligation</div>
       <form id="ef" novalidate>
         <div class="two">
           <div class="f"><label for="n">Your name</label><input id="n" type="text" placeholder="Dale Whitcomb" required><span class="err">Please add your name.</span></div>
@@ -883,13 +966,11 @@ body{background-color:var(--white)}
 <section class="sec navyfield">
   <div class="wrap">
     <div class="panel rv">
-      <span class="badge">Real project proof</span>
       <div class="panel-hd">
         <div>
           <h2>See the Difference: Raw Lot to Level Home</h2>
-          <p>The same parcel before we started and after the set. Cleared, cut, filled, compacted and tested, then utilities in the ground and the home blocked and leveled on it.</p>
         </div>
-        <a class="btn" href="#estimate">Request Estimate</a>
+        <a class="btn" href="#estimate">Get Estimate</a>
       </div>
       <div class="ba">
         <figure>
@@ -918,10 +999,9 @@ body{background-color:var(--white)}
 <section class="sec ice" id="about" style="padding-top:0">
   <div class="wrap">
     <div class="panel rv">
-      <span class="badge">Manufactured homes</span>
       <div class="split">
         <div>
-          <h2 style="font-size:clamp(22px,2.9vw,32px);max-width:16ch">Manufactured Homes Are Different. That Is Why Specialists Matter.</h2>
+          <h2 style="font-size:clamp(22px,2.9vw,32px);max-width:16ch">Manufactured Homes Are Not Site Built</h2>
           <p class="lede" style="margin-top:14px;font-size:15px">A manufactured home arrives on a steel frame, moves with the ground, and is inspected against HUD rules rather than framing rules. Set Right Homes is a site work crew, not a general remodeller. We do the three jobs a home needs before anybody turns a key.</p>
           <p class="lede" style="margin-top:12px;font-size:15px">Contractors who do this once a year get it wrong in predictable ways. Soft fill under a pier shows up as a stuck door eighteen months later. Anchor spacing comes off the manufacturer's setup manual and your county wind zone, and an inspector checks both.</p>
           <div class="acts" style="margin-top:18px">
@@ -931,12 +1011,12 @@ body{background-color:var(--white)}
           <div class="hint">If your home is manufactured or modular, you are in the right place.</div>
         </div>
         <div class="rows">
-          <div class="row"><span class="d"></span><div><b>Lot clearing and engineered pads</b><span>Cut, fill, compaction testing and drainage to the stamped detail.</span></div></div>
-          <div class="row"><span class="d"></span><div><b>Water, sewer, septic and power</b><span>Trenched, laid, pressure tested and inspected before delivery.</span></div></div>
-          <div class="row"><span class="d"></span><div><b>Placement, blocking and leveling</b><span>Toter or crane set, pier and footing layout, marriage line closed.</span></div></div>
-          <div class="row"><span class="d"></span><div><b>Anchors and tie downs</b><span>Spacing per the setup manual and the wind zone for your county.</span></div></div>
-          <div class="row"><span class="d"></span><div><b>Permits and inspections</b><span>Submittal, corrections and every inspection call handled by us.</span></div></div>
-          <div class="row"><span class="d"></span><div><b>Releveling on existing homes</b><span>Sticking doors, sloping floors, cracks at the marriage line.</span></div></div>
+          <div class="row"><div><b>Lot clearing and engineered pads</b><span>Cut, fill, compaction testing and drainage to the stamped detail.</span></div></div>
+          <div class="row"><div><b>Water, sewer, septic and power</b><span>Trenched, laid, pressure tested and inspected before delivery.</span></div></div>
+          <div class="row"><div><b>Placement, blocking and leveling</b><span>Toter or crane set, pier and footing layout, marriage line closed.</span></div></div>
+          <div class="row"><div><b>Anchors and tie downs</b><span>Spacing per the setup manual and the wind zone for your county.</span></div></div>
+          <div class="row"><div><b>Permits and inspections</b><span>Submittal, corrections and every inspection call handled by us.</span></div></div>
+          <div class="row"><div><b>Releveling on existing homes</b><span>Sticking doors, sloping floors, cracks at the marriage line.</span></div></div>
         </div>
       </div>
     </div>
@@ -951,19 +1031,19 @@ body{background-color:var(--white)}
         <h2>Why Manufactured Homes Require Specialized Site Work</h2>
         <p>Manufactured homes sit on ground that has to be built for them. Because of that, general excavation crews unintentionally cause structural problems, failed inspections, or finance issues. Set Right Homes exists to solve those problems.</p>
         <div class="rows">
-          <div class="row"><span class="d"></span><div><b>Pad and pier support</b><span>Load has to be spread correctly to prevent sagging, cracking and door failure.</span></div></div>
-          <div class="row"><span class="d"></span><div><b>HUD and lender standards</b><span>Work must meet HUD guidance to pass inspection, refinance or sell.</span></div></div>
-          <div class="row"><span class="d"></span><div><b>Settlement and leveling</b><span>Arizona soil shifts. That requires specialised compaction and drainage.</span></div></div>
-          <div class="row"><span class="d"></span><div><b>Tie downs and anchoring</b><span>Wind resistance and long term stability depend on proper anchoring.</span></div></div>
-          <div class="row"><span class="d"></span><div><b>Utility connections</b><span>Water, sewer, septic and power all function differently under a manufactured home.</span></div></div>
+          <div class="row"><div><b>Pad and pier support</b><span>Load has to be spread correctly to prevent sagging, cracking and door failure.</span></div></div>
+          <div class="row"><div><b>HUD and lender standards</b><span>Work must meet HUD guidance to pass inspection, refinance or sell.</span></div></div>
+          <div class="row"><div><b>Settlement and leveling</b><span>Arizona soil shifts. That requires specialised compaction and drainage.</span></div></div>
+          <div class="row"><div><b>Tie downs and anchoring</b><span>Wind resistance and long term stability depend on proper anchoring.</span></div></div>
+          <div class="row"><div><b>Utility connections</b><span>Water, sewer, septic and power all function differently under a manufactured home.</span></div></div>
         </div>
       </div>
       <div>
         <div class="npic"><img src="../assets/trench-utilities.jpg" width="1600" height="1067" loading="lazy" alt="Machines working an open utility trench alongside a road"></div>
         <div class="nlist">
-          <div><span class="d"></span>We know what inspectors look for and what lenders require in Arizona.</div>
-          <div><span class="d"></span>Work is built around protecting the structure, the safety and the long term value of the home.</div>
-          <div><span class="d"></span>If your home is manufactured or modular, working with a specialist is not optional.</div>
+          <div>We know what inspectors look for and what lenders require in Arizona.</div>
+          <div>Work is built around protecting the structure, the safety and the long term value of the home.</div>
+          <div>If your home is manufactured or modular, working with a specialist is not optional.</div>
         </div>
       </div>
     </div>
@@ -974,7 +1054,7 @@ body{background-color:var(--white)}
 <section class="sec ruled" id="services">
   <div class="wrap">
     <h2 class="sh rv">Core Services</h2>
-    <div class="cards">
+    <div class="cards feature">
       <article class="pcard rv">
         <div class="shot"><img src="../assets/cleared-lot.jpg" width="2000" height="1333" loading="lazy" alt="A lot cleared and turned over, ready for grading"></div>
         <h3>Dirt Work &amp; Site Prep</h3>
@@ -1059,7 +1139,6 @@ body{background-color:var(--white)}
   <div class="wrap">
     <div class="panel rv">
       <h2 style="font-size:clamp(21px,2.8vw,30px)">Real Site Work Results Across Arizona</h2>
-      <p class="lede" style="margin-top:8px;font-size:14.5px;max-width:70ch">Pads, utility runs, sets and releveling completed across Arizona manufactured home communities and rural acreage.</p>
       <div class="thumbs">
         <figure><div class="shot"><img src="../assets/home-marriage-line.jpg" width="2000" height="1208" loading="lazy" alt="A doublewide part way through the set with the marriage line open"></div><figcaption>Doublewide set on five acres, Wittmann</figcaption></figure>
         <figure><div class="shot"><img src="../assets/compaction-roller.jpg" width="1600" height="1067" loading="lazy" alt="A roller compacting a prepared surface"></div><figcaption>Pad only, compaction tested, Buckeye</figcaption></figure>
@@ -1115,11 +1194,11 @@ body{background-color:var(--white)}
   <div class="wrap">
     <h2 class="sh rv">How A Job Runs</h2>
     <div class="rows rv" style="margin-top:26px">
-      <div class="row"><span class="d"></span><div><b>1. Walk the lot</b><span>Soil, slope, setbacks and where the utilities actually stub out. Free, and usually about an hour.</span></div></div>
-      <div class="row"><span class="d"></span><div><b>2. Plans and permits</b><span>Engineered pad detail drawn and stamped, county submittal filed, inspection dates on the calendar.</span></div></div>
-      <div class="row"><span class="d"></span><div><b>3. Dirt work</b><span>Clear, cut, fill, compact, test. Driveway and drainage go in while the machines are already on site.</span></div></div>
-      <div class="row"><span class="d"></span><div><b>4. Utilities in the ground</b><span>Trench, lay, pressure test, inspect, backfill. Nothing gets covered before it is signed off.</span></div></div>
-      <div class="row"><span class="d"></span><div><b>5. Set and tie down</b><span>Home placed, blocked, leveled, anchored, marriage line closed, then skirting and final grade.</span></div></div>
+      <div class="row"><div><b>1. Walk the lot</b><span>Soil, slope, setbacks and where the utilities actually stub out. Free, and usually about an hour.</span></div></div>
+      <div class="row"><div><b>2. Plans and permits</b><span>Engineered pad detail drawn and stamped, county submittal filed, inspection dates on the calendar.</span></div></div>
+      <div class="row"><div><b>3. Dirt work</b><span>Clear, cut, fill, compact, test. Driveway and drainage go in while the machines are already on site.</span></div></div>
+      <div class="row"><div><b>4. Utilities in the ground</b><span>Trench, lay, pressure test, inspect, backfill. Nothing gets covered before it is signed off.</span></div></div>
+      <div class="row"><div><b>5. Set and tie down</b><span>Home placed, blocked, leveled, anchored, marriage line closed, then skirting and final grade.</span></div></div>
     </div>
   </div>
 </section>
@@ -1199,7 +1278,7 @@ body{background-color:var(--white)}
       </div>
       <div><h5>Services</h5><a href="#services">Dirt work and site prep</a><a href="#services">Utility connections</a><a href="#services">Setting homes</a><a href="#services">Releveling</a></div>
       <div><h5>Service area</h5><a href="#area">Surprise</a><a href="#area">Buckeye</a><a href="#area">Wittmann</a><a href="#area">Casa Grande</a></div>
-      <div><h5>Contact</h5><a href="tel:+16235550142">(623) 555-0142</a><a href="mailto:office@setrighthomes.com">office@setrighthomes.com</a><a href="#estimate">Get an estimate</a></div>
+      <div><h5>Contact</h5><a href="tel:+16235550142">(623) 555-0142</a><a href="mailto:office@setrighthomes.com">office@setrighthomes.com</a><a href="#estimate">Get Estimate</a></div>
     </div>
     <div class="foot-bot">
       <span>Copyright 2026 Set Right Homes LLC</span>
