@@ -72,8 +72,13 @@ it. The drafting rules, the light shafts, the brushed face and the halftone are 
 Where the ink lands:
 
 - **01 Mesic** drafting rules on Core Services, survey contours on the service area. The
-  navy panels, the review ticker and the blue strip keep their raked hatch, because those
-  are objects on the page rather than the ground under it.
+  navy panels and the review ticker keep their raked hatch, because those are objects on
+  the page rather than the ground under it.
+  The reference site is light the whole way down, and copying it left too long a pale run,
+  so three things break it: the ice is pulled toward blue (`#EDF3FB` to `#E2EBF8`), a full
+  bleed **photographic band** cuts in after Core Services, and the three up strip and the
+  reviews now share one **blue field** with glass cards on it. Only Core Services and the
+  FAQ are still white, which makes them read as bright accents rather than the default.
 - **02 Site** raked light shafts on the process rail and the service area. Five sections
   are photographs. Everything else is flat near black.
 - **03 Plate** the brushed face on the statement band and the service area; the blue field
