@@ -90,25 +90,6 @@ h1 em{font-style:normal;color:var(--acc)}
   border:1px solid var(--steel-700);padding:6px 10px;color:var(--steel-400)}
 .chip.on{border-color:rgba(76,134,255,.5);color:var(--acc-2)}
 
-.matrix{padding-block:clamp(34px,5vw,66px);border-top:1px solid var(--steel-800)}
-.matrix h3{font-size:clamp(1.3rem,3vw,2rem);font-weight:800;text-transform:uppercase;letter-spacing:-.03em;
-  font-stretch:118%;margin-bottom:8px}
-.matrix .mono{display:block;margin-bottom:22px}
-.tbl{width:100%;border-collapse:collapse;font-size:13.5px;min-width:820px}
-.tbl th,.tbl td{border:1px solid var(--steel-800);padding:11px 13px;text-align:left;vertical-align:top}
-.tbl th{font-family:'Space Mono',monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;
-  color:var(--steel-400);font-weight:400;background:var(--steel-950)}
-.tbl td:first-child{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;
-  color:var(--acc);white-space:nowrap}
-.tbl tbody tr:hover td{background:var(--steel-950)}
-.scrollx{overflow-x:auto}
-
-.note{border:1px solid var(--steel-800);background:var(--steel-950);padding:clamp(18px,2.4vw,30px);
-  margin-bottom:clamp(30px,5vw,56px);display:grid;gap:12px}
-.note h4{font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--acc)}
-.note p{font-size:14.5px;color:var(--steel-300);max-width:86ch}
-.note p b{color:var(--paper);font-weight:600}
-.note a{color:var(--acc-2);text-decoration:underline;text-underline-offset:3px}
 
 footer{border-top:1px solid var(--steel-800);padding-block:30px;display:flex;flex-wrap:wrap;gap:16px;
   align-items:center;justify-content:space-between}
@@ -157,7 +138,7 @@ body{
     0 40px 90px -50px #000;
 }
 .card:hover{border-color:rgba(255,255,255,.2)}
-.card-hd,.card-bd,.note,.seg,.veil span,.card-hd .open,.chip{
+.card-hd,.card-bd,.seg,.veil span,.card-hd .open,.chip{
   backdrop-filter:blur(16px) saturate(160%);
   -webkit-backdrop-filter:blur(16px) saturate(160%);
 }
@@ -167,11 +148,6 @@ body{
   box-shadow:inset 0 1px 0 rgba(255,255,255,.16);
 }
 .card-bd{background:linear-gradient(180deg,rgba(255,255,255,.012),rgba(255,255,255,.045))}
-.note{
-  border:1px solid rgba(255,255,255,.11);
-  background:linear-gradient(158deg,rgba(255,255,255,.07),rgba(255,255,255,.016) 56%,rgba(76,134,255,.05));
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.17),0 34px 78px -50px #000;
-}
 .seg{
   border:1px solid rgba(255,255,255,.14);
   background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.02));
@@ -191,19 +167,16 @@ body{
   border-color:rgba(255,255,255,.14);
   background:linear-gradient(158deg,rgba(255,255,255,.09),rgba(255,255,255,.02));
   box-shadow:inset 0 1px 0 rgba(255,255,255,.2)}
-.tbl th{background:rgba(255,255,255,.045)}
-.tbl th,.tbl td{border-color:rgba(255,255,255,.08)}
-.tbl tbody tr:hover td{background:rgba(255,255,255,.035)}
 header{border-bottom-color:rgba(255,255,255,.09)}
-.matrix,footer{border-top-color:rgba(255,255,255,.09)}
+footer{border-top-color:rgba(255,255,255,.09)}
 
 @media (prefers-reduced-transparency: reduce){
-  .card,.card-hd,.card-bd,.note,.seg,.chip,.card-hd .open,.veil span{
+  .card,.card-hd,.card-bd,.seg,.chip,.card-hd .open,.veil span{
     background:var(--steel-950);backdrop-filter:none;-webkit-backdrop-filter:none}
 }
 @media(max-width:900px){
   /* stacked blurs are the single most expensive thing on a phone */
-  .card-hd,.card-bd,.note,.seg,.chip,.card-hd .open,.veil,.veil span{
+  .card-hd,.card-bd,.seg,.chip,.card-hd .open,.veil,.veil span{
     backdrop-filter:none;-webkit-backdrop-filter:none}
 }
 
@@ -242,7 +215,7 @@ header{border-bottom-color:rgba(255,255,255,.09)}
     <div class="card-hd">
       <span class="no">01</span>
       <h2>Mesic</h2>
-      <a class="open" href="01-mesic/index.html?v=20260904d" target="_blank" rel="noopener">Open full screen &#8599;</a>
+      <a class="open" href="01-mesic/index.html?v=20260904e" target="_blank" rel="noopener">Open full screen &#8599;</a>
     </div>
     <div class="stage desktop" data-src="01-mesic/index.html">
       <div class="loading"><span>Loading preview&#8230;</span></div>
@@ -250,7 +223,7 @@ header{border-bottom-color:rgba(255,255,255,.09)}
       <div class="veil"><span>Click to interact</span></div>
     </div>
     <div class="card-bd">
-      <p><b>A direct copy of the site you sent.</b> Same layout and same components as mesiccontracting.com, section for section: utility bar, hero photo with a left gradient, blue review ticker, checklist beside a form card, before and after proof, the navy panel, photo card grids, star reviews, town chips beside a map. Cream swapped for bluish white, amber swapped for blue. The ground is a continuous drafting sheet with survey contours washed over it, and liquid glass runs the whole page: the nav, the draggable jump menu, the stat bar hung across the hero, the form, every card and every panel.</p>
+      <p><b>A direct copy of the site you sent.</b> Same layout and same components as mesiccontracting.com, section for section: utility bar, hero photo with a left gradient, blue review ticker, checklist beside a form card, before and after proof, the navy panel, photo card grids, star reviews, town chips beside a map. Cream swapped for bluish white, amber swapped for blue. The ground is a continuous drafting sheet with survey contours washed over it, and liquid glass runs the whole page: the nav, the draggable jump menu, the stat bar on the hero photograph, the form, every card and every panel.</p>
       <div class="chips"><span class="chip on">Copies Mesic</span><span class="chip">Drafting linen</span><span class="chip">Glass everywhere</span><span class="chip">Plus Jakarta Sans</span><span class="chip">Drag the glass menu</span><span class="chip">Survey contours</span></div>
     </div>
   </article>
@@ -259,7 +232,7 @@ header{border-bottom-color:rgba(255,255,255,.09)}
     <div class="card-hd">
       <span class="no">02</span>
       <h2>Site</h2>
-      <a class="open" href="02-site/index.html?v=20260904d" target="_blank" rel="noopener">Open full screen &#8599;</a>
+      <a class="open" href="02-site/index.html?v=20260904e" target="_blank" rel="noopener">Open full screen &#8599;</a>
     </div>
     <div class="stage desktop" data-src="02-site/index.html">
       <div class="loading"><span>Loading preview&#8230;</span></div>
@@ -276,7 +249,7 @@ header{border-bottom-color:rgba(255,255,255,.09)}
     <div class="card-hd">
       <span class="no">03</span>
       <h2>Plate</h2>
-      <a class="open" href="03-plate/index.html?v=20260904d" target="_blank" rel="noopener">Open full screen &#8599;</a>
+      <a class="open" href="03-plate/index.html?v=20260904e" target="_blank" rel="noopener">Open full screen &#8599;</a>
     </div>
     <div class="stage desktop" data-src="03-plate/index.html">
       <div class="loading"><span>Loading preview&#8230;</span></div>
@@ -293,7 +266,7 @@ header{border-bottom-color:rgba(255,255,255,.09)}
     <div class="card-hd">
       <span class="no">04</span>
       <h2>Burst</h2>
-      <a class="open" href="04-burst/index.html?v=20260904d" target="_blank" rel="noopener">Open full screen &#8599;</a>
+      <a class="open" href="04-burst/index.html?v=20260904e" target="_blank" rel="noopener">Open full screen &#8599;</a>
     </div>
     <div class="stage desktop" data-src="04-burst/index.html">
       <div class="loading"><span>Loading preview&#8230;</span></div>
@@ -306,39 +279,6 @@ header{border-bottom-color:rgba(255,255,255,.09)}
     </div>
   </article>
 
-</div>
-
-<section class="matrix">
-  <h3>What actually differs</h3>
-  <span class="mono">Same words, same pictures. <b>Everything in this table is the design.</b></span>
-  <div class="scrollx">
-    <table class="tbl">
-      <thead>
-        <tr><th>&nbsp;</th><th>01 Mesic</th><th>02 Site</th><th>03 Plate</th><th>04 Burst</th></tr>
-      </thead>
-      <tbody>
-        <tr><td>Based on</td><td>mesiccontracting.com, copied</td><td>Black and red agency flyer</td><td>Red diagonal flyer</td><td>Orange sunburst posters</td></tr>
-        <tr><td>Ground</td><td>Bluish white and navy</td><td>Near black</td><td>Steel, dark</td><td>Ice white</td></tr>
-        <tr><td>Display face</td><td>Plus Jakarta Sans</td><td>Big Shoulders Display</td><td>Saira Condensed</td><td>Archivo Black</td></tr>
-        <tr><td>Depth device</td><td>Liquid glass over photography</td><td>Three planes, plate hung across the seam</td><td>Machined bevel, bolts, recess</td><td>Ray field lapping over content</td></tr>
-        <tr><td>Material</td><td>Drafting linen: rules, survey contours, paper grain</td><td>Film stock: grain on a shuffling gate, vignette, light shafts</td><td>Brushed steel with a specular sweep, knurled blue field</td><td>Screen print: 45 degree halftone, misregistered second pull</td></tr>
-        <tr><td>Ground rhythm</td><td>Plain ice and white, ruled on Core Services, contours on the area, one photo hero</td><td>Five photographic grounds, shafts on two sections, flat near black between</td><td>Plain steel, brushed on two sections, two knurled blue fields, one photo hero</td><td>Plain paper, screened on four, one full bleed photo band</td></tr>
-        <tr><td>Glass</td><td>Frosted, over the drafting ground</td><td>Smoked, over photographs</td><td>Machine guard glazing, bolted at four corners</td><td>Frosted acetate, ink keyline and hard offset kept</td></tr>
-        <tr><td>Corners</td><td>Soft, 14 and 10</td><td>Square</td><td>Square</td><td>Square, pill buttons</td></tr>
-        <tr><td>Hero</td><td>Photo, left gradient, glass menu</td><td>Full viewport photograph</td><td>Dark band cut by a diagonal</td><td>Ray burst behind the type</td></tr>
-        <tr><td>Services shown as</td><td>Photo card grids</td><td>Full bleed chapters</td><td>Recessed photo panels</td><td>Three offset plates</td></tr>
-        <tr><td>Density</td><td>Dense, many sections</td><td>Sparse</td><td>Dense</td><td>Medium loud</td></tr>
-        <tr><td>Best for</td><td>Matching the reference site</td><td>Looking expensive</td><td>Reading as a real trade</td><td>Paid ad landing page</td></tr>
-      </tbody>
-    </table>
-  </div>
-</section>
-
-<div class="note">
-  <h4>Before this goes to the client</h4>
-  <p><b>Every phone number, address, licence number and figure is a placeholder.</b> Search any file for <b>SWAP:</b> to find them. The phone is a 555 number so it cannot dial a real person, and the reviews are three invented customers. Direction 04 also advertises a free lot walk, so confirm that is an offer the business actually makes.</p>
-  <p><b>The photographs are real and licensed for commercial use</b>, self hosted, nothing hotlinked. They are still stand ins for Set Right Homes' own job photos. Several are CC BY or CC BY-SA, which means the photographer has to be credited on the site if you keep them. Using the client's own photos removes that entirely. Licences are listed in <a href="PHOTO-CREDITS.md">PHOTO-CREDITS.md</a>.</p>
-  <p><b>The forms do not send anywhere yet.</b> All five validate and show a success state, but they need pointing at an inbox before launch.</p>
 </div>
 
 <footer>
@@ -356,7 +296,7 @@ header{border-bottom-color:rgba(255,255,255,.09)}
    see is the real page at a real viewport width, not a screenshot. The veil
    swallows the first click so scrolling the gallery never scrolls a preview. */
 var DESKTOP=1440, MOBILE=390;
-  var BUILD='20260904d';   /* bump whenever a design page changes */
+  var BUILD='20260904e';   /* bump whenever a design page changes */
 var stages=[].slice.call(document.querySelectorAll('.stage'));
 var mode='desktop';
 

@@ -91,8 +91,8 @@ It runs through all four now, not just 01's nav. It is the same physical recipe 
 time, retinted for the page it sits on: a blur, a saturation lift, a lit top edge, and a
 hairline set 1px inside the border so the edge has thickness.
 
-- **01** frosted glass on the nav, the draggable jump menu, a stat bar hung across the hero
-  seam so the photograph refracts through it, the form card, every panel, card, review,
+- **01** frosted glass on the nav, the draggable jump menu, a stat bar sitting on the hero
+  photograph so it has something to refract, the form card, every panel, card, review,
   FAQ row, process row, town chip and the map. Dark glass inside the navy panels.
 - **02** smoked glass: a draggable card floated over the hero photograph, the job lists
   inside each full bleed chapter, the figures rail, the contact details, the sticky nav,
